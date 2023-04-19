@@ -49,3 +49,21 @@ This project is licensed under the MIT License.
 
 ### Conclusion
 The AI Agent Farm is a powerful infrastructure for running multiple AI tasks simultaneously, and distributing them across the workers for maximum efficiency. By dockerizing the applications and automating the backup process, the infrastructure is easy to deploy and manage, and data integrity is ensured. With its scalability and powerful tools, the AI Agent Farm is an essential tool for any AI project.
+
+## References
+
+- HP ProLiant MicroServer Gen8 Review. [StorageReview.com](https://www.storagereview.com/review/hp-proliant-microserver-gen8-review)
+
+- [JupyterHub](https://jupyter.org/hub)
+
+- Connect to a JupyterHub from Visual Studio Code. [Jupyter Blog](https://blog.jupyter.org/connect-to-a-jupyterhub-from-visual-studio-code-ed7ed3a31bcb)
+
+- [Visual Studio Code](https://code.visualstudio.com/)
+
+- [QuestDB - The Fastest Open Source Time Series Database](https://questdb.io/)
+
+- [Grafana - The open observability platform](https://grafana.com/)
+
+- [Auto-GPT](https://github.com/Significant-Gravitas/Auto-GPT)
+
+
