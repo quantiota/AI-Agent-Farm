@@ -1,7 +1,7 @@
 # AI Agent Farm
 
 
-## Hardware & Software
+## Infrastructure
 This repository documents the creation and maintenance of an AI Agent Farm infrastructure that consists of refurbished microservers gen8. Each microserver is equipped with a 250GB SSD, 16GB of RAM, and 4x1TB of RAID data storage for analysis. The infrastructure runs on Ubuntu 22.04 and includes powerful tools, such as Visual Studio Code (vscode), QuestDB, Grafana, and AutoGPT.
 
 The purpose of this project is to create a scalable infrastructure that can run multiple tasks simultaneously and distribute processes across the AI Agent workers, maximizing efficiency and minimizing downtime.
