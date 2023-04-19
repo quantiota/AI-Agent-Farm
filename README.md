@@ -64,6 +64,8 @@ The AI Agent Farm is a powerful infrastructure for running multiple AI tasks sim
 
 - [JupyterHub](https://jupyter.org/hub)
 
+- [JupyterHub Installation Guide](https://jupyterhub.readthedocs.io/en/1.2.0/installation-guide-hard.html)
+
 - Connect to a JupyterHub from Visual Studio Code. [Jupyter Blog](https://blog.jupyter.org/connect-to-a-jupyterhub-from-visual-studio-code-ed7ed3a31bcb)
 
 - [Visual Studio Code](https://code.visualstudio.com/)
