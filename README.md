@@ -31,7 +31,7 @@ The four applications used in this project (vscode, QuestDB, Grafana, and AutoGP
 ### Backup
 To ensure data integrity and prevent data loss, it is important to create regular backups of the QuestDB database and the AI Agent workspace on the remote GPU server.The backup process can be automated using a shell script, which can be scheduled to run regularly using a cron job. 
 
-### Failover & Remote Management system
+### Failover & Remote Management System
 The AI Agent Farm also includes failover and load balancing functions to ensure high availability and prevent downtime. In addition, a remote management system is provided to enable easy monitoring and control of the infrastructure from anywhere even without a public IP. 
 
 ## AI Application Specifications:
@@ -76,4 +76,4 @@ The AI Agent Farm is a powerful infrastructure for running multiple AI tasks sim
 
 - [Auto-GPT](https://github.com/Significant-Gravitas/Auto-GPT)
 
-- [Teltonika Networks RMS](https://teltonika-networks.com/products/rms)
+- Failover & Remote Management system [Teltonika Networks RMS](https://teltonika-networks.com/products/rms)
