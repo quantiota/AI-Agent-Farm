@@ -11,7 +11,7 @@ The purpose of this project is to create a scalable infrastructure that can run 
 
 ![infrastructure diagram](./infrastructure-diagram.png)
 
-:pencil: this diagram has been generated using Excalidraw
+:pencil: this diagram has been generated using [app.diagrams.net](https://app.diagrams.net/)
 
 ### Features
 - The AI Agents can run multiple tasks simultaneously, and processes are distributed across the workers for maximum efficiency.
