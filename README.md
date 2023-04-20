@@ -47,17 +47,6 @@ The AI application consists of several modules, including:
 
 3. Performance Monitoring Module: This module monitors the performance of each AI agent and the overall performance of the AI Agent Farm. The module collects metrics such as CPU and memory usage, task completion rates, and system uptime, which are then displayed on the Grafana dashboard. The module can be configured to send alerts if performance falls below certain thresholds or if critical errors occur.
 
-## Others
-
-### Contributing
-Contributions to the project are welcome. Please feel free to fork the repository and submit pull requests.
-
-### Licence
-This project is licensed under the MIT License.
-
-### Conclusion
-The AI Agent Farm is a powerful infrastructure for running multiple AI tasks simultaneously, and distributing them across the workers for maximum efficiency. By dockerizing the applications and automating the backup process, the infrastructure is easy to deploy and manage, and data integrity is ensured. With its scalability and powerful tools, the AI Agent Farm is an essential tool for any AI project.
-
 ## References
 
 - HP ProLiant MicroServer Gen8 Review. [StorageReview.com](https://www.storagereview.com/review/hp-proliant-microserver-gen8-review)
@@ -77,3 +66,15 @@ The AI Agent Farm is a powerful infrastructure for running multiple AI tasks sim
 - [Auto-GPT](https://github.com/Significant-Gravitas/Auto-GPT)
 
 - Failover & Remote Management System [Teltonika Networks RMS](https://teltonika-networks.com/products/rms)
+
+
+## Others
+
+### Contributing
+Contributions to the project are welcome. Please feel free to fork the repository and submit pull requests.
+
+### Licence
+This project is licensed under the MIT License.
+
+### Conclusion
+The AI Agent Farm is a powerful infrastructure for running multiple AI tasks simultaneously, and distributing them across the workers for maximum efficiency. By dockerizing the applications and automating the backup process, the infrastructure is easy to deploy and manage, and data integrity is ensured. With its scalability and powerful tools, the AI Agent Farm is an essential tool for any AI project.
