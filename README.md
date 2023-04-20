@@ -76,4 +76,4 @@ The AI Agent Farm is a powerful infrastructure for running multiple AI tasks sim
 
 - [Auto-GPT](https://github.com/Significant-Gravitas/Auto-GPT)
 
-- Failover & Remote Management system [Teltonika Networks RMS](https://teltonika-networks.com/products/rms)
+- Failover & Remote Management System [Teltonika Networks RMS](https://teltonika-networks.com/products/rms)
