@@ -51,11 +51,11 @@ The AI application consists of several modules, including:
 
 ## CPU & GPU Serveur Resources
 
-- 8 GPU Tesla K80 or Tesla P100  or Tesla V100
-- Dual Intel Xeon E5-2680 V3 2.5Ghz 12 Core  Processors
-- 256GB RAM (16 x 16GB - DDR4 - REG 2133)
-- 2 x 1TB SSD of RAID  Ubuntu 22.04 Server
-- 2X10TB SATA of RAID  data storage for backup
+The AI Agent Farm is equipped with a powerful GPU configuration to support advanced machine learning and artificial intelligence tasks. The system features a choice of 8 GPUs, including the Tesla K80, Tesla P100, or Tesla V100, all of which offer exceptional performance and reliability.
+
+In addition to the GPU options, the system is also equipped with dual Intel Xeon E5-2680 V3 2.5Ghz 12 Core Processors, providing powerful processing capabilities. The system also boasts a generous 256GB of RAM, made up of 16 x 16GB DDR4 REG 2133 modules, ensuring fast and efficient data processing.
+
+To support the storage needs of the AI Agent Farm, the system features 2 x 1TB SSD of RAID Ubuntu 22.04 Server for operating system and software, as well as 2X10TB SATA of RAID data storage for backup, providing ample space for large datasets and ensuring data security. Overall, this GPU configuration is optimized for high-performance computing and is well-suited for AI applications that require large-scale data processing and analysis.
 
 
 ## References
