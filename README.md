@@ -73,7 +73,7 @@ To support the storage needs of the AI Agent Farm, the system features 2 x 1TB S
 
 - [JupyterHub](https://jupyter.org/hub)
 
-- [JupyterHub Installation Guide](https://jupyterhub.readthedocs.io/en/1.2.0/installation-guide-hard.html)
+- [JupyterHub Installation Guide](https://github.com/jupyterhub/jupyterhub-the-hard-way/blob/HEAD/docs/installation-guide-hard.md)
 
 - Connect to a JupyterHub from Visual Studio Code. [Jupyter Blog](https://blog.jupyter.org/connect-to-a-jupyterhub-from-visual-studio-code-ed7ed3a31bcb)
 
