@@ -49,6 +49,15 @@ The AI application consists of several modules, including:
 
 3. Performance Monitoring Module: This module monitors the performance of each AI agent and the overall performance of the AI Agent Farm. The module collects metrics such as CPU and memory usage, task completion rates, and system uptime, which are then displayed on the Grafana dashboard. The module can be configured to send alerts if performance falls below certain thresholds or if critical errors occur.
 
+## CPU & GPU Serveur Resources
+
+8 GPU Tesla K80 or Tesla P100
+Dual Intel Xeon E5-2680 V3 2.5Ghz 12 Core  Processors
+256GB RAM (16 x 16GB - DDR4 - REG 2133)
+2 x 1TB SSD of RAID  Operating System
+2X10TB SATA of RAID  data storage
+
+
 ## References
 
 - HP ProLiant MicroServer Gen8 Review. [StorageReview.com](https://www.storagereview.com/review/hp-proliant-microserver-gen8-review)
