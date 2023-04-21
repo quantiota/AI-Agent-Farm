@@ -49,6 +49,15 @@ The AI application consists of several modules, including:
 
 3. Performance Monitoring Module: This module monitors the performance of each AI agent and the overall performance of the AI Agent Farm. The module collects metrics such as CPU and memory usage, task completion rates, and system uptime, which are then displayed on the Grafana dashboard. The module can be configured to send alerts if performance falls below certain thresholds or if critical errors occur.
 
+
+## Data Stream Processing & Machine Learning Notebooks
+
+The Data Stream Processing Notebook is responsible for ingesting, processing, and analyzing real-time data streams from various sources, such as financial data, sensors or social media feeds. It uses tools like QuestDB and Grafana to store and visualize the data, and can be integrated with other tools like Visual Studio Code.
+
+The Machine Learning Notebook is designed to facilitate machine learning tasks, such as building and training machine learning models, and analyzing data. It typically comes pre-configured with popular machine learning frameworks and libraries, and can support a wide range of data formats and sources.
+
+
+
 ## CPU & GPU Serveur Resources
 
 The AI Agent Farm is equipped with a powerful GPU configuration to support advanced machine learning and artificial intelligence tasks. The system features a choice of 8 GPUs, including the Tesla K80, Tesla P100, or Tesla V100, all of which offer exceptional performance and reliability.
