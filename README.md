@@ -51,11 +51,11 @@ The AI application consists of several modules, including:
 
 ## CPU & GPU Serveur Resources
 
-8 GPU Tesla K80 or Tesla P100
-Dual Intel Xeon E5-2680 V3 2.5Ghz 12 Core  Processors
-256GB RAM (16 x 16GB - DDR4 - REG 2133)
-2 x 1TB SSD of RAID  Operating System
-2X10TB SATA of RAID  data storage
+- 8 GPU Tesla K80 or Tesla P100
+- Dual Intel Xeon E5-2680 V3 2.5Ghz 12 Core  Processors
+- 256GB RAM (16 x 16GB - DDR4 - REG 2133)
+- 2 x 1TB SSD of RAID  Operating System
+- 2X10TB SATA of RAID  data storage
 
 
 ## References
