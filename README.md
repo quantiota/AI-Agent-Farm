@@ -73,7 +73,7 @@ The AI application consists of several modules, including:
 ## Others
 
 ### Contributing
-Contributions to the project are welcome. Please feel free to fork the repository and submit pull requests.
+Contributions to the project are welcome. Please feel free to fork the repository and submit pull requests.  If you need to test AI-related tasks that require a remote connection to the GPU Server, you can request a tokens for AI Agent Farm development purposes only. Please reach out to us to discuss your requirements and get the necessary permissions.
 
 ### Licence
 This project is licensed under the MIT License.
