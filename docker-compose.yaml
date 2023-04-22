@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  vscode:
+    build:
+      context: vscode
+      dockerfile: Dockerfile
+    # user: "${UID}:${GID}"
+    ports:
+      - "18080:8080"
+    volumes:
+      - ./notebooks:/home/coder/project
+      - .volumes/vscode/extensions:/home/coder/.local/share/code-server/extensions
+    environment:
+      - PASSWORD=yourpassword
+
+  grafana:
+    image: grafana/grafana:latest
+    user: "${UID}:${GID}"
+    ports:
+      - "19080:3000"
+    volumes:
+      - .volumes/grafana/data:/var/lib/grafana
+      - ./grafana/datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
+      # - ./grafana/dashboards:/etc/grafana/provisioning/dashboards/
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=yourpassword
+
+  questdb:
+    image: questdb/questdb:latest
+    ports:
+      - "9000:9000"
+      - "8812:8812"
+    environment:
+      - POSTGRES_PASSWORD=yourpassword
+      - POSTGRES_DB=qdb
