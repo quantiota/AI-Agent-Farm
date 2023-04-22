@@ -16,7 +16,11 @@ Acces VSCode through [localhost:8080](http://localhost:8080).
 :link: [docker image](https://hub.docker.com/r/questdb/questdb)
 :link: [github repository](https://github.com/questdb/questdb)
 
-Acces QuestDB through [localhost:9000](http://localhost:9000).
+Acces QuestDB GUI through [localhost:9000](http://localhost:9000).
+Access the database using [localhost:8812](localhost:8812).
+
+:lock:
+The user/password are the default one: `admin:quest` ([see the documentation](https://questdb.io/docs/reference/configuration/#postgres-wire-protocol)) and the database name is `qdb`.
 
 ### Grafana
 
@@ -24,6 +28,10 @@ Acces QuestDB through [localhost:9000](http://localhost:9000).
 :link: [github repository](https://github.com/grafana/grafana)
 
 Acces Grafana through [localhost:3000](http://localhost:3000).
+
+:lock:
+The user/password are the default one: `admin:admin`.
+You can add set the password adding the environment variable `GF_SECURITY_ADMIN_PASSWORD`.
 
 ## Usage
 

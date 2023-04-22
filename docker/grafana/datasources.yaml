@@ -4,7 +4,7 @@ datasources:
 - name: QuestDB
   type: postgres
   access: proxy
-  url: postgres://postgres:yourpassword@questdb:8812/qdb?sslmode=disable
+  url: postgres://admin:quest@questdb:8812/qdb?sslmode=disable
   database: defaultdb
   user: postgres
   password: yourpassword
