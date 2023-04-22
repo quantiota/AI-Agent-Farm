@@ -1,0 +1,5 @@
+# IDE
+.vscode
+
+# Docker volumes
+.volumes
