@@ -6,7 +6,7 @@ services:
       context: vscode
       dockerfile: Dockerfile
     ports:
-      - "18080:8080"
+      - "8080:8080"
     volumes:
       # volume used to access the `notebooks` folder
       - ../notebooks:/home/coder/project
@@ -17,7 +17,7 @@ services:
     image: grafana/grafana:latest
     user: "${UID}:${GID}"
     ports:
-      - "13000:3000"
+      - "3000:3000"
     volumes:
       - .volumes/grafana/data:/var/lib/grafana
       # volume used to set up the datasource
@@ -28,7 +28,7 @@ services:
   questdb:
     image: questdb/questdb:latest
     ports:
-      - "19000:9000"
+      - "9000:9000"
       - "8812:8812"
     environment:
       - POSTGRES_PASSWORD=yourpassword
