@@ -8,6 +8,7 @@ services:
     ports:
       - "18080:8080"
     volumes:
+      # volume used to access the `notebooks` folder
       - ../notebooks:/home/coder/project
     environment:
       - PASSWORD=yourpassword
@@ -19,6 +20,7 @@ services:
       - "13000:3000"
     volumes:
       - .volumes/grafana/data:/var/lib/grafana
+      # volume used to set up the datasource
       - ./grafana/datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=yourpassword
