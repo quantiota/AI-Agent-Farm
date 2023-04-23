@@ -57,6 +57,16 @@ The Data Stream Processing Notebook is responsible for ingesting, processing, an
 The Machine Learning Notebook is designed to facilitate machine learning tasks, such as building and training machine learning models, and analyzing data. It typically comes pre-configured with popular machine learning frameworks and libraries, and can support a wide range of data formats and sources.
 
 
+## Usage
+
+### Quantitative Finance
+The AI Agent Farm infrastructure can be used in quantitative finance to analyze large amounts of financial data and make predictions using machine learning models. With the real-time streaming data source from Coinbase, the QuestDB database, and Grafana, the infrastructure can provide up-to-date and accurate financial data. The AutoGPT tool can be used to build and fine-tune machine learning models for financial analysis.
+
+Using the AI Agent Farm infrastructure, quantitative finance professionals can easily run multiple tasks simultaneously and distribute them across the workers, which maximizes efficiency and reduces downtime. The scalability of the infrastructure allows for future growth, ensuring that it can accommodate an increase in demand for AI agents. The JupyterHub instance on the GPU server provides access to Python and Julia kernels, making it an ideal tool for financial analysis.
+
+### Others Fields
+The AI Agent Farm infrastructure can also be used in other fields, such as data science, machine learning, and artificial intelligence research. With the ability to run multiple tasks simultaneously and distribute them across the workers
+
 
 ## CPU & GPU Serveur Resources
 
