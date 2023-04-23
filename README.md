@@ -60,7 +60,7 @@ The Machine Learning Notebook is designed to facilitate machine learning tasks, 
 ## Usage
 
 ### Quantitative Finance
-The AI Agent Farm infrastructure can be used in quantitative finance to analyze large amounts of financial data and make predictions using machine learning models. With the real-time streaming data source from Coinbase, the QuestDB database, and Grafana, the infrastructure can provide up-to-date and accurate financial data. The AutoGPT tool can be used to build and fine-tune machine learning models for financial analysis.
+The AI Agent Farm infrastructure can be used in quantitative finance to analyze large amounts of financial data and make predictions using machine learning models. With the real-time streaming data source from Coinbase or others providers, the QuestDB database, and Grafana, the infrastructure can provide up-to-date and accurate financial data. The AutoGPT tool can be used to build and fine-tune machine learning models for financial analysis.
 
 Using the AI Agent Farm infrastructure, quantitative finance professionals can easily run multiple tasks simultaneously and distribute them across the workers, which maximizes efficiency and reduces downtime. The scalability of the infrastructure allows for future growth, ensuring that it can accommodate an increase in demand for AI agents. The JupyterHub instance on the GPU server provides access to Python and Julia kernels, making it an ideal tool for financial analysis.
 
