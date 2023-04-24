@@ -97,6 +97,8 @@ To support the storage needs of the AI Agent Farm, the system features 2 x 1TB S
 
 - [Auto-GPT](https://github.com/Significant-Gravitas/Auto-GPT)
 
+- AI Agent Farm Monitoring with JupyterHub. [Prometheus](https://jupyterhub.readthedocs.io/en/stable/reference/monitoring.html)
+
 - Failover & Remote Management System [Teltonika Networks RMS](https://teltonika-networks.com/products/rms)
 
 
