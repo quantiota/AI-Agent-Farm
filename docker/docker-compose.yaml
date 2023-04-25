@@ -20,16 +20,16 @@ services:
       - "3000:3000"
     volumes:
       - .volumes/grafana/data:/var/lib/grafana
-      # volume used to set up the datasource
-      - ./grafana/datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
-    # environment:
-    #   - GF_SECURITY_ADMIN_PASSWORD=yourpassword
 
   questdb:
     image: questdb/questdb:7.1.1
     ports:
-      - "9000:9000"
       - "8812:8812"
+      - "9000:9000"
+      - "9009:9009"
+      - "9003:9003" 
+    volumes:
+      - ./.volumes/questdb/data:/root/.questdb
     environment:
-      # - POSTGRES_PASSWORD=yourpassword
-      - POSTGRES_DB=qdb
+      - QDB_PG_USER=admin
+      - QDB_PG_PASSWORD=quest
