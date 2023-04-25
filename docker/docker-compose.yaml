@@ -14,7 +14,7 @@ services:
       - PASSWORD=yourpassword
 
   grafana:
-    image: grafana/grafana:latest
+    image: grafana/grafana:9.4.7
     user: "${UID}:${GID}"
     ports:
       - "3000:3000"
@@ -26,7 +26,7 @@ services:
     #   - GF_SECURITY_ADMIN_PASSWORD=yourpassword
 
   questdb:
-    image: questdb/questdb:latest
+    image: questdb/questdb:7.1.1
     ports:
       - "9000:9000"
       - "8812:8812"
