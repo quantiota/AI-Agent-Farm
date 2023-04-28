@@ -2,7 +2,7 @@
 
 
 ## Infrastructure
-This repository documents the creation and maintenance of an AI Agent Farm infrastructure that consists of refurbished microservers gen8. Each microserver is equipped with a 250GB SSD, 16GB of RAM, and 4x1TB of RAID data storage for analysis. The infrastructure runs on Ubuntu 22.04 Server and includes powerful tools, such as Visual Studio Code (vscode), QuestDB, Grafana, and AutoGPT.
+This repository documents the creation and maintenance of an AI Agent Farm infrastructure that consists of refurbished microservers gen8. Each microserver is equipped with a 250GB SSD, 16GB of RAM, and 4x1TB of RAID data storage for analysis. The infrastructure runs on Ubuntu 22.04 Server and includes powerful tools, such as Visual Studio Code, QuestDB, Grafana, and AutoGPT.
 
 The purpose of this project is to create a scalable infrastructure that can run multiple tasks simultaneously and distribute processes across the AI Agent workers, maximizing efficiency and minimizing downtime. As a demonstration, we have created a specific environment for testing the AI Agent Farm in the field of financial markets.
 
@@ -28,7 +28,7 @@ The purpose of this project is to create a scalable infrastructure that can run 
 The AI Agent Farm has been designed with scalability in mind, ensuring that it can accommodate future growth without any issues. Whether the demand for AI agents increases tenfold or hundredfold, the system is well-equipped to meet it, thanks to JupyterHub. JupyterHub is capable of supporting more than 100 users, making it an ideal tool for managing large-scale AI projects. JupyterHub can be configured to allocate a specific amount of resources (e.g., CPU cores, memory, and GPU) to each environment, depending on the requirements of the tasks that the AI Agent intends to run.
 
 ### Dockerization
-The four applications used in this project (vscode, QuestDB, Grafana, and AutoGPT) can be Dockerized to simplify deployment and management. The Dockerfiles for each application are included in the repository, and instructions for building and running the Docker containers are provided in the documentation. By Dockerizing the applications, it is possible to create a self-contained environment that can be easily moved between systems or replicated on multiple machines. This can simplify deployment and ensure consistency across different environments.
+The four applications used in this project (Visual Studio Code, QuestDB, Grafana, and AutoGPT) can be Dockerized to simplify deployment and management. The Dockerfiles for each application are included in the repository, and instructions for building and running the Docker containers are provided in the documentation. By Dockerizing the applications, it is possible to create a self-contained environment that can be easily moved between systems or replicated on multiple machines. This can simplify deployment and ensure consistency across different environments.
 
 ### Backup
 To ensure data integrity and prevent data loss, it is important to create regular backups of the QuestDB database and the AI Agent workspace on the remote GPU server.The backup process can be automated using a shell script, which can be scheduled to run regularly using a cron job. 
