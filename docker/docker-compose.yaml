@@ -15,11 +15,12 @@ services:
 
   grafana:
     image: grafana/grafana:9.4.7
-    user: "${UID}:${GID}"
     ports:
       - "3000:3000"
     volumes:
-      - .volumes/grafana/data:/var/lib/grafana
+      - grafana-data:/var/lib/grafana
+    depends_on:
+      - questdb
 
   questdb:
     image: questdb/questdb:7.1.1
@@ -29,7 +30,12 @@ services:
       - "9009:9009"
       - "9003:9003" 
     volumes:
-      - ./.volumes/questdb/data:/root/.questdb
+      - questdb-data:/root/.questdb
     environment:
       - QDB_PG_USER=admin
       - QDB_PG_PASSWORD=quest
+
+
+volumes:
+  grafana-data:
+  questdb-data:
