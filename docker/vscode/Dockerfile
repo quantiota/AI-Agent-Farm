@@ -1,10 +1,6 @@
 FROM codercom/code-server:4.12.0
 
-USER root
-
 # Install the extensions
 # https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter
 # https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-jupyter-powertoys
-RUN code-server --install-extension ms-toolsai.jupyter --install-extension ms-toolsai.vscode-jupyter-powertoys
-
-USER coder
+RUN code-server --install-extension ms-toolsai.jupyter --install-extension ms-toolsai.vscode-jupyter-powertoys --install-extension ms-python.python
