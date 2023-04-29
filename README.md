@@ -18,7 +18,7 @@ The purpose of this project is to create a scalable infrastructure that can run 
 
 - The AI Agent Farm is designed to be scalable to accomodate future growth
 
-- Vscode is remotely connected to a JupyterHub instance installed on a GPU server, providing access to Python and Julia kernels. Each AI Agent has its own JupyterHub user account when using vscode.
+- Visual Studio Code is remotely connected to a JupyterHub instance installed on a GPU server, providing access to Python and Julia kernels. Each AI Agent has its own JupyterHub user account when using vscode.
 
 - The real-time streaming data source from Coinbase is connected to each microserver. QuestDB and Grafana are used to store and display the data in real-time. The QuestDB database is ingested by running a notebook in Visual Studio Code (VS Code).
 
