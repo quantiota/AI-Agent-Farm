@@ -16,9 +16,9 @@ Automate routine tasks using scripts and tools to reduce manual effort and ensur
 Contents of the IT-Admin Folder
 The IT-Admin folder contains the following files and directories:
 
-- *scripts/*: This directory contains scripts for automating routine tasks such as backup and monitoring.
-- *config/*: This directory contains configuration files for the operating system and various software used in the AI Agent Farm.
-- *README.md*: This file contains information about the IT-Admin folder and the tasks of the IT Administrator.
+- **scripts/**: This directory contains scripts for automating routine tasks such as backup and monitoring.
+- **config/**: This directory contains configuration files for the operating system and various software used in the AI Agent Farm.
+- **README.md**: This file contains information about the IT-Admin folder and the tasks of the IT Administrator.
 ## Getting Started
 To get started with the IT-Admin folder, clone this repository onto the server that will be used for managing the AI Agent Farm. Then, run the scripts in the scripts/ directory to perform routine tasks such as backup and monitoring. Modify the configuration files in the config/ directory to customize the environment to your needs.
 
