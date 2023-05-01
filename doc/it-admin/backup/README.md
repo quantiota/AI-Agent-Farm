@@ -28,6 +28,7 @@ Replace " &lt;RAID-storage-UUID &gt;" with the UUID obtained from the previous s
 
 In the root directory run the command:
 
+```
 bash -x recovery-microserver.sh
-
+```
 
