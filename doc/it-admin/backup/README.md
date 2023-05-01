@@ -5,13 +5,15 @@ This command will update the package list and install rsnapshot on the system.
 
 sudo apt-get update && sudo apt-get install rsnapshot
 
-To create a backup directory and mount the Microserver RAID storage volume to it, first create a directory named "backup" in the root directory of the Linux system using the command "mkdir /backup". Then create a subdirectory named "rsnapshot" inside the backup directory using the command "mkdir /backup/rsnapshot". Next, identify the device name of the RAID storage volume using the command "lsblk" and make note of it. Use the command "sudo blkid" to obtain the UUID of the RAID storage volume.
+To create a backup directory and mount the Microserver RAID storage volume to it, first create a directory named "backup" in the root directory of the Linux system using the command "mkdir /backup". Then create a subdirectory named "rsnapshot" inside the backup directory using the command "mkdir /backup/rsnapshot". 
+
+Next, identify the device name of the RAID storage volume using the command "lsblk" and make note of it. Use the command "sudo blkid" to obtain the UUID of the RAID storage volume.
 
 To mount the RAID storage volume to the backup directory, add the following line to the "/etc/fstab" file:
 
-UUID=<RAID-storage-UUID> /backup ext4 defaults 0 0
+UUID=RAID-storage-UUID /backup ext4 defaults 0 0
 
-Replace "<RAID-storage-UUID>" with the UUID obtained from the previous step. Finally, use the command "mount -a" to mount the RAID storage volume to the backup directory. Now, the RAID storage volume will be automatically mounted to the backup directory upon system startup.
+Replace "RAID-storage-UUID" with the UUID obtained from the previous step. Finally, use the command "mount -a" to mount the RAID storage volume to the backup directory. Now, the RAID storage volume will be automatically mounted to the backup directory upon system startup.
   
   
   To mount a RAID storage volume to the backup directory /backup, you can use a command like this:
