@@ -12,7 +12,7 @@ Next, identify the device name of the RAID storage volume using the command "lsb
 To mount the RAID storage volume to the backup directory, add the following line to the "/etc/fstab" file:
 
 ```
-UUID=&lt;RAID-storage-UUID&gt; /backup ext4 defaults 0 0
+UUID=<RAID-storage-UUID> /backup ext4 defaults 0 0
 ```
 Replace " &lt;RAID-storage-UUID &gt;" with the UUID obtained from the previous step. Finally, use the command "mount -a" to mount the RAID storage volume to the backup directory. Now, the RAID storage volume will be automatically mounted to the backup directory upon system startup.
   
