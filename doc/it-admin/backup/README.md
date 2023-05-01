@@ -24,7 +24,7 @@ Replace "<RAID-storage-UUID>" with the UUID obtained from the previous step. Fin
 
 - Restore
 
-In the root directory run the commad:
+In the root directory run the commnad:
 
 bash -x recovery-microserver.sh
 
