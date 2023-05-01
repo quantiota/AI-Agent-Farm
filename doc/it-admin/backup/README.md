@@ -1,4 +1,6 @@
 
+## Install
+
 This command will update the package list and install rsnapshot on the system. 
 
 sudo apt-get update && sudo apt-get install rsnapshot
@@ -17,3 +19,11 @@ Replace "<RAID-storage-UUID>" with the UUID obtained from the previous step. Fin
   sudo mount -t ext4 /dev/md0 /backup
   
   Here, ext4 is the file system type, /dev/md0 is the device name of the RAID storage volume, and /backup is the mount point. Note that you may need to adjust the file system type and device name based on your specific setup. Also, the sudo command is used to run the command with administrative privileges.
+
+## Usage
+
+- Restore
+In the root directory run the commad:
+
+bash -x recovery-microserver.sh
+
