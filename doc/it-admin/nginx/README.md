@@ -1,5 +1,5 @@
 
-## Readme
+## Nginx configuration for the GPU Server
 
 This file contains the Nginx configuration for a server that handles HTTPS requests for three subdomains: **hub.domain.tld**, **database.domain.tld**, and **dashboard.domain.tld**.
 
