@@ -10,4 +10,6 @@ The guide also highlights the benefits of using system-provided packages whereve
 
 The guide is tested on Ubuntu 18.04, and the instructions can be used for other Linux distributions like Ubuntu 22.04.
 
-Complete the installation with the ready-to-use configuration files for both jupyterHub and nginx.
+### Configuration
+
+Create the user on Ubuntu 22.04 and on jupyterHub then complete the installation with the ready-to-use configuration files for both jupyterHub and nginx.
