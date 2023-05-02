@@ -20,9 +20,9 @@ This [guide](https://devopscube.com/monitor-linux-servers-prometheus-node-export
 
 Before beginning the process, it is required to have the Prometheus server up and running and the port 9100 opened in the server firewall. 
 
-The installation process includes downloading the latest node exporter package, unpacking it, moving the node export binary to /usr/local/bin, creating a custom node exporter service, and configuring the server as a target on the Prometheus server. 
+The installation process includes downloading the latest node exporter package, unpacking it, moving the node export binary to **/usr/local/bin**, creating a custom node exporter service, and configuring the server as a target on the Prometheus server. 
 
-The guide also provides the necessary commands to execute these steps. After installation, the node exporter would be exporting metrics on port 9100, which can be viewed by visiting the server URL on /metrics. 
+The guide also provides the necessary commands to execute these steps. After installation, the node exporter would be exporting metrics on port 9100, which can be viewed by visiting the server URL on **/metrics**. 
 
 Finally, this guide suggests querying node-related metrics using the Prometheus expression browser and visualizing node exporter metrics in Grafana.
 
