@@ -24,4 +24,6 @@ The installation process includes downloading the latest node exporter package, 
 
 The guide also provides the necessary commands to execute these steps. After installation, the node exporter would be exporting metrics on port 9100, which can be viewed by visiting the server URL on /metrics. 
 
-Finally, this guide suggests querying node-related metrics using the Prometheus expression browser and visualizing node exporter metrics in Grafana by following another blog post.
+Finally, this guide suggests querying node-related metrics using the Prometheus expression browser and visualizing node exporter metrics in Grafana.
+
+### Integrate And Visualize Prometheus Metrics In Grafana
