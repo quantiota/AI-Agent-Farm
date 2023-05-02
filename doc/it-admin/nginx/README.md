@@ -76,7 +76,7 @@ This will generate a file called **dhparam.pem** containing Diffie-Hellman param
 
 Once you've generated your DH parameters, you can use them in your web server configuration to enable Perfect Forward Secrecy (PFS) for your SSL/TLS connections. The exact process will depend on your web server and configuration, but generally you'll need to:
 
-1. Copy the **dhparam.pem** file to a location accessible by your web server.
+1. Copy the **dhparam.pem** file to a location accessible by your web server  **/etc/ssl/certs/** .
 2. Update your web server configuration to point to the **dhparam.pem** file.
 3. Restart your web server to apply the changes.
 
