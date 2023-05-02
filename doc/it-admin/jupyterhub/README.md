@@ -12,4 +12,4 @@ The guide is tested on Ubuntu 18.04, and the instructions can be used for other 
 
 ### Configuration
 
-Create the user on Ubuntu 22.04 and on jupyterHub then complete the installation with the ready-to-use configuration files for both jupyterHub and nginx.
+First create the  AI Agent users on Ubuntu 22.04 then on jupyterHub and complete the installation with the ready-to-use configuration files for both jupyterHub and nginx.
