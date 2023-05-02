@@ -46,3 +46,38 @@ certbot certonly --standalone
 sudo systemctl start nginx
 
 ```
+
+
+### OpenSSL DH Parameters
+
+
+This command generates Diffie-Hellman parameters using OpenSSL.
+
+#### Prerequisites
+
+You'll need to have OpenSSL installed on your system before running this command. If you don't already have it, you can install it using your package manager. For example, on Ubuntu you can run:
+```
+sudo apt-get update
+sudo apt-get install openssl
+```
+
+#### Generating DH Parameters
+
+To generate Diffie-Hellman parameters, run the following command:
+
+```
+openssl dhparam -out dhparam.pem 4096
+```
+
+This will generate a file called **dhparam.pem** containing Diffie-Hellman parameters with a key length of 4096 bits. You can adjust the key length to your needs.
+
+
+#### Usage
+
+Once you've generated your DH parameters, you can use them in your web server configuration to enable Perfect Forward Secrecy (PFS) for your SSL/TLS connections. The exact process will depend on your web server and configuration, but generally you'll need to:
+
+1. Copy the **dhparam.pem** file to a location accessible by your web server.
+2. Update your web server configuration to point to the **dhparam.pem** file.
+3. Restart your web server to apply the changes.
+
+By using DH parameters, you can ensure that your SSL/TLS connections are more secure and resistant to certain types of attacks.
