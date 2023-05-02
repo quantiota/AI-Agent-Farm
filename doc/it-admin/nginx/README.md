@@ -43,6 +43,6 @@ sudo add-apt-repository ppa:certbot/certbot
 sudo apt-get install certbot
 sudo systemctl stop nginx
 certbot certonly --standalone 
-sudo systemctl restart nginx
+sudo systemctl start nginx
 
 ```
