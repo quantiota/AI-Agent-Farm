@@ -1,4 +1,4 @@
-devbox@devbox:~$ cat //opt/jupyterhub/etc/jupyterhub/jupyterhub_config.py
+# /opt/jupyterhub/etc/jupyterhub/jupyterhub_config.py
 # Configuration file for jupyterhub.
 
 c = get_config()  #noqa
