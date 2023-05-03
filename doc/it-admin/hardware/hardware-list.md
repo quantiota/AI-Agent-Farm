@@ -7,7 +7,7 @@
 | HDD | 2 x 10To Western Digital Enterprise Storage  |
 | SSD | 2 x 2To Samsung 860 EVO  |
 | CPU | Dual Intel Xeon E5-2680 V3 2.5Ghz 12 Cores 24 Threads per Processor |
-|GPU| Nvidia: Tesla k80, Tesla P100, Tesla v100 |
+|GPU| Nvidia: Tesla K80, Tesla P100, Tesla V100 |
 | Microserver | Refurbished HP Microserver Gen8 with quad-core Intel processor, 16GB of RAM and 3 Ethernet ports|
 | CPU| quad-core: Xeon E3-1260L, Xeon E3-1265L V2, Xeon E3-1220 V2, Xeon E3-1225 V2, Xeon E3-1230 V2, Xeon E3-1240 V2,  Xeon E3-1270 V2|
 |RAID Controler | HP P410/512MB |
