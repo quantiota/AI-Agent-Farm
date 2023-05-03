@@ -9,35 +9,35 @@ Here is a high-level spec for setting up Prometheus with the Node Exporter:
 - Download and install Prometheus on the GPU server.
 - Create a new configuration file for Prometheus.
 
-2.  Install Node Exporter:
+**2.  Install Node Exporter:**
 
 - Install Node Exporter on each of the 10 microservers.
 - Create a new configuration file for Node Exporter.
 
-3. Configure Prometheus to scrape metrics from Node Exporter:
+**3. Configure Prometheus to scrape metrics from Node Exporter:**
 
 - In the Prometheus configuration file, add the IP addresses of the microservers where Node Exporter is installed under the "scrape_configs" section.
 
 - Set the target to the Node Exporter endpoint on each microserver (by default, the endpoint is http://localhost:9100/metrics).
  - Add any additional configuration parameters as needed.
 
-4. Configure alerting:
+**4. Configure alerting:**
 
 - Define alerting rules in the Prometheus configuration file.
 - Configure alert notification channels (e.g., email, Slack) in the Prometheus configuration file.
 
-5. Configure visualization:
+**5. Configure visualization:**
 
 - Configure Grafana to use Prometheus as a data source.
 - Create dashboards in Grafana to display the metrics collected by Prometheus.
 
-6. Test the setup:
+**6. Test the setup:**
 
 - Verify that Prometheus is scraping metrics from Node Exporter on each microserver.
 - Verify that alerts are being triggered correctly.
 - Verify that metrics are being displayed correctly in Grafana.
 
-7. Monitor and maintain the setup:
+**7. Monitor and maintain the setup:**
 
 - Monitor the setup for any issues (e.g., failed scrapes, alerts not triggering).
 
