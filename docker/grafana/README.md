@@ -1,11 +1,5 @@
 # Grafana configuration
 
-## Datasource
-
-Go under *Settings* > *Data sources* > *Add new data source* then select *PostgreSQL* and fill the fields as below:
-
-![Datasource configuration](./docs/assets/datasource/questdb_configuration.png)
-
 ## Dashboard
 
 ### Export it
