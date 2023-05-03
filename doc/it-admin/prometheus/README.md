@@ -74,3 +74,9 @@ The guide also provides the necessary commands to execute these steps. After ins
 Finally, this guide suggests querying node-related metrics using the Prometheus expression browser and visualizing node exporter metrics in Grafana.
 
 ### Integrate And Visualize Prometheus Metrics In Grafana
+
+This [guide](https://devopscube.com/integrate-visualize-prometheus-grafana/)  explains how to visualize Prometheus metrics in Grafana, one of the best open-source visualization tools. 
+
+It covers the installation and configuration of Grafana on both CentOS/RedHat and Ubuntu/Debian systems, adding Prometheus as a data source, creating dashboards from Prometheus metrics, and importing shared Grafana dashboards. 
+
+The guide includes screenshots and step-by-step instructions to help users easily follow along.
