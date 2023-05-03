@@ -4,7 +4,7 @@
 
 Here is a high-level spec for setting up Prometheus with the Node Exporter:
 
-1. Install Prometheus:
+**1. Install Prometheus:**
 
 - Download and install Prometheus on the GPU server.
 - Create a new configuration file for Prometheus.
