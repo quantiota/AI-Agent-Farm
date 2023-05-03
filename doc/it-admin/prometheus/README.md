@@ -80,3 +80,12 @@ This [guide](https://devopscube.com/integrate-visualize-prometheus-grafana/)  ex
 It covers the installation and configuration of Grafana on both CentOS/RedHat and Ubuntu/Debian systems, adding Prometheus as a data source, creating dashboards from Prometheus metrics, and importing shared Grafana dashboards. 
 
 The guide includes screenshots and step-by-step instructions to help users easily follow along.
+
+
+### Dedicated Prometheus server
+
+it's a good idea to have a dedicated Prometheus server to collect and store the metrics from both the GPU server and the 10 microservers. This will ensure that we have a centralized location for all of the metrics, which will make it easier to analyze and monitor the performance of the system.
+
+It's important to note that the Prometheus server will need to be able to access the metrics endpoints on both the GPU server and the microservers. Depending on the network configuration, we may need to configure firewall rules or other network settings to allow the Prometheus server to access these endpoints.
+
+Once we have the Prometheus server set up, we can configure it to scrape the metrics from the GPU server and the microservers using their respective Node Exporters. We can then use Prometheus' powerful querying language, PromQL, to create custom dashboards and alerts based on the collected metrics.
