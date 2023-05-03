@@ -3,7 +3,7 @@
 | GPU Server | Cirrascale GX8 |
 | Motherboard | ASUS Z10PE-D16 WS |
 | Memory | 16x16GB DDR4 REG 2133 256 GB Max upgrade 1024 GB |
-| RAID Controller | LSI MegaRAID 9271-8i PCI-E 3.0 8-Port 6Gbps  |
+| RAID Controller | LSI MegaRAID 2208 |
 | HDD | 2 x 10To Western Digital Enterprise Storage  |
 | SSD | 2 x 2To Samsung 860 EVO  |
 | CPU | Dual Intel Xeon E5-2680 V3 2.5Ghz 12 Cores 24 Threads per Processor |
