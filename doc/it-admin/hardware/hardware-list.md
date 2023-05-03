@@ -1,0 +1,18 @@
+| Components | Description |
+| --- | --- |
+| GPU Server | Cirrascale GX8 |
+| Motherboard | ASUS Z10PE-D16 WS |
+| Memory | 16x16GB DDR4 REG 2133 256 GB Max updrade 1024 GB |
+| RAID Controller | LSI MegaRAID 9271-8i PCI-E 3.0 8-Port 6Gbps  |
+| HDD | 2 x 10To Western Digital Enterprise Storage  |
+| SSD | 2 x 2To Samsung 860 EVO  |
+| CPU | Dual Intel Xeon E5-2680 V3 2.5Ghz 12 Cores 24 Threads per Processor |
+| Microserver | Refurbished HP Microserver Gen8 with quad-core Intel processor, 16GB of RAM and 3 Ethernet ports|
+| CPU| Xeon E3-1260L, Xeon E3-1265L V2, Xeon E3-1220 V2, Xeon E3-1225 V2, Xeon E3-1230 V2, Xeon E3-1240 V2,  Xeon E3-1270 V2|
+|RAID Controler | HP P410/512MB |
+|HDD | 4 X 1To Western Digital Enterprise Storage |
+| SDD | 1 x 250GB  Samsung 860 EVO |
+| Switch | TP-Link SG3452|
+| Monitoring Server | DELL R210II |
+| Monitor Rack Console | DELL Rack Consol 17FP |
+| Power Distribution Unit | APC AP 7822  |
