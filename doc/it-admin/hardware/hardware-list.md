@@ -1,6 +1,6 @@
 | Components | Description |
 | --- | --- |
-| GPU Server | refurbished Cirrascale GX8 |
+| GPU Server | Refurbished Cirrascale GX8 |
 | Motherboard | ASUS Z10PE-D16 WS |
 | Memory | 16x16GB DDR4 REG 2133 256 GB Max upgrade 1024 GB |
 | RAID Controller | LSI MegaRAID 9271-8i PCI-E 3.0 8-Port 6Gbps  |
