@@ -3,7 +3,7 @@
 
 This folder contains a list of all the hardware used in the AI Agent Farm. The following is a summary of the hardware components:
 
-- GPU Server: used to remotely provide CPU and GPU resources as well as Pyton and Julia Kernels to the Microservers
+- Refurbished GPU Server: used to remotely provide CPU and GPU resources as well as Pyton and Julia Kernels to the Microservers
 
 - Refurbished HP Microserver Gen8: Used as the main compute nodes for the AI Agent Farm, each microserver has a quad-core Intel processor, up to 16GB of RAM, and 3 Ethernet ports.
 
