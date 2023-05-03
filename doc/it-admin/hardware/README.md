@@ -1,4 +1,4 @@
-## Hardware List
+## Readme
 
 
 This folder contains a list of all the hardware used in the AI Agent Farm. The following is a summary of the hardware components:
