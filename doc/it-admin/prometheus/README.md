@@ -1,6 +1,6 @@
 # Readme
 
-## spec for setting up Prometheus with the Node Exporter
+## Spec for setting up Prometheus with the Node Exporter
 
 Here is a high-level spec for setting up Prometheus with the Node Exporter:
 
