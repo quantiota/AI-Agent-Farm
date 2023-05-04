@@ -7,7 +7,7 @@ This repository documents the creation and maintenance of an AI Agent Farm infra
 The purpose of this project is to create a scalable infrastructure that can run multiple tasks simultaneously and distribute processes across the AI Agent workers, maximizing efficiency and minimizing downtime. As a demonstration, we have created a specific environment for testing the AI Agent Farm in the field of financial markets.
 
 
-### Infrastructure Diagram
+### Application Diagram
 
  ![infrastructure diagram](./infrastructure-diagram.png)
 
