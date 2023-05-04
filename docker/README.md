@@ -11,6 +11,9 @@ You will find all the Docker services set up in this folder.
 
 Access VSCode through [localhost:8080](http://localhost:8080).
 
+:lock:
+The password to access VSCode is `yourpassword` it can be set it in the [docker-compose.yaml file](docker-compose.yaml).
+
 ### QuestDB
 
 :link: [docker image](https://hub.docker.com/r/questdb/questdb)
@@ -43,5 +46,3 @@ You can up the stack using the command:
 ```bash
 docker-compose up
 ```
-
-A `.volumes` folder will be created to store the data of the different services.
