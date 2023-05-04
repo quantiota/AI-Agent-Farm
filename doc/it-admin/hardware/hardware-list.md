@@ -15,6 +15,7 @@
 |HDD | 4 X 1TB Western Digital Enterprise Storage |
 | SDD | 1 x 250GB  Samsung 860 EVO |
 | Switch | TP-Link SG3452|
+|LTE 4G Router| Teltonika RUT955|
 | Monitoring Server | DELL R210 II |
 | Monitor Rack Console | DELL Rack Console 17FP |
 | Power Distribution Unit | APC AP 7822  |
