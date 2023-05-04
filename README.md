@@ -9,7 +9,7 @@ The purpose of this project is to create a scalable infrastructure that can run 
 
 ### Application Diagram
 
- ![infrastructure diagram](./infrastructure-diagram.png)
+ ![Application diagram](./infrastructure-diagram.png)
 
 :pencil: this diagram has been generated using [app.diagrams.net](https://app.diagrams.net/)
 
