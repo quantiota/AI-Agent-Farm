@@ -99,7 +99,7 @@ To support the storage needs of the AI Agent Farm, the system features 2 x 2TB S
 
 - AI Agent Farm Monitoring with JupyterHub and [Prometheus](https://jupyterhub.readthedocs.io/en/stable/reference/monitoring.html)
 
-- Failover & Remote Management System [Teltonika Networks RMS](https://teltonika-networks.com/products/rms)
+- Failover & Remote Management System [Teltonika Networks RMS](https://wiki.teltonika-networks.com/view/RMS)
 
 
 ## Others
