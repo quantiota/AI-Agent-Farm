@@ -23,6 +23,7 @@
 | |  |
 |||
 |||
+|Miscellaneous| Other components necessary for setting up and maintaining the AI Agent Farm|
 | Switch | TP-Link SG3452 JetStream 48-Port Gigabit L2 Managed Switch with 4 SFP Slots|
 |Fiber-Optic Internet Box| Primary ISP| 
 |4G LTE Router| Teltonika RUT955 Secondary ISP|
