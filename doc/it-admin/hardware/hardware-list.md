@@ -5,10 +5,10 @@
 | Motherboard | ASUS Z10PE-D16 WS |
 | CPU | Dual Intel Xeon E5-2680 V3 2.5Ghz 12 Cores 24 Threads per Processor, up to Xeon E5 Familly V4 |
 | RAM | 16x16GB DDR4 REG 2133 256 GB  up to 1024 GB |
-|SSD | 2 x 2TB Samsung 860 EVO  |
-|RAID Controller | LSI MegaRAID 9271-8i PCI-E 3.0 8-Port 6Gbps  |
-|HDD|2 x 10TB Western Digital Enterprise Storage|
 |GPU| Nvidia: Tesla K80, Tesla P100, Tesla V100 |
+|SSD | 2 x 2TB Samsung 860 EVO  |
+|HDD|2 x 10TB Western Digital Enterprise Storage|
+|RAID Controller | LSI MegaRAID 9271-8i PCI-E 3.0 8-Port 6Gbps  |
 | |  |
 | | |
 |||
