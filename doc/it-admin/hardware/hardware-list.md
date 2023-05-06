@@ -1,7 +1,6 @@
 | Components | Description |
 | --- | --- |
 | | ||
-|||
 | GPU Server | Refurbished Cirrascale GX8 |
 | Motherboard | ASUS Z10PE-D16 WS |
 | CPU | Dual Intel Xeon E5-2680 V3 2.5Ghz 12 Cores 24 Threads per Processor, up to Xeon E5 Familly V4 |
