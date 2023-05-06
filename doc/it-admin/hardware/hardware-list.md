@@ -31,7 +31,7 @@
 | Monitoring Server | DELL R210 II |
 | Monitor Rack Console | DELL Rack Console 17FP |
 | Power Distribution Unit | APC AP 7822  |
-|Rack Enclosure| Refurbished HP/DELL 42U Rack Enclosure |
+|Server Rack Enclosure| Refurbished HP/DELL 42U Rack Enclosure |
 
 
 
