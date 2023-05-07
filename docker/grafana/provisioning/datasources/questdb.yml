@@ -8,6 +8,7 @@ datasources:
     url: questdb:8812
     database: qdb
     user: admin
+    uid: 2Bi8EToVz # the uid is used in the dashboard JSON file
     jsonData:
       postgresVersion: 9.3
       sslmode: disable
