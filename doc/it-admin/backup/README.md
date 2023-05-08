@@ -34,7 +34,7 @@ Replace the default configuration files with those located in the config folder.
 
 - Recovery
 
-In the root directory run the command:
+In the root directory add the script and run the command:
 
 ```
 bash -x recovery-microserver.sh
