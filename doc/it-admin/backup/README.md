@@ -24,6 +24,12 @@ Replace " &lt;RAID-storage-UUID &gt;" with the UUID obtained from the previous s
   ```
   Here, ext4 is the file system type, /dev/md0 is the device name of the RAID storage volume, and /backup is the mount point. Note that you may need to adjust the file system type and device name based on your specific setup. Also, the sudo command is used to run the command with administrative privileges.
 
+
+
+## Configuration
+
+Replace the default configuration files with those located in the config folder.
+
 ## Usage
 
 - Recovery
