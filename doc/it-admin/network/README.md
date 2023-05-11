@@ -6,7 +6,7 @@ The AI Agent Farm is connected to the internet through a fiber-optic internet bo
 
 The fiber-optic internet box is in a bridge mode and is connected to the WAN port of the 4G LTE router through an Ethernet cable. 
 
-The switch is used to connect the GPU server, microserver, and monitoring server to the network.
+The switch is used to connect the GPU server, microservers, and monitoring server to the network.
 
 The switch also connects to the LAN port of the 4G LTE router through an Ethernet cable. 
 
