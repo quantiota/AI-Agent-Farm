@@ -1,22 +1,28 @@
-network:
+   network:
   version: 2
   ethernets:
     eth1:
-      dhcp4: true
-      dhcp6: false
+      dhcp4: no
+      dhcp6: no
       optional: true
+      addresses: [<IP_address>/<subnet_mask>]
+      gateway4: <gateway_IP>
       nameservers:
         addresses: [<DNS_server_IP>]
     eth2:
-      dhcp4: true
-      dhcp6: false
+      dhcp4: no
+      dhcp6: no
       optional: true
+      addresses: [<IP_address>/<subnet_mask>]
+      gateway4: <gateway_IP>
       nameservers:
         addresses: [<DNS_server_IP>]
     eth3:
-      dhcp4: true
-      dhcp6: false
+      dhcp4: no
+      dhcp6: no
       optional: true
+      addresses: [<IP_address>/<subnet_mask>]
+      gateway4: <gateway_IP>
       nameservers:
         addresses: [<DNS_server_IP>]
   vlans:
@@ -29,3 +35,4 @@ network:
     vlan30:
       id: 30
       link: eth3
+   
