@@ -1,0 +1,31 @@
+network:
+  version: 2
+  ethernets:
+    eth1:
+      dhcp4: true
+      dhcp6: false
+      optional: true
+      nameservers:
+        addresses: [<DNS_server_IP>]
+    eth2:
+      dhcp4: true
+      dhcp6: false
+      optional: true
+      nameservers:
+        addresses: [<DNS_server_IP>]
+    eth3:
+      dhcp4: true
+      dhcp6: false
+      optional: true
+      nameservers:
+        addresses: [<DNS_server_IP>]
+  vlans:
+    vlan10:
+      id: 10
+      link: eth1
+    vlan20:
+      id: 20
+      link: eth2
+    vlan30:
+      id: 30
+      link: eth3
