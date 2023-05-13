@@ -40,3 +40,7 @@ In the root directory add the script and run the command:
 bash -x recovery-microserver.sh
 ```
 
+```
+bash -x recovery-gpuserver.sh
+```
+
