@@ -37,6 +37,6 @@ Ensure that appropriate IP addresses, subnet masks, and default gateway settings
 
 
 
-### network desgn diagram
+### network design diagram
 
 ![Network-design](./network-design.png)
