@@ -12,6 +12,9 @@ The switch also connects to the LAN port of the 4G LTE router through an Etherne
 
 The 4G LTE outdoor antenna is designed to have the 4G LTE router installed inside IP67 enclosure.
 
+
+![Network-design](./network-design.png)
+
 ### Network Configuration:
 
 **1. GPU Server:** Connect eth1 to VLAN 10 (Internet), eth2 to VLAN 20 (Data Transfer), and eth3 to VLAN 30 (Server Management).
@@ -39,4 +42,3 @@ Ensure that appropriate IP addresses, subnet masks, and default gateway settings
 
 ### network design diagram
 
-![Network-design](./network-design.png)
