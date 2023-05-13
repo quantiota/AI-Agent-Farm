@@ -1,10 +1,25 @@
 # AI Agent Farm
 
-
-## Infrastructure
 This repository documents the creation and maintenance of an AI Agent Farm infrastructure that consists of refurbished microservers gen8. Each microserver is equipped with a 250GB SSD, 16GB of RAM, and 4x1TB of RAID data storage for analysis. The infrastructure runs on Ubuntu 22.04 Server and includes powerful tools, such as Visual Studio Code, QuestDB, Grafana, and AutoGPT.
 
 The purpose of this project is to create a scalable infrastructure that can run multiple tasks simultaneously and distribute processes across the AI Agent workers, maximizing efficiency and minimizing downtime. As a demonstration, we have created a specific environment for testing the AI Agent Farm in the field of financial markets.
+
+## Infrastructure
+
+Setting up an AI Agent Farm with dedicated microservers can offer several advantages over running all processes on a single GPU server. Here are a few reasons why the AI Agent Farm approach can be beneficial:
+
+1. Scalability: With dedicated microservers, you have the flexibility to scale your infrastructure by adding more microservers as needed. This allows you to distribute the workload across multiple machines and handle increased demands without overburdening a single GPU server.
+
+2. Resource Allocation: Each microserver can have its dedicated GPU, ensuring that the machine learning notebooks have exclusive access to the GPU resources. This avoids contention and provides consistent performance for individual notebooks.
+
+3. Isolation: Running processes on separate microservers provides isolation between the notebooks. If there is an issue or crash in one notebook, it won't affect the others, improving the stability and reliability of the overall system.
+
+3. Ease of Management: Managing multiple microservers allows for better organization and control. Each microserver can be independently monitored, maintained, and updated without impacting the operation of other microservers.
+
+4. Fault Tolerance: In case of hardware failure or maintenance needs, having multiple microservers ensures that other notebooks can continue running unaffected. It provides a level of fault tolerance and reduces the risk of complete system downtime.
+
+By distributing the workload across multiple microservers, you can achieve better performance, scalability, and fault tolerance compared to running all processes on a single GPU server. However, it's important to consider the specific requirements and constraints of your project before deciding on the best approach.
+
 
 
 ### Application Diagram
