@@ -12,6 +12,7 @@ The switch also connects to the LAN port of the 4G LTE router through an Etherne
 
 The 4G LTE outdoor antenna is designed to have the 4G LTE router installed inside IP67 enclosure.
 
+### network design diagram
 
 ![Network-design](./network-design.png)
 
@@ -40,5 +41,5 @@ Ensure that appropriate IP addresses, subnet masks, and default gateway settings
 
 
 
-### network design diagram
+
 
