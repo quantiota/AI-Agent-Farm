@@ -4,6 +4,16 @@ This repository documents the creation and maintenance of an AI Agent Farm infra
 
 The purpose of this project is to create a scalable infrastructure that can run multiple tasks simultaneously and distribute processes across the AI Agent workers, maximizing efficiency and minimizing downtime. As a demonstration, we have created a specific environment for testing the AI Agent Farm in the field of financial markets.
 
+## Introduction
+
+The idea of running multiple AI tasks from remotely connected microservers to a JupyterHub installed on a GPU server is not common in traditional setups. However, it can be a powerful and efficient approach for distributed computing and leveraging the computational power of the GPU server.
+
+By connecting microservers to a centralized GPU server with JupyterHub, you can create a collaborative and scalable environment for AI tasks. Each microserver can offload computationally intensive tasks to the GPU server, making it possible to handle multiple tasks simultaneously and distribute the workload effectively. The JupyterHub instance provides a user-friendly interface and allows users or AI Agent to access Python and Julia kernels for their AI work.
+
+This setup offers several advantages, including centralized GPU resources, resource sharing, simplified management, scalability, and the ability to run complex AI tasks across multiple microservers. It also promotes collaboration and knowledge sharing among users or AI Agent connected to the GPU server.
+
+While not commonly seen in all AI setups, this approach can be a highly efficient and effective solution for organizations or projects that require distributed computing, collaboration, and access to powerful GPU resources.
+
 ## Infrastructure
 
 Setting up an AI Agent Farm with dedicated microservers can offer several advantages over running all processes on a single GPU server. Here are a few reasons why the AI Agent Farm approach can be beneficial:
