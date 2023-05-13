@@ -27,11 +27,11 @@ The 4G LTE outdoor antenna is designed to have the 4G LTE router installed insid
 
 ### VLAN Configuration:
 
-1. VLAN 10 (Internet): Connects the GPU Server's eth1, Monitoring Server's eth1, and the router.
+1. VLAN 10 (Internet): Connects the GPU Server's eth1, Microserver's eth1, Monitoring Server's eth1, and the router.
 
-2. VLAN 20 (Data Transfer): Connects the GPU Server's eth2, Monitoring Server's eth2, and the microservers' eth1.
+2. VLAN 20 (Data Transfer): Connects the GPU Server's eth2, Microserver's eth2 and Monitoring Server's eth2.
 
-3. VLAN 30 (Server Management): Connects the GPU Server's eth3, Monitoring Server's eth3, and the microservers' eth2.
+3. VLAN 30 (Server Management): Connects the GPU Server's eth3, Microserver's eth3 and Monitoring Server's eth3.
 
 Ensure that appropriate IP addresses, subnet masks, and default gateway settings are configured for each VLAN and device.
 
