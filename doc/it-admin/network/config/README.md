@@ -1,16 +1,12 @@
 ## Readme
 
-This is a configuration file written in YAML format for the netplan network configuration tool. It defines the network interfaces and VLANs on a system. Here's a breakdown of the configuration:
 
-- The version of the network configuration format is set to 2.
+The provided network configuration is defining three Ethernet interfaces (eth1, eth2, eth3) with static IP addresses and disabled DHCP. Each interface is marked as optional, indicating that they are not required for the network to function.
 
-- Under the "ethernets" section, three Ethernet interfaces are defined: eth1, eth2, and eth3.
-     - For each interface, DHCPv4 is enabled (dhcp4: true) and DHCPv6 is disabled (dhcp6: false).
-     - The "optional" flag is set to true, indicating that these interfaces are optional.
-     - The "nameservers" section specifies the DNS server IP address for each interface. Replace "<DNS_server_IP>" with the actual IP address.
+The addresses field for each interface specifies the IP address and subnet mask. The gateway4 field denotes the IP address of the gateway associated with each interface.
 
-- Under the "vlans" section, three VLANs are defined: vlan10, vlan20, and vlan30.
-     - For each VLAN, an ID is assigned (10, 20, and 30 respectively) and associated with an - Ethernet interface (eth1, eth2, and eth3 respectively).
+The nameservers field under each interface specifies the IP address of the DNS server to be used.
 
-    
-To use this configuration, replace "<DNS_server_IP>" with the actual IP address of your DNS server. Adjust the VLAN IDs and links (ethernet interfaces) according to your network configuration. Then, save the file and apply the changes by running the appropriate netplan command, such as "sudo netplan apply".
+Additionally, there are three VLANs (vlan10, vlan20, vlan30) defined. Each VLAN is associated with a specific Ethernet interface (eth1, eth2, eth3) using the link field and identified by its VLAN ID (10, 20, 30).
+
+Overall, this configuration allows for the setup of multiple interfaces with static IP addresses, each associated with a specific VLAN and gateway, and with DNS server settings specified.
