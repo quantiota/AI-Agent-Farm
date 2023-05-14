@@ -132,7 +132,20 @@ Each microserver is equipped with a 250GB SSD, 16GB of RAM, and 4x1TB of RAID da
 ## Others
 
 ### Contributing
-Contributions to the project are welcome. Please feel free to fork the repository and submit pull requests.  If you need to test AI-related tasks that require a remote connection to the GPU Server, you can request tokens for AI Agent Farm development purposes only. Please reach out to us to discuss your requirements and get the necessary permissions.
+
+Contributions to the project are welcome. Please feel free to fork the repository and submit pull We welcome contributions from developers and AI enthusiasts who are passionate about building scalable AI infrastructure and exploring cutting-edge technologies. By joining our project, you can benefit in the following ways:
+
+1. Learning Experience: Contribute to the development of a sophisticated AI Agent Farm infrastructure, gaining hands-on experience with distributed computing, containerization using Docker, real-time data processing, and collaboration tools like JupyterHub.
+
+2. Collaboration: Join a vibrant and diverse community of developers, data scientists, and researchers working together to push the boundaries of AI applications. Collaborate, exchange ideas, and contribute to open-source projects that have a real impact.
+
+3. Impactful Projects: Contribute to AI projects with real-world applications, such as quantitative finance, data science, and machine learning. Your contributions can help analyze large financial datasets, build predictive models, and advance research in various fields.
+
+3. Skill Development: Sharpen your coding skills by working on complex AI tasks, optimizing performance, and integrating new AI tools and libraries into the infrastructure. Improve your understanding of distributed systems, data streaming, and machine learning techniques.
+
+
+We encourage you to explore the project, fork the repository, and submit pull requests. If you have any questions or need assistance, feel free to reach out to us. Together, let's build a powerful and scalable AI infrastructure that drives innovation and transforms various domains.
+
 
 ### Licence
 This project is licensed under the MIT License.
