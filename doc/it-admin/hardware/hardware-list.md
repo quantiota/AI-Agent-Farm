@@ -27,7 +27,7 @@
 | Switch | TP-Link SG3452 JetStream 48-Port Gigabit L2 Managed Switch with 4 SFP Slots|
 |Fiber-Optic Internet Box| Primary ISP| 
 |4G LTE Router| Teltonika RUT955 Secondary ISP|
-|4G LTE Outdoor Antenna|QuWireless QuMax for RUT955|
+|4G LTE Outdoor Antenna|QuWireless QuMax with IP67 enclosure for RUT955|
 | Monitoring Server | Refurbished DELL R210 II |
 | Monitor Rack Console | Refurbished DELL Rack Console 17FP |
 | Power Distribution Unit | APC AP 7822  |
