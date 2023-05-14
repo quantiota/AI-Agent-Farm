@@ -26,7 +26,7 @@ The 4G LTE outdoor antenna is designed to have the 4G LTE router installed insid
 
 **3. Managed Switch:** Configure VLANs 10, 20, and 30 on the switch. Assign appropriate ports to each VLAN as per the requirements mentioned above.
 
-**4. Router:** Configure VLAN routing on the router to allow inter-VLAN communication. Connect the router to the internet and assign the appropriate VLAN tag for VLAN 10.
+**4. Router:** Configure VLAN routing on the router to allow inter-VLAN communication if necessary. Connect the router to the internet and assign the appropriate VLAN tag for VLAN 10.
 
 
 ### VLAN Configuration:
