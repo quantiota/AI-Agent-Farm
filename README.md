@@ -1,6 +1,6 @@
 # AI Agent Farm
 
-This repository documents the creation and maintenance of an AI Agent Farm infrastructure that consists of refurbished microservers gen8. Each microserver is equipped with a 250GB SSD, 16GB of RAM, and 4x1TB of RAID data storage for analysis. The infrastructure runs on Ubuntu 22.04 Server and includes powerful tools, such as Visual Studio Code, QuestDB, Grafana, and AutoGPT.
+This repository documents the creation and maintenance of an AI Agent Farm infrastructure that consists of refurbished microservers gen8. The infrastructure runs on Ubuntu 22.04 Server and includes powerful tools, such as JupyterHub, Visual Studio Code, QuestDB, Grafana, and AutoGPT.
 
 The purpose of this project is to create a scalable infrastructure that can run multiple tasks simultaneously and distribute processes across the AI Agent workers, maximizing efficiency and minimizing downtime. As a demonstration, we have created a specific environment for testing the AI Agent Farm in the field of financial markets.
 
@@ -102,6 +102,8 @@ The AI Agent Farm is equipped with a powerful GPU configuration to support advan
 In addition to the GPU options, the system is also equipped with dual Intel Xeon E5-2680 V3 2.5Ghz 12 Cores 24 Threads per Processor, providing powerful processing capabilities. The system also boasts a generous 256GB of RAM, made up of 16 x 16GB DDR4 REG 2133 modules, ensuring fast and efficient data processing.
 
 To support the storage needs of the AI Agent Farm, the system features 2 x 2TB SSD of RAID Ubuntu 22.04 Server for operating system and software, as well as 2X10TB SATA of RAID data storage for backup, providing ample space for large datasets and ensuring data security. Overall, this GPU configuration is optimized for high-performance computing and is well-suited for AI applications that require large-scale data processing and analysis.
+
+Each microserver is equipped with a 250GB SSD, 16GB of RAM, and 4x1TB of RAID data storage for analysis.
 
 
 ## References
