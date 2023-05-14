@@ -39,7 +39,7 @@ The 4G LTE outdoor antenna is designed to have the 4G LTE router installed insid
 
 Ensure that appropriate IP addresses, subnet masks, and default gateway settings are configured for each VLAN and device.
 
-### Routing 
+### Routing Configuration
 
 Here's a step-by-step overview of the process:
 
