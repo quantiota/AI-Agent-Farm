@@ -15,7 +15,7 @@
 |||
 | Microserver | Refurbished HP Microserver Gen8 with quad-core Intel processor and 3 Ethernet ports|
 | CPU| quad-core: Xeon E3-1260L, Xeon E3-1265L V2, Xeon E3-1220 V2, Xeon E3-1225 V2, Xeon E3-1230 V2, Xeon E3-1240 V2,  Xeon E3-1270 V2|
-|RAM|2 x 8GB PC3-12800E DDR3 UDIMM 16GB|
+|RAM|2 x 8GB PC3-12800E DDR3-1600 UDIMM 16GB|
 |SDD | 1 x 250GB  Samsung 860 EVO |
 |HDD | 4 X 1TB Western Digital Enterprise Storage |
 |RAID Controler | HP P410/512MB |
