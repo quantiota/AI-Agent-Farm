@@ -1,4 +1,4 @@
-   network:
+network:
   version: 2
   ethernets:
     eth1:
@@ -29,10 +29,22 @@
     vlan10:
       id: 10
       link: eth1
+      addresses: [<VLAN10_IP_address>/<subnet_mask>]
+      gateway4: <VLAN10_gateway_IP>
+      nameservers:
+        addresses: [<VLAN10_DNS_server_IP>]
     vlan20:
       id: 20
       link: eth2
+      addresses: [<VLAN20_IP_address>/<subnet_mask>]
+      gateway4: <VLAN20_gateway_IP>
+      nameservers:
+        addresses: [<VLAN20_DNS_server_IP>]
     vlan30:
       id: 30
       link: eth3
+      addresses: [<VLAN30_IP_address>/<subnet_mask>]
+      gateway4: <VLAN30_gateway_IP>
+      nameservers:
+        addresses: [<VLAN30_DNS_server_IP>]
    
