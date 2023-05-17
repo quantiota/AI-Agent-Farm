@@ -3,13 +3,10 @@ version: "3"
 services:
   vscode:
     build:
-      context: vscode
-      dockerfile: Dockerfile
+      context: ..
+      dockerfile: docker/vscode/Dockerfile
     ports:
       - "8080:8080"
-    volumes:
-      # volume used to access the `notebooks` folder
-      - ../notebooks:/home/coder/project
     environment:
       - PASSWORD=yourpassword
 

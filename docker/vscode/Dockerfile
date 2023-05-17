@@ -1,5 +1,7 @@
 FROM codercom/code-server:4.12.0
 
+COPY ./notebooks /home/coder/project
+
 # Install the extensions
 # https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter
 # https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-jupyter-powertoys
