@@ -40,18 +40,23 @@ e. Allow the machine learning notebooks to run for several hours to simulate a r
 
 a. Microserver Metrics:
 
-GPU Utilization: Measure the percentage of GPU resources utilized by each microserver during the benchmark.
-Memory Usage: Monitor the memory usage on each microserver to ensure it remains within acceptable limits.
 CPU Usage: Measure the CPU usage on each microserver to evaluate the system's processing capabilities.
+
+Memory Usage: Monitor the memory usage on each microserver to ensure it remains within acceptable limits.
+
 Task Completion Rates: Calculate the rate at which tasks are completed by the machine learning notebooks running on each microserver.
+
 System Uptime: Monitor the system uptime of each microserver to ensure stability and reliability.
 
 b. GPU Server Metrics:
 
 GPU Utilization: Measure the overall GPU utilization across all microservers during the benchmark.
 Memory Usage: Monitor the memory usage on the GPU server to ensure it remains within acceptable limits.
+
 CPU Usage: Measure the CPU usage on the GPU server to evaluate the system's processing capabilities.
+
 Task Completion Rates: Calculate the combined rate at which tasks are completed by all the machine learning notebooks running on the microservers.
+
 System Uptime: Monitor the system uptime of the GPU server to ensure stability and reliability.
 
 
