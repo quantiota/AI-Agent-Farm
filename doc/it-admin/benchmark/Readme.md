@@ -11,10 +11,12 @@ The objective of the benchmark is to measure the performance and scalability of 
 a. Hardware Configuration:
 Ensure that each microserver in the AI Agent Farm has a dedicated GPU, as per the infrastructure specifications.
 Set up Prometheus to monitor metrics from both the microservers and the GPU server.
+
 b. Software Configuration:
 
 Install the required software stack on each microserver and the GPU server, including the operating system (Ubuntu 22.04 Server), JupyterHub, machine learning frameworks (e.g., TensorFlow, PyTorch), and any other necessary dependencies.
 Configure Prometheus to collect relevant performance metrics from both the microservers and the GPU server.
+
 c. Machine Learning Notebooks:
 
 Prepare a set of machine learning notebooks or tasks that represent real-world scenarios or workload requirements.
@@ -37,6 +39,7 @@ Memory Usage: Monitor the memory usage on each microserver to ensure it remains 
 CPU Usage: Measure the CPU usage on each microserver to evaluate the system's processing capabilities.
 Task Completion Rates: Calculate the rate at which tasks are completed by the machine learning notebooks running on each microserver.
 System Uptime: Monitor the system uptime of each microserver to ensure stability and reliability.
+
 b. GPU Server Metrics:
 
 GPU Utilization: Measure the overall GPU utilization across all microservers during the benchmark.
@@ -50,8 +53,11 @@ System Uptime: Monitor the system uptime of the GPU server to ensure stability a
 
 
 a. Analyze the collected metrics separately for the microservers and the GPU server to evaluate their performance and scalability.
+
 b. Assess the GPU utilization, memory usage, and CPU usage for both the microservers and the GPU server to identify any bottlenecks or performance issues.
+
 c. Evaluate the task completion rates to measure the efficiency and effectiveness of workload distribution across the microservers.
+
 d. Consider the system uptime of both the microservers and the GPU server to gauge the stability and reliability of the infrastructure.
 
 Benchmark Report:
