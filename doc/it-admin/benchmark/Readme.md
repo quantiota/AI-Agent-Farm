@@ -9,6 +9,7 @@ The objective of the benchmark is to measure the performance and scalability of 
 **2.  Benchmark Setup:**
 
 a. Hardware Configuration:
+
 Ensure that each microserver in the AI Agent Farm has a dedicated GPU, as per the infrastructure specifications.
 Set up Prometheus to monitor metrics from both the microservers and the GPU server.
 
@@ -26,14 +27,19 @@ Ensure that the notebooks utilize the dedicated GPU resources on each microserve
 **3.  Benchmark Execution:**
 
 a. Start the benchmark by launching the machine learning notebooks on each microserver simultaneously.
+
 b. Monitor the benchmark progress and collect performance metrics using Prometheus, separately for the microservers and the GPU server.
+
 c. Monitor key metrics such as GPU utilization, memory usage, CPU usage, task completion rates, and system uptime for both the microservers and the GPU server.
+
 d. Collect data at regular intervals throughout the benchmark duration (e.g., every 5 minutes).
+
 e. Allow the machine learning notebooks to run for several hours to simulate a realistic workload scenario.
 
 **4.  Benchmark Metrics:**
 
 a. Microserver Metrics:
+
 GPU Utilization: Measure the percentage of GPU resources utilized by each microserver during the benchmark.
 Memory Usage: Monitor the memory usage on each microserver to ensure it remains within acceptable limits.
 CPU Usage: Measure the CPU usage on each microserver to evaluate the system's processing capabilities.
