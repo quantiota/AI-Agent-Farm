@@ -51,6 +51,7 @@ System Uptime: Monitor the system uptime of each microserver to ensure stability
 b. GPU Server Metrics:
 
 GPU Utilization: Measure the overall GPU utilization across all microservers during the benchmark.
+
 Memory Usage: Monitor the memory usage on the GPU server to ensure it remains within acceptable limits.
 
 CPU Usage: Measure the CPU usage on the GPU server to evaluate the system's processing capabilities.
