@@ -24,7 +24,7 @@ Prepare a set of machine learning notebooks or tasks that represent real-world s
 Ensure that the notebooks utilize the dedicated GPU resources on each microserver effectively.
 
 
-### 3.  Benchmark Execution:
+**3.  Benchmark Execution:**
 
 a. Start the benchmark by launching the machine learning notebooks on each microserver simultaneously.
 
