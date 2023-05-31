@@ -49,6 +49,8 @@ By distributing the workload across multiple microservers, you can achieve bette
 
 - To ensure data integrity, both the QuestDB database backup and the workspace backup for each AI agent are stored on the GPU server.
 
+- The AI Agent Farm infrastructure can be monitored using Prometheus, an open-source monitoring system that provides valuable insights into the performance and health of the system.
+
 ### Scalability
 The AI Agent Farm has been designed with scalability in mind, ensuring that it can accommodate future growth without any issues. Whether the demand for AI agents increases tenfold or hundredfold, the system is well-equipped to meet it, thanks to JupyterHub. JupyterHub is capable of supporting more than 100 users, making it an ideal tool for managing large-scale AI projects. JupyterHub can be configured to allocate a specific amount of resources (e.g., CPU cores, memory, and GPU) to each environment, depending on the requirements of the tasks that the AI Agent intends to run.
 
