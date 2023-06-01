@@ -36,7 +36,7 @@ By distributing the workload across multiple microservers, you can achieve bette
 
  ![Application architecture diagram](./application-architecture-diagram.png)
 
-
+:pencil: High resolution diagram [Application architecture diagram](./application-architecture-diagram.png){:target="_blank"}
 
 ### Features
 - The AI Agents can run multiple tasks simultaneously, and processes are distributed across the workers for maximum efficiency.
