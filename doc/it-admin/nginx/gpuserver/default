@@ -150,6 +150,10 @@ server {
     }
 }
 
+
+# Nginx configuration block for one Microserver defined by the subdomain user.domain.tld
+# Add as many blocks as there are Microservers.
+
 # HTTPS server to handle VS Code
 server {
     listen 443 ssl;
