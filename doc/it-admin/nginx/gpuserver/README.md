@@ -1,4 +1,4 @@
-## Nginx configuration for the GPU Server
+## Nginx configuration for the GPU Server 
 
 This file contains the Nginx configuration for a server that handles HTTPS requests for three subdomains: **hub.domain.tld**, **database.domain.tld**, and **dashboard.domain.tld**.
 
@@ -80,3 +80,9 @@ Once you've generated your DH parameters, you can use them in your web server co
 3. Restart your web server to apply the changes.
 
 By using DH parameters, you can ensure that your SSL/TLS connections are more secure and resistant to certain types of attacks.
+
+## Nginx configuration for the Microserver
+
+The Nginx configuration file for each Microserver is designed to handle HTTPS requests for a specific server and proxy them to different backend applications. It includes SSL/TLS settings, Let's Encrypt certificate management, and specific location blocks for proxying requests to the VS Code frontend, QuestDB, and Grafana. The configuration ensures secure communication, sets appropriate headers, and enables websocket support.
+
+
