@@ -34,7 +34,7 @@ By distributing the workload across multiple microservers, you can achieve bette
 
 ### Application Diagram
 
- ![Application diagram](./infrastructure-diagram.png)
+ ![Application diagram](./application-architecture-diagram.png)
 
 :pencil: this diagram has been generated using [app.diagrams.net](https://app.diagrams.net/)
 
