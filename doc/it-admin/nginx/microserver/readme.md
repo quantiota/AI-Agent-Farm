@@ -4,7 +4,7 @@
 
 The standalone configuration file **/etc/nginx/sites-available/default** is used to handle HTTP and HTTPS traffic for multiple domains **(vscode.domain.tld, questdb.domain.tld, and grafana.domain.tld)**. It includes server blocks for each domain, each specifying SSL/TLS encryption, SSL certificates, and proxying requests to backend servers.
 
-The configuration starts by redirecting HTTP traffic to HTTPS for all domain names. It then sets up the HTTPS server blocks for JupyterHub, Questdb, and Grafana, respectively.
+The configuration starts by redirecting HTTP traffic to HTTPS for all domain names. It then sets up the HTTPS server blocks for VS Code, Questdb, and Grafana, respectively.
 
 For VS Code **(vscode.domain.tld)**, the server block proxies requests to the backend server running on **http://127.0.0.1:8000**, sets the necessary headers for proxying and WebSocket communication, and allows access to /.well-known for Let's Encrypt host verification.
 
