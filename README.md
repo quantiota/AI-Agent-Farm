@@ -128,7 +128,7 @@ Each microserver is equipped with a 250GB SSD, 16GB of RAM, and 4x1TB of RAID da
 
 - [Grafana - The open observability platform](https://grafana.com/)
 
-- [Auto-GPT](https://github.com/Significant-Gravitas/Auto-GPT)
+- [ChatGPT](https://platform.openai.com/)
 
 - AI Agent Farm Monitoring with JupyterHub and [Prometheus](https://jupyterhub.readthedocs.io/en/stable/reference/monitoring.html)
 
