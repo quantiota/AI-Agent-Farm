@@ -1,4 +1,7 @@
 
+## Readme
+
+
 The standalone configuration file **/etc/nginx/sites-available/default** is used to handle HTTP and HTTPS traffic for multiple domains **(vscode.domain.tld, questdb.domain.tld, and grafana.domain.tld)**. It includes server blocks for each domain, each specifying SSL/TLS encryption, SSL certificates, and proxying requests to backend servers.
 
 The configuration starts by redirecting HTTP traffic to HTTPS for all domain names. It then sets up the HTTPS server blocks for JupyterHub, Questdb, and Grafana, respectively.
