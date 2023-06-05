@@ -1,6 +1,6 @@
 # AI Agent Farm
 
-This repository documents the creation and maintenance of an AI Agent Farm infrastructure that consists of refurbished microservers gen8. The infrastructure runs on Ubuntu 22.04 Server and includes powerful tools, such as JupyterHub, Visual Studio Code, QuestDB, Grafana, and AutoGPT.
+This repository documents the creation and maintenance of an AI Agent Farm infrastructure that consists of refurbished microservers gen8. The infrastructure runs on Ubuntu 22.04 Server and includes powerful tools, such as JupyterHub, Visual Studio Code, QuestDB, Grafana, and an AI Agent.
 
 The purpose of this project is to create a scalable infrastructure that can run multiple tasks simultaneously and distribute processes across the AI Agent workers, maximizing efficiency and minimizing downtime. As a demonstration, we have created a specific environment for testing the AI Agent Farm in the field of financial markets.
 
@@ -55,7 +55,7 @@ By distributing the workload across multiple microservers, you can achieve bette
 The AI Agent Farm has been designed with scalability in mind, ensuring that it can accommodate future growth without any issues. Whether the demand for AI agents increases tenfold or hundredfold, the system is well-equipped to meet it, thanks to JupyterHub. JupyterHub is capable of supporting more than 100 users, making it an ideal tool for managing large-scale AI projects. JupyterHub can be configured to allocate a specific amount of resources (e.g., CPU cores, memory, and GPU) to each environment, depending on the requirements of the tasks that the AI Agent intends to run.
 
 ### Dockerization
-The four applications used in this project (Visual Studio Code, QuestDB, Grafana, and AutoGPT) can be Dockerized to simplify deployment and management. The Dockerfiles for each application are included in the repository, and instructions for building and running the Docker containers are provided in the documentation. By Dockerizing the applications, it is possible to create a self-contained environment that can be easily moved between systems or replicated on multiple machines. This can simplify deployment and ensure consistency across different environments.
+The four applications used in this project (Visual Studio Code, QuestDB, Grafana, and an AI Agent) can be Dockerized to simplify deployment and management. The Dockerfiles for each application are included in the repository, and instructions for building and running the Docker containers are provided in the documentation. By Dockerizing the applications, it is possible to create a self-contained environment that can be easily moved between systems or replicated on multiple machines. This can simplify deployment and ensure consistency across different environments.
 
 ### Backup
 To ensure data integrity and prevent data loss, it is important to create regular backups of the QuestDB database and the AI Agent workspace on the remote GPU server.The backup process can be automated using a shell script, which can be scheduled to run regularly using a cron job. 
@@ -87,7 +87,7 @@ The Machine Learning Notebook is designed to facilitate machine learning tasks, 
 ## Usage
 
 ### Quantitative Finance
-The AI Agent Farm infrastructure can be used in quantitative finance to analyze large amounts of financial data and make predictions using machine learning models. With the real-time streaming data source from Coinbase or others providers, the QuestDB database, and Grafana, the infrastructure can provide up-to-date and accurate financial data. The AutoGPT tool can be used to build and fine-tune machine learning models for financial analysis.
+The AI Agent Farm infrastructure can be used in quantitative finance to analyze large amounts of financial data and make predictions using machine learning models. With the real-time streaming data source from Coinbase or others providers, the QuestDB database, and Grafana, the infrastructure can provide up-to-date and accurate financial data. The AI Agent tool can be used to build and fine-tune machine learning models for financial analysis.
 
 Using the AI Agent Farm infrastructure, quantitative finance professionals can easily run multiple tasks simultaneously and distribute them across the workers, which maximizes efficiency and reduces downtime. The scalability of the infrastructure allows for future growth, ensuring that it can accommodate an increase in demand for AI agents. The JupyterHub instance on the GPU server provides access to Python and Julia kernels, making it an ideal tool for financial analysis.
 
