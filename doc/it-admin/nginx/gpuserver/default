@@ -194,7 +194,7 @@ server {
     # Managing literal requests to the VS Code front end
     location /questdb/ {
         proxy_pass http://192.168.1.179:9000/;
-
+    # Rewrite rules needed if using location /questdb/
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -212,11 +212,10 @@ server {
 
     # Managing literal requests to the VS Code front end
     location /grafana/ {
-        proxy_set_header Host $http_host;
         proxy_pass http://192.168.1.179:3000/;
-
+    # Custom grafana.ini  needed if using  location /grafana/
         proxy_set_header X-Real-IP $remote_addr;
-
+        proxy_set_header Host $http_host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 
         # websocket headers
