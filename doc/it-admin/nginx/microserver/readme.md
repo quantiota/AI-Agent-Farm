@@ -6,7 +6,7 @@ The standalone configuration file **/etc/nginx/sites-available/default** is used
 
 The configuration starts by redirecting HTTP traffic to HTTPS for all domain names. It then sets up the HTTPS server blocks for VS Code, Questdb, and Grafana, respectively.
 
-For VS Code **(vscode.domain.tld)**, the server block proxies requests to the backend server running on **http://127.0.0.1:8000**, sets the necessary headers for proxying and WebSocket communication, and allows access to /.well-known for Let's Encrypt host verification.
+For VS Code **(vscode.domain.tld)**, the server block proxies requests to the backend server running on **http://127.0.0.1:8080**, sets the necessary headers for proxying and WebSocket communication, and allows access to /.well-known for Let's Encrypt host verification.
 
 For Questdb **(questdb.domain.tld)**, the server block proxies requests to the backend server running on **http://127.0.0.1:9000**, enables directory listing, adds basic authentication using .htpasswd, and allows access to /.well-known for Let's Encrypt host verification.
 
