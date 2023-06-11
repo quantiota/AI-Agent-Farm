@@ -1,4 +1,4 @@
-This [Tutorial](https://www.digitalocean.com/community/tutorials/how-to-set-up-the-code-server-cloud-ide-platform-on-ubuntu-22-04)  provides a step-by-step guide to setting up the code-server  platform on an Ubuntu 22.04 machine. The tutorial aims to enable users to access Microsoft Visual Studio Code remotely through their web browsers. The process involves installing code-server, configuring a systemd service to keep it running in the background, and setting up Nginx as a reverse proxy to expose the IDE platform at a custom domain secured with Let's Encrypt TLS certificates.
+This [Tutorial](https://www.digitalocean.com/community/tutorials/how-to-set-up-the-code-server-cloud-ide-platform-on-ubuntu-22-04)  provides a step-by-step guide to setting up the code-server  IDE platform on an Ubuntu 22.04 machine. The tutorial aims to enable users to access Microsoft Visual Studio Code remotely through their web browsers. The process involves installing code-server, configuring a systemd service to keep it running in the background, and setting up Nginx as a reverse proxy to expose the IDE platform at a custom domain secured with Let's Encrypt TLS certificates.
 
 The prerequisites for following the tutorial include having a server running Ubuntu 22.04 with root access, at least 2GB RAM, and Nginx installed. Additionally, users need a registered domain name pointing to their server.
 
@@ -12,4 +12,4 @@ In the final step, users configure Nginx to act as a reverse proxy for code-serv
 
 Once the Nginx configuration is complete, users can access the code-server IDE platform through their custom domain, which is secured with SSL/TLS encryption.
 
-By following this tutorial, users can set up the code-server platform on their Ubuntu 22.04 server, allowing for remote access to Microsoft Visual Studio Code from a web browser.
+By following this tutorial, users can set up the code-server IDE platform on their Ubuntu 22.04 server, allowing for remote access to Microsoft Visual Studio Code from a web browser.
