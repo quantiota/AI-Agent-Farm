@@ -81,7 +81,7 @@ Once you've generated your DH parameters, you can use them in your web server co
 
 By using DH parameters, you can ensure that your SSL/TLS connections are more secure and resistant to certain types of attacks.
 
-## QuestDB Authentication with Nginx
+### QuestDB Authentication with Nginx
 
 Create a Username and Password with the command
 
