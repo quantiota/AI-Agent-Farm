@@ -83,10 +83,10 @@ By using DH parameters, you can ensure that your SSL/TLS connections are more se
 
 ### QuestDB Authentication with Nginx
 
-Create a Username and Password with the command
+Create a Username and Password using Apache Utilities
 
 ```
-sudo htpasswd -c /usr/local/etc/nginx.htpasswd questdb  
+sudo htpasswd -c /etc/nginx/.htpasswd questdb  
 
 ```
 
