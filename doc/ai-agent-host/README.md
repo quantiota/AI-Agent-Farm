@@ -47,6 +47,6 @@ Start working with your notebooks and data, using the pre-installed tools and li
 
 ### AI Agent Host Architecture Diagram
 
- ![AI Agent Host diagram](./ai-agent-host-diagram.png)
+ ![AI Agent Host diagram](https://raw.githubusercontent.com/BouarfaMahi/AI-Agent-Host/master/ai-agent-host-diagram.png)
  
 :pencil: High resolution diagram [Application architecture diagram](https://raw.githubusercontent.com/BouarfaMahi/AI-Agent-Host/master/ai-agent-host-diagram.png)
