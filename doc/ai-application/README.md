@@ -21,13 +21,13 @@ The AI Agent Farm infrastructure consists of refurbished microservers gen8 runni
 
 ### AI Application Architecture:
 
-1. AI Agent Management Module: This module handles the registration, deployment, and monitoring of AI Agents within the AI Agent Farm. It provides functionalities to add, remove, and update AI Agents, as well as monitor their status and resource utilization.
+1. **AI Agent Management Module**: This module handles the registration, deployment, and monitoring of AI Agents within the AI Agent Farm. It provides functionalities to add, remove, and update AI Agents, as well as monitor their status and resource utilization.
 
-2. Task Distribution Module: Responsible for distributing AI tasks to the AI Agents across the microservers. The module considers factors like available resources, task priority, and load balancing to optimize task distribution and maximize efficiency.
+2. **Task Distribution Module**: Responsible for distributing AI tasks to the AI Agents across the microservers. The module considers factors like available resources, task priority, and load balancing to optimize task distribution and maximize efficiency.
 
-3. Data Ingestion Module: Coordinates the ingestion of real-time streaming data from Coinbase or other sources. It ensures data validation, error handling, and data transformation to prepare the data for analysis by the AI Agents. The data is stored in QuestDB databases located on each microserver.
+3. **Data Ingestion Module**: Coordinates the ingestion of real-time streaming data from Coinbase or other sources. It ensures data validation, error handling, and data transformation to prepare the data for analysis by the AI Agents. The data is stored in QuestDB databases located on each microserver.
 
-4. Performance Monitoring Module: Monitors the performance of the AI Agents and the overall AI Agent Farm infrastructure. It collects metrics such as CPU and memory usage, task completion rates, and system uptime. These metrics are visualized and displayed on the Grafana dashboard, allowing administrators to monitor the system's health and performance.
+4. **Performance Monitoring Module**: Monitors the performance of the AI Agents and the overall AI Agent Farm infrastructure. It collects metrics such as CPU and memory usage, task completion rates, and system uptime. These metrics are visualized and displayed on the Grafana dashboard, allowing administrators to monitor the system's health and performance.
 
 ### Integration with Langchain Framework:
 
