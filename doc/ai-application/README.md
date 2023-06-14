@@ -1,11 +1,11 @@
-## specification for building an AI application using the Langchain framework.
+# Specification for building an AI application using the Langchain framework.
 
-### AI Agent Farm with Langchain Framework
+## AI Agent Farm with Langchain Framework
 
-#### Introduction:
+### Introduction:
 The Langchain framework provides a platform for building and managing AI Agent Farms, enabling the distribution and coordination of AI tasks across a network of microservers. This specification outlines the architecture and features of an AI application built on the Langchain framework to manage AI Agents within an AI Agent Farm.
 
-#### Infrastructure:
+### Infrastructure:
 The AI Agent Farm infrastructure consists of refurbished microservers gen8 running Ubuntu 22.04 Server. The microservers are connected to a centralized GPU server, which hosts the Langchain framework. The infrastructure includes the following powerful tools:
 
 Langchain: The core framework responsible for managing the AI Agents and distributing tasks across the microservers.
