@@ -9,15 +9,15 @@ The Langchain framework provides a platform for building and managing AI Agent F
 
 The AI Agent Farm infrastructure consists of refurbished microservers gen8 running Ubuntu 22.04 Server. The microservers are connected to a centralized GPU server, which hosts the Langchain framework. The infrastructure includes the following powerful tools:
 
-1. Langchain: The core framework responsible for managing the AI Agents and distributing tasks across the microservers.
+1. **Langchain**: The core framework responsible for managing the AI Agents and distributing tasks across the microservers.
 
-2. JupyterHub: A collaborative environment for AI tasks, providing a user-friendly interface and access to Python and Julia kernels.
+2. **JupyterHub**: A collaborative environment for AI tasks, providing a user-friendly interface and access to Python and Julia kernels.
 
-3. Visual Studio Code: Remotely connected to JupyterHub, offering a rich development environment for AI Agents. Each AI Agent has its own JupyterHub user account when using Visual Studio Code.
+3. **Visual Studio Code**: Remotely connected to JupyterHub, offering a rich development environment for AI Agents. Each AI Agent has its own JupyterHub user account when using Visual Studio Code.
 
-4. QuestDB: A high-performance, open-source time series database used for storing and analyzing real-time streaming data from Coinbase or other sources.
+4. **QuestDB**: A high-performance, open-source time series database used for storing and analyzing real-time streaming data from Coinbase or other sources.
 
-5. Grafana: An open observability platform used for visualizing and monitoring the AI Agent Farm's performance and health.
+5. **Grafana**: An open observability platform used for visualizing and monitoring the AI Agent Farm's performance and health.
 
 ### AI Application Architecture:
 
