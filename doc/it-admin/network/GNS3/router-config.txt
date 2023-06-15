@@ -1,0 +1,42 @@
+#Interfaces IP Address Assign 
+en
+conf t
+int g0/0
+ip address 203.0.113.2 255.255.255.240
+no shut
+int g0/0
+ip address 192.168.100.2 255.255.255.0
+no shut
+
+#NAT Interfaces Assign
+int g0/0
+ip nat outside
+int g0/1
+ip nat inside
+exit
+
+#Static Routes
+ip route 0.0.0.0 0.0.0.0 203.0.113.1
+ip route 192.168.0.0 255.255.0.0 192.168.100.1
+
+#NAT Addresses
+ip nat inside source static 192.168.10.10 203.0.113.3
+ip nat inside source static 192.168.20.10 203.0.113.4
+ip nat inside source static 192.168.30.10 203.0.113.5
+ip nat inside source static 192.168.10.20 203.0.113.6
+ip nat inside source static 192.168.20.20 203.0.113.7
+ip nat inside source static 192.168.30.20 203.0.113.8
+ip nat inside source static 192.168.10.30 203.0.113.9
+ip nat inside source static 192.168.20.30 203.0.113.10
+ip nat inside source static 192.168.30.30 203.0.113.11
+ip nat inside source static 192.168.10.31 203.0.113.12
+ip nat inside source static 192.168.20.31 203.0.113.13
+ip nat inside source static 192.168.30.31 203.0.113.14
+ip nat inside source static 192.168.10.32 203.0.113.15
+ip nat inside source static 192.168.20.32 203.0.113.16
+ip nat inside source static 192.168.30.32 203.0.113.17
+ip nat inside source static 192.168.10.33 203.0.113.18
+ip nat inside source static 192.168.20.33 203.0.113.19
+ip nat inside source static 192.168.30.33 203.0.113.20
+
+

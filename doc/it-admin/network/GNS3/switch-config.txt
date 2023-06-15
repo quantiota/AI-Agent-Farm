@@ -1,0 +1,91 @@
+#Configure VLANs and names
+en
+conf t
+vlan 10
+name Internet
+vlan 20
+name DataTransfer
+vlan 30
+name ServerManagement
+
+#VLANs require to be admin/status up 
+int vlan 10
+no shut
+int vlan 20
+no shut
+int vlan 30
+no shut
+
+#IP routing enabled and configured with IP addresses
+ip routing
+int vlan 10
+ip address 192.168.10.1 255.255.255.0
+int vlan 20
+ip address 192.168.20.1 255.255.255.0
+int vlan 30
+ip address 192.168.30.1 255.255.255.0
+
+#Switch connected to Router port must be configured no switchport
+int g0/0
+no switchport
+ip address 192.168.100.1 255.255.255.0
+
+#Static Route to reach Router
+ip route 0.0.0.0 0.0.0.0 192.168.100.2
+
+#Switchport mode assigned to all ports except connected to router
+int g0/1
+switchport mode access
+switchport access vlan 10
+int g0/2
+switchport mode access
+switchport access vlan 20
+int g0/3
+switchport mode access
+switchport access vlan 30
+int g1/1
+switchport mode access
+switchport access vlan 10
+int g1/2
+switchport mode access
+switchport access vlan 20
+int g1/3
+switchport mode access
+switchport access vlan 30
+int g2/1
+switchport mode access
+switchport access vlan 10
+int g2/2
+switchport mode access
+switchport access vlan 20
+int g2/3
+switchport mode access
+switchport access vlan 30
+int g3/1
+switchport mode access
+switchport access vlan 10
+int g3/2
+switchport mode access
+switchport access vlan 20
+int g3/3
+switchport mode access
+switchport access vlan 30
+int g4/1
+switchport mode access
+switchport access vlan 10
+int g4/2
+switchport mode access
+switchport access vlan 20
+int g4/3
+switchport mode access
+switchport access vlan 30
+int g5/1
+switchport mode access
+switchport access vlan 10
+int g5/2
+switchport mode access
+switchport access vlan 20
+int g5/3
+switchport mode access
+switchport access vlan 30
+
