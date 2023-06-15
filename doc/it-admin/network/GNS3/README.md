@@ -4,4 +4,7 @@ Server NIC behaves same way using each interface seperately.
 All ports connected to switch from servers are configured as access ports.  
 IP routing has been enabled on switch.  
 Switchport access mode required to be configured on switch for all ports except port connected to router for routing traffic.  
+
+
+
 ![Alt text](image.png)
