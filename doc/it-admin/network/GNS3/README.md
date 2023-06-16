@@ -1,4 +1,4 @@
-The AI Agent Farm Network Design is deployed and tested in GNS3 using specified design parameters.
+The AI Agent Farm Network Design is deployed and tested in GNS3 using specified design parameters.  
 Both router and switch configuration files can be found in same directory under names of router-config.txt and switch-config.txt.    
 Each Server has three seperate interfaces (Eth1, Eth2 and Eth3) so three different PC's are used to represent each server using separate interfaces.Each Server NIC will be configured with separate interface addresses.  
 All ports connected to switch from servers are configured as access ports.  
