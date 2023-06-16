@@ -38,5 +38,21 @@ ip nat inside source static 192.168.30.32 203.0.113.17
 ip nat inside source static 192.168.10.33 203.0.113.18
 ip nat inside source static 192.168.20.33 203.0.113.19
 ip nat inside source static 192.168.30.33 203.0.113.20
-
-
+ip nat inside source static 192.168.10.34 203.0.113.21
+ip nat inside source static 192.168.20.34 203.0.113.22
+ip nat inside source static 192.168.30.34 203.0.113.23
+ip nat inside source static 192.168.10.35 203.0.113.24
+ip nat inside source static 192.168.20.35 203.0.113.25
+ip nat inside source static 192.168.30.35 203.0.113.26
+ip nat inside source static 192.168.10.36 203.0.113.27
+ip nat inside source static 192.168.20.36 203.0.113.28
+ip nat inside source static 192.168.30.36 203.0.113.29
+ip nat inside source static 192.168.10.37 203.0.113.30
+ip nat inside source static 192.168.20.37 203.0.113.31
+ip nat inside source static 192.168.30.37 203.0.113.32
+ip nat inside source static 192.168.10.38 203.0.113.33
+ip nat inside source static 192.168.20.38 203.0.113.34
+ip nat inside source static 192.168.30.38 203.0.113.35
+ip nat inside source static 192.168.10.39 203.0.113.36
+ip nat inside source static 192.168.20.39 203.0.113.37
+ip nat inside source static 192.168.30.39 203.0.113.38
