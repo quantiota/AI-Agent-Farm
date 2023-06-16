@@ -142,22 +142,77 @@ router:
     static_nats:
       - source_ip: 192.168.10.10
         translated_ip: 203.0.113.3
-      - source_ip: 192.168.10.20
-        translated_ip: 203.0.113.4
-      - source_ip: 192.168.10.30
-        translated_ip: 203.0.113.5
       - source_ip: 192.168.20.10
+        translated_ip: 203.0.113.4
+      - source_ip: 192.168.30.10
+        translated_ip: 203.0.113.5
+      - source_ip: 192.168.10.20
         translated_ip: 203.0.113.6
       - source_ip: 192.168.20.20
         translated_ip: 203.0.113.7
-      - source_ip: 192.168.20.30
-        translated_ip: 203.0.113.8
-      - source_ip: 192.168.30.10
-        translated_ip: 203.0.113.9
       - source_ip: 192.168.30.20
+        translated_ip: 203.0.113.8
+      - source_ip: 192.168.10.30
+        translated_ip: 203.0.113.9
+      - source_ip: 192.168.20.30
         translated_ip: 203.0.113.10
-      - source_network: 192.168.30.30/28
-        translated_network: 203.0.113.11/28
+      - source_ip: 192.168.30.30
+        translated_ip: 203.0.113.11
+      - source_ip: 192.168.10.31
+        translated_ip: 203.0.113.12
+      - source_ip: 192.168.20.31
+        translated_ip: 203.0.113.13
+      - source_ip: 192.168.30.31
+        translated_ip: 203.0.113.14
+      - source_ip: 192.168.10.32
+        translated_ip: 203.0.113.15
+      - source_ip: 192.168.20.32
+        translated_ip: 203.0.113.16
+      - source_ip: 192.168.30.32
+        translated_ip: 203.0.113.17
+      - source_ip: 192.168.10.33
+        translated_ip: 203.0.113.18
+      - source_ip: 192.168.20.33
+        translated_ip: 203.0.113.19
+      - source_ip: 192.168.30.33
+        translated_ip: 203.0.113.20
+      - source_ip: 192.168.10.34
+        translated_ip: 203.0.113.21
+      - source_ip: 192.168.20.34
+        translated_ip: 203.0.113.22
+      - source_ip: 192.168.30.34
+        translated_ip: 203.0.113.23
+      - source_ip: 192.168.10.35
+        translated_ip: 203.0.113.24
+      - source_ip: 192.168.20.35
+        translated_ip: 203.0.113.25
+      - source_ip: 192.168.30.35
+        translated_ip: 203.0.113.26  
+      - source_ip: 192.168.10.36
+        translated_ip: 203.0.113.27
+      - source_ip: 192.168.20.36
+        translated_ip: 203.0.113.28
+      - source_ip: 192.168.30.36
+        translated_ip: 203.0.113.29
+      - source_ip: 192.168.10.37
+        translated_ip: 203.0.113.30
+      - source_ip: 192.168.20.37
+        translated_ip: 203.0.113.31
+      - source_ip: 192.168.30.37
+        translated_ip: 203.0.113.32
+      - source_ip: 192.168.10.38
+        translated_ip: 203.0.113.33 
+      - source_ip: 192.168.20.38   
+        translated_ip: 203.0.113.34
+      - source_ip: 192.168.30.38
+        translated_ip: 203.0.113.35
+      - source_ip: 192.168.10.39
+        translated_ip: 203.0.113.36
+      - source_ip: 192.168.20.39
+        translated_ip: 203.0.113.37
+      - source_ip: 192.168.30.39
+        translated_ip: 203.0.113.38
+      
 # Servers Configuration
 servers:
   - name: MonitoringServer
