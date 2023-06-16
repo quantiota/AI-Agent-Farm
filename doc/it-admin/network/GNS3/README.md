@@ -3,7 +3,9 @@ Both router and switch configuration files can be found in same directory under 
 Each Server has three seperate interfaces (Eth1, Eth2 and Eth3) so three different PC's are used to represent each server using separate interfaces.Each Server NIC will be configured with separate interface addresses.  
 All ports connected to switch from servers are configured as access ports.  
 IP routing has been enabled on switch as layer 3 switch will avoid congestion on router using all VLAN's traffic.  
-Switchport access mode required to be configured on switch for all ports except port connected to router for routing traffic.    
+Switchport access mode required to be configured on switch for all ports except port connected to router for routing traffic.
+Public IP address required are 2<sup>5</sup>
+    
   
 ### GNS3 Network Design  
 ![Alt text](image.png)
