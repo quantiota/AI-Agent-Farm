@@ -1,4 +1,4 @@
-### 1. What is the purpose of the AI Agent Farm project and what does it aim to achieve?
+**1. What is the purpose of the AI Agent Farm project and what does it aim to achieve?**
 
 The purpose of the AI Agent Farm project is to create a scalable infrastructure that can run multiple AI tasks simultaneously by leveraging the use of refurbished microservers. The project aims to maximize efficiency and minimize downtime by distributing processes across the AI Agent workers. It provides a collaborative and scalable environment for AI tasks, with tools such as JupyterHub, Visual Studio Code, QuestDB, Grafana, and AI Agents like ChatGPT and Auto-GPT. The project also includes a specific environment for testing in the field of financial markets.
 
