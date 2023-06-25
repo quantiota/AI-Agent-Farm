@@ -25,6 +25,11 @@ import subprocess
 import requests
 
 # Read AI Agent details from CSV file
+import csv
+import subprocess
+import requests
+
+# Read AI Agent details from CSV file
 agents = []
 csv_file = "agents.csv"  # Replace with your CSV file path
 
@@ -37,43 +42,52 @@ with open(csv_file, "r") as file:
 langchain_api_url = "https://langchain-api.example.com/register"
 
 for agent in agents:
-    payload = {
-        "name": agent["agent_name"],
-        "token": agent["agent_token"]
+    # Extract values from CSV columns
+    agent_name = agent["agent_name"]
+    jupyterhub_username = agent["jupyterhub_username"]
+    jupyterhub_password = agent["jupyterhub_password"]
+    gpu = agent["gpu"]
+    cpu = agent["cpu"]
+    ram = agent["ram"]
+
+    # Create user account on Ubuntu
+    subprocess.run(["sudo", "adduser", jupyterhub_username], check=True)
+    subprocess.run(["sudo", "passwd", jupyterhub_username], input=jupyterhub_password.encode(), check=True)
+
+    # Create JupyterHub user account
+    jupyterhub_api_url = "https://jupyterhub-api.example.com/users"
+
+    user_payload = {
+        "name": jupyterhub_username,
+        "password": jupyterhub_password
     }
 
-    response = requests.post(langchain_api_url, json=payload)
+    jupyterhub_response = requests.post(jupyterhub_api_url, json=user_payload)
 
-    if response.status_code == 200:
-        # AI Agent registration successful
-        jupyterhub_username = agent["jupyterhub_username"]
-        jupyterhub_password = agent["jupyterhub_password"]
+    if jupyterhub_response.status_code == 201:
+        # JupyterHub user account creation successful
+        agent_token = jupyterhub_response.json().get("token", "")
 
-        # Create user account on Ubuntu
-        subprocess.run(["sudo", "adduser", jupyterhub_username], check=True)
-        subprocess.run(["sudo", "passwd", jupyterhub_username], input=jupyterhub_password.encode(), check=True)
-
-        # Create JupyterHub user account
-        jupyterhub_api_url = "https://jupyterhub-api.example.com/users"
-
-        user_payload = {
-            "name": jupyterhub_username,
-            "password": jupyterhub_password
+        # Register AI Agent using Langchain API
+        payload = {
+            "name": agent_name,
+            "token": agent_token,
+            "gpu": gpu,
+            "cpu": cpu,
+            "ram": ram
         }
 
-        headers = {
-            "Authorization": f"Bearer {response.json()['access_token']}"
-        }
+        langchain_response = requests.post(langchain_api_url, json=payload)
 
-        jupyterhub_response = requests.post(jupyterhub_api_url, json=user_payload, headers=headers)
-
-        if jupyterhub_response.status_code == 201:
-            # JupyterHub user account creation successful
-            print(f"AI Agent '{agent['agent_name']}' and JupyterHub user account created successfully!")
+        if langchain_response.status_code == 200:
+            # AI Agent registration successful
+            print(f"AI Agent '{agent_name}' and JupyterHub user account created successfully!")
+            print(f"Agent Token for AI Agent '{agent_name}': {agent_token}")
         else:
-            print(f"Failed to create JupyterHub user account for AI Agent '{agent['agent_name']}'.")
+            print(f"Failed to register AI Agent '{agent_name}' with Langchain.")
     else:
-        print(f"Failed to register AI Agent '{agent['agent_name']}' with Langchain.")
+        print(f"Failed to create JupyterHub user account for AI Agent '{agent_name}'.")
+
 
 
 
