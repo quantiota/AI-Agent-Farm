@@ -15,6 +15,9 @@ The module tracks and manages the resources allocated to each AI Agent, includin
 By combining these functionalities, the AI Agent Management Module streamlines the registration process, sets up JupyterHub user accounts, enables secure remote connections and allocates GPU, CPU, and RAM resources for AI Agents . This comprehensive approach ensures efficient management and utilization of AI Agents within the AI Agent Farm while maintaining robust security practices.
 
 
+In this  code, the Ubuntu user account is created using subprocess.run() before attempting to create the JupyterHub user account. This ensures that the necessary Ubuntu credentials are in place before proceeding with the JupyterHub user account creation.
+
+Make sure to replace the placeholder URLs (langchain-api.example.com and jupyterhub-api.example.com) with the actual API endpoints relevant to your system. Also, adjust the csv_file variable to match the path and name of your CSV file.
 
 ```
 import csv
@@ -75,7 +78,3 @@ for agent in agents:
 
 
 ```
-
-In this  code, the Ubuntu user account is created using subprocess.run() before attempting to create the JupyterHub user account. This ensures that the necessary Ubuntu credentials are in place before proceeding with the JupyterHub user account creation.
-
-Make sure to replace the placeholder URLs (langchain-api.example.com and jupyterhub-api.example.com) with the actual API endpoints relevant to your system. Also, adjust the csv_file variable to match the path and name of your CSV file.
