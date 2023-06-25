@@ -67,7 +67,7 @@ The Data Stream Processing and Machine Learning Notebooks are crucial components
 
 **13. In which fields can the AI Agent Farm infrastructure be used, apart from quantitative finance?**
 
-The AI Agent Farm infrastructure can be used in various fields beyond quantitative finance. Its scalable and distributed architecture, coupled with the flexibility of JupyterHub and Docker containers, makes it applicable in domains such as healthcare, cybersecurity, natural language processing, computer vision, recommendation systems, and more. The infrastructure's ability to handle multiple AI tasks simultaneously, along with the collaborative environment it provides, makes it suitable for any scenario that requires large-scale AI processing, experimentation, and knowledge sharing.
+The AI Agent Farm infrastructure can be used in various fields beyond quantitative finance. Its scalable and distributed architecture, coupled with the flexibility of JupyterHub and Docker containers, makes it applicable in domains such as defense, healthcare, cybersecurity, natural language processing, computer vision, recommendation systems, and more. The infrastructure's ability to handle multiple AI tasks simultaneously, along with the collaborative environment it provides, makes it suitable for any scenario that requires large-scale AI processing, experimentation, and knowledge sharing.
 
 **14. Is the AI Agent Farm infrastructure capable of handling real-time AI tasks?**
 
