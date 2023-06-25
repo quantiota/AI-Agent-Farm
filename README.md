@@ -96,6 +96,21 @@ The AI Agent Farm infrastructure can also be used in other fields, such as data 
 
 Overall, the AI Agent Farm infrastructure is a versatile and scalable tool that can be used in a variety of fields that require high computing power. Its modular design and powerful tools make it an ideal platform for performing complex tasks and experimenting with different techniques and models.
 
+
+## CPU & GPU Serveur Resources
+
+The AI Agent Farm is equipped with a powerful GPU configuration to support advanced machine learning and artificial intelligence tasks. The system features a choice of 8 GPUs, including the Tesla K80, Tesla P100, or Tesla V100, all of which offer exceptional performance and reliability.
+
+In a typical GPU server configuration, multiple GPUs are commonly used, usually ranging from 4 to 8. The Tesla K80 GPUs feature dual GPU dies per card, allowing for increased performance and parallel processing capabilities without the need for an additional GPU server.
+
+By allocating one GPU from the Tesla K80 to each microserver, you can effectively run a single machine learning notebook on each microserver without requiring extra GPUs. This streamlined approach simplifies resource allocation and management, enabling independent operation of each microserver with its dedicated GPU.
+
+The Tesla K80's dual GPU setup expands the number of connected microservers available for AI tasks and optimizes performance while reducing hardware costs. It provides a cost-effective solution for running one machine learning notebook per microserver while efficiently utilizing available GPU resources in a server environment.
+
+To support the storage needs of the AI Agent Farm, the system features 2 x 2TB SSD of RAID Ubuntu 22.04 Server for operating system and software, as well as 2X10TB SATA of RAID data storage for backup, providing ample space for large datasets and ensuring data security. Overall, this GPU configuration is optimized for high-performance computing and is well-suited for AI applications that require large-scale data processing and analysis.
+
+Each microserver is equipped with a 250GB SSD, 16GB of RAM, and 4x1TB of RAID data storage for analysis.
+
 ## Frequently Asked Questions
 
 1. [What is the purpose of the AI Agent Farm project and what does it aim to achieve?](https://github.com/BouarfaMahi/AI-Agent-Farm/tree/master/doc/faq#what-is-the-purpose-of-the-ai-agent-farm-project-and-what-does-it-aim-to-achieve)
@@ -134,21 +149,6 @@ Overall, the AI Agent Farm infrastructure is a versatile and scalable tool that 
 
 18. [How does the AI Agent Farm handle failures or crashes of microservers?](https://github.com/BouarfaMahi/AI-Agent-Farm/tree/master/doc/faq#how-does-the-ai-agent-farm-handle-failures-or-crashes-of-microservers)
 
-
-
-## CPU & GPU Serveur Resources
-
-The AI Agent Farm is equipped with a powerful GPU configuration to support advanced machine learning and artificial intelligence tasks. The system features a choice of 8 GPUs, including the Tesla K80, Tesla P100, or Tesla V100, all of which offer exceptional performance and reliability.
-
-In a typical GPU server configuration, multiple GPUs are commonly used, usually ranging from 4 to 8. The Tesla K80 GPUs feature dual GPU dies per card, allowing for increased performance and parallel processing capabilities without the need for an additional GPU server.
-
-By allocating one GPU from the Tesla K80 to each microserver, you can effectively run a single machine learning notebook on each microserver without requiring extra GPUs. This streamlined approach simplifies resource allocation and management, enabling independent operation of each microserver with its dedicated GPU.
-
-The Tesla K80's dual GPU setup expands the number of connected microservers available for AI tasks and optimizes performance while reducing hardware costs. It provides a cost-effective solution for running one machine learning notebook per microserver while efficiently utilizing available GPU resources in a server environment.
-
-To support the storage needs of the AI Agent Farm, the system features 2 x 2TB SSD of RAID Ubuntu 22.04 Server for operating system and software, as well as 2X10TB SATA of RAID data storage for backup, providing ample space for large datasets and ensuring data security. Overall, this GPU configuration is optimized for high-performance computing and is well-suited for AI applications that require large-scale data processing and analysis.
-
-Each microserver is equipped with a 250GB SSD, 16GB of RAM, and 4x1TB of RAID data storage for analysis.
 
 
 ## References
