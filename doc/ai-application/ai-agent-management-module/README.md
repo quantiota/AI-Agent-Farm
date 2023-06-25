@@ -18,6 +18,7 @@ By combining these functionalities, the AI Agent Management Module streamlines t
 
 ```
 import csv
+import subprocess
 import requests
 
 # Read AI Agent details from CSV file
@@ -35,21 +36,26 @@ langchain_api_url = "https://langchain-api.example.com/register"
 for agent in agents:
     payload = {
         "name": agent["agent_name"],
-        "token": agent["agent_token"],
-        "gpu": agent["gpu"],
-        "cpu": agent["cpu"],
-        "ram": agent["ram"]
+        "token": agent["agent_token"]
     }
 
     response = requests.post(langchain_api_url, json=payload)
 
     if response.status_code == 200:
         # AI Agent registration successful
+        jupyterhub_username = agent["jupyterhub_username"]
+        jupyterhub_password = agent["jupyterhub_password"]
+
+        # Create user account on Ubuntu
+        subprocess.run(["sudo", "adduser", jupyterhub_username], check=True)
+        subprocess.run(["sudo", "passwd", jupyterhub_username], input=jupyterhub_password.encode(), check=True)
+
+        # Create JupyterHub user account
         jupyterhub_api_url = "https://jupyterhub-api.example.com/users"
 
         user_payload = {
-            "name": agent["jupyterhub_username"],
-            "password": agent["jupyterhub_password"]
+            "name": jupyterhub_username,
+            "password": jupyterhub_password
         }
 
         headers = {
@@ -60,26 +66,16 @@ for agent in agents:
 
         if jupyterhub_response.status_code == 201:
             # JupyterHub user account creation successful
-            token_generation_url = "https://jupyterhub-api.example.com/token_generation"
-
-            token_payload = {
-                "username": agent["jupyterhub_username"],
-                "token_name": "Remote Access Token"
-            }
-
-            token_response = requests.post(token_generation_url, json=token_payload, headers=headers)
-
-            if token_response.status_code == 200:
-                # Token generation successful
-                remote_token = token_response.json()["token"]
-                print(f"AI Agent '{agent['agent_name']}' and JupyterHub user account created successfully!")
-                print(f"Remote access token for AI Agent '{agent['agent_name']}': {remote_token}")
-            else:
-                print(f"Failed to generate remote access token for AI Agent '{agent['agent_name']}'.")
+            print(f"AI Agent '{agent['agent_name']}' and JupyterHub user account created successfully!")
         else:
             print(f"Failed to create JupyterHub user account for AI Agent '{agent['agent_name']}'.")
     else:
         print(f"Failed to register AI Agent '{agent['agent_name']}' with Langchain.")
 
 
+
 ```
+
+In this  code, the Ubuntu user account is created using subprocess.run() before attempting to create the JupyterHub user account. This ensures that the necessary Ubuntu credentials are in place before proceeding with the JupyterHub user account creation.
+
+Make sure to replace the placeholder URLs (langchain-api.example.com and jupyterhub-api.example.com) with the actual API endpoints relevant to your system. Also, adjust the csv_file variable to match the path and name of your CSV file.
