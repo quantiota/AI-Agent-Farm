@@ -1,7 +1,7 @@
 
 # Frequently Asked Questions
 
-1. [What is the purpose of the AI Agent Farm project and what does it aim to achieve?](https://github.com/BouarfaMahi/AI-Agent-Farm/tree/master/doc/faq#what-is-the-purpose-of-the-ai-agent-farm-project-and-what-does-it-aim-to-achieve)
+1. [What is the purpose of the AI Agent Farm project and what does it aim to achieve?](#what-is-the-purpose-of-the-ai-agent-farm-project-and-what-does-it-aim-to-achieve)
 
 2. [What are the advantages of running multiple AI tasks from microservers connected to a JupyterHub installed on a GPU server?](https://github.com/BouarfaMahi/AI-Agent-Farm/tree/master/doc/faq#what-are-the-advantages-of-running-multiple-ai-tasks-from-microservers-connected-to-a-jupyterhub-installed-on-a-gpu-server)
 
