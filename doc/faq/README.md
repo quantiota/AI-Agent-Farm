@@ -58,7 +58,7 @@ Setting up an AI Agent Farm with dedicated microservers offers several benefits.
 
 The AI Agent Farm ensures fault tolerance and minimizes downtime through its distributed architecture. If a hardware failure or maintenance is required on one microserver, other microservers can continue running unaffected. This level of fault tolerance reduces the risk of complete system downtime. Additionally, the AI Agent Farm infrastructure can be monitored using Prometheus, an open-source monitoring system, which provides insights into the performance and health of the system. This allows for proactive management and prompt resolution of issues to minimize any potential downtime.
 
-6. Can you explain the application architecture diagram and the components involved in the AI Agent Farm infrastructure?
+## 6. Can you explain the application architecture diagram and the components involved in the AI Agent Farm infrastructure?
 
 The application architecture diagram represents the components involved in the AI Agent Farm infrastructure and illustrates how they interact with each other. Let's dive into the different components:
 
