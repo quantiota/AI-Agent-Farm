@@ -56,7 +56,7 @@ for agent in agents:
 ```
 # Prompt: Create user account on Ubuntu
 
-    ```
+```
     subprocess.run(["sudo", "adduser", jupyterhub_username], check=True)
     subprocess.run(["sudo", "passwd", jupyterhub_username], input=jupyterhub_password.encode(), check=True)
 ```
@@ -80,7 +80,7 @@ for agent in agents:
 ```
 # Prompt: Register AI Agent using Langchain API
 
- ```
+```
         payload = {
             "name": agent_name,
             "token": agent_token,
