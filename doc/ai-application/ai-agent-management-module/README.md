@@ -54,14 +54,14 @@ for agent in agents:
     cpu = agent["cpu"]
     ram = agent["ram"]
 ```
-    # Prompt: Create user account on Ubuntu
+# Prompt: Create user account on Ubuntu
 
     ```
     subprocess.run(["sudo", "adduser", jupyterhub_username], check=True)
     subprocess.run(["sudo", "passwd", jupyterhub_username], input=jupyterhub_password.encode(), check=True)
 ```
 
-    # Prompt: Create JupyterHub user account
+# Prompt: Create JupyterHub user account
 
 ```
     jupyterhub_api_url = "https://jupyterhub-api.example.com/users"
@@ -78,7 +78,7 @@ for agent in agents:
         agent_token = jupyterhub_response.json().get("token", "")
 
 ```
-        # Prompt: Register AI Agent using Langchain API
+# Prompt: Register AI Agent using Langchain API
 
  ```
         payload = {
