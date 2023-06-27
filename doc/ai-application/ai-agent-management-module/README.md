@@ -20,13 +20,13 @@ In this  code, the Ubuntu user account is created using subprocess.run() before 
 Make sure to replace the placeholder URLs (langchain-api.example.com and jupyterhub-api.example.com) with the actual API endpoints relevant to your system. Also, adjust the csv_file variable to match the path and name of your CSV file.
 
 
-# Prompt: Import required libraries
+## Prompt: Import required libraries
 ```
 import csv
 import subprocess
 import requests
 ```
-# Prompt: Read AI Agent details from CSV file
+## Prompt: Read AI Agent details from CSV file
 ```
 import csv
 import subprocess
@@ -40,7 +40,7 @@ with open(csv_file, "r") as file:
     for row in reader:
         agents.append(row)
 ```
-# Prompt: Register AI Agents using Langchain API
+## Prompt: Register AI Agents using Langchain API
 
 ```
 langchain_api_url = "https://langchain-api.example.com/register"
@@ -54,13 +54,13 @@ for agent in agents:
     cpu = agent["cpu"]
     ram = agent["ram"]
 ```
-# Prompt: Create user account on Ubuntu
+## Prompt: Create user account on Ubuntu
 ```
     subprocess.run(["sudo", "adduser", jupyterhub_username], check=True)
     subprocess.run(["sudo", "passwd", jupyterhub_username], input=jupyterhub_password.encode(), check=True)
 ```
 
-# Prompt: Create JupyterHub user account
+## Prompt: Create JupyterHub user account
 
 ```
     jupyterhub_api_url = "https://jupyterhub-api.example.com/users"
@@ -77,7 +77,7 @@ for agent in agents:
         agent_token = jupyterhub_response.json().get("token", "")
 
 ```
-# Prompt: Register AI Agent using Langchain API
+## Prompt: Register AI Agent using Langchain API
 
 ```
         payload = {
