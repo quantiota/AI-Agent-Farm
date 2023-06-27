@@ -60,7 +60,7 @@ for agent in agents:
     subprocess.run(["sudo", "passwd", jupyterhub_username], input=jupyterhub_password.encode(), check=True)
 ```
 
-## Prompt: Create JupyterHub user account
+## Prompt: Create JupyterHub user account and the AI Agent token
 
 ```
     jupyterhub_api_url = "https://jupyterhub-api.example.com/users"
