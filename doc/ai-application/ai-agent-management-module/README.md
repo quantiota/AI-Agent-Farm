@@ -41,6 +41,7 @@ with open(csv_file, "r") as file:
         agents.append(row)
 ```
 # Prompt: Register AI Agents using Langchain API
+
 ```
 langchain_api_url = "https://langchain-api.example.com/register"
 
@@ -52,15 +53,17 @@ for agent in agents:
     gpu = agent["gpu"]
     cpu = agent["cpu"]
     ram = agent["ram"]
+
 ```
     # Prompt: Create user account on Ubuntu
+    
     ```
     subprocess.run(["sudo", "adduser", jupyterhub_username], check=True)
     subprocess.run(["sudo", "passwd", jupyterhub_username], input=jupyterhub_password.encode(), check=True)
 
 ```
     # Prompt: Create JupyterHub user account
-    
+
     ```
     jupyterhub_api_url = "https://jupyterhub-api.example.com/users"
 
