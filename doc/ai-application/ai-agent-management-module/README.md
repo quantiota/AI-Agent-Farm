@@ -98,13 +98,13 @@ for agent in agents:
 The Python code provided  reads AI agent details from a CSV file, creates user accounts on Ubuntu and JupyterHub, and registers the AI agents using the Langchain API. Here's an overview of the code flow:
 
 1. The required libraries (`csv`, `subprocess`, `requests`) are imported.
-2. The CSV file containing AI agent details is read and the information is stored in the agents list.
+2. The CSV file containing AI agent details is read and the information is stored in the `agents` list.
 3. For each agent in the agents list, the necessary values are extracted from the CSV columns.
-4. A user account is created on Ubuntu using the adduser and passwd commands with the provided JupyterHub username and password.
-5. A user account is created on JupyterHub using the requests.post method and the JupyterHub API URL. The username and password are sent as JSON payload.
+4. A user account is created on Ubuntu using the `adduser` and `passwd` commands with the provided JupyterHub username and password.
+5. A user account is created on JupyterHub using the `requests.post` method and the JupyterHub API URL. The username and password are sent as JSON payload.
 6. If the JupyterHub user account creation is successful (status code 201), the agent token is extracted from the response.
 7. The AI agent is registered using the Langchain API by sending a POST request with the agent details (name, token, gpu, cpu, ram) as JSON payload.
 8. If the AI agent registration is successful (status code 200), a success message is printed along with the agent token. Otherwise, an error message is printed.
 
 
-Please note that this code assumes the existence and accessibility of the necessary APIs and services (e.g., Langchain API, JupyterHub API) and also requires appropriate permissions to execute system-level commands (e.g., sudo). Ensure that the required dependencies and configurations are in place before running this code.
+Please note that this code assumes the existence and accessibility of the necessary APIs and services (e.g., Langchain API, JupyterHub API) and also requires appropriate permissions to execute system-level commands (e.g., `sudo`). Ensure that the required dependencies and configurations are in place before running this code.
