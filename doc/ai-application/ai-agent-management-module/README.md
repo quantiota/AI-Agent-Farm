@@ -97,7 +97,7 @@ for agent in agents:
 
 The Python code provided  reads AI agent details from a CSV file, creates user accounts on Ubuntu and JupyterHub, and registers the AI agents using the Langchain API. Here's an overview of the code flow:
 
-1. The required libraries (csv, subprocess, requests) are imported.
+1. The required libraries (`csv`, `subprocess`, `requests`) are imported.
 2. The CSV file containing AI agent details is read and the information is stored in the agents list.
 3. For each agent in the agents list, the necessary values are extracted from the CSV columns.
 4. A user account is created on Ubuntu using the adduser and passwd commands with the provided JupyterHub username and password.
