@@ -55,7 +55,6 @@ for agent in agents:
     ram = agent["ram"]
 ```
 # Prompt: Create user account on Ubuntu
-
 ```
     subprocess.run(["sudo", "adduser", jupyterhub_username], check=True)
     subprocess.run(["sudo", "passwd", jupyterhub_username], input=jupyterhub_password.encode(), check=True)
