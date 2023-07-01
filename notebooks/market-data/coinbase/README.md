@@ -1,7 +1,7 @@
 ## Building a Cryptocurrency Trade Database using QuestDB with Producer/Consumer Pattern in Julia Notebook.
 The Julia notebook sets up a producer/consumer pattern to build a cryptocurrency trade database using QuestDB. The Trade struct is created to store trade data, with a RemoteChannel (from the Distributed package) created to store trades. The WebSocket feed from CoinbasePro is connected, and the relevant fields from incoming JSON objects are parsed and stored as trades in the RemoteChannel. The notebook sets up a QuestDB connection and creates a table with the columns corresponding to the Trade struct. A consumer process reads from the RemoteChannel and writes data to the QuestDB table. The end result is a database of trades that can be queried for further analysis.
 
-Set up parameter:
+Set up docker host ip address:
 
 ```
 using Sockets
