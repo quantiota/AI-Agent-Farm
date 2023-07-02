@@ -37,9 +37,8 @@
 
 18. [How does the AI Agent Farm handle failures or crashes of microservers?](#how-does-the-ai-agent-farm-handle-failures-or-crashes-of-microservers)
 
+19. [Can the AI Agent Farm infrastructure be utilized as a learning platform for educational purposes in the field of Artificial Intelligence?](#can-the-ai-agent-farm-infrastructure-be-utilized-as-a-learning-platform-for-educational-purposes-in the-field-of-artificial-intelligence)
 
-19. [Can the AI Agent Farm infrastructure be utilized as a learning platform for educational purposes in the field of Artificial Intelligence?]
-(#can-the-ai-agent-farm-infrastructure-be-utilized-as-a-learning-platform-for-educational-purposes-in the-field-of-artificial-intelligence?)
 
 
 ### What is the purpose of the AI Agent Farm project and what does it aim to achieve?
