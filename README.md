@@ -149,7 +149,7 @@ Each microserver is equipped with a 250GB SSD, 16GB of RAM, and 4x1TB of RAID da
 
 18. [How does the AI Agent Farm handle failures or crashes of microservers?](https://github.com/BouarfaMahi/AI-Agent-Farm/tree/master/doc/faq#how-does-the-ai-agent-farm-handle-failures-or-crashes-of-microservers)
 
-
+19. [Can the AI Agent Farm infrastructure be utilized as a learning platform for educational purposes in the field of Artificial Intelligence?](#can-the-ai-agent-farm-infrastructure-be-utilized-as-a-learning-platform-for-educational-purposes-in-the-field-of-artificial-intelligence)
 
 ## References
 
