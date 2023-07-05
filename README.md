@@ -151,6 +151,26 @@ Each microserver is equipped with a 250GB SSD, 16GB of RAM, and 4x1TB of RAID da
 
 19. [Can the AI Agent Farm infrastructure be utilized as a learning platform for educational purposes in the field of Artificial Intelligence?](https://github.com/BouarfaMahi/AI-Agent-Farm/tree/master/doc/faq#can-the-ai-agent-farm-infrastructure-be-utilized-as-a-learning-platform-for-educational-purposes-in-the-field-of-artificial-intelligence)
 
+
+## Documentaion
+
+[AI Agent Host](https://github.com/BouarfaMahi/AI-Agent-Farm/tree/master/doc/ai-agent-host)
+
+[AI Agent Lab](https://github.com/BouarfaMahi/AI-Agent-Farm/tree/master/doc/ai-agent-lab)
+
+[AI Application](https://github.com/BouarfaMahi/AI-Agent-Farm/tree/master/doc/ai-application)
+
+[Web Applications](https://github.com/BouarfaMahi/AI-Agent-Farm/tree/master/doc/webapps)
+
+[Benchmark](https://github.com/BouarfaMahi/AI-Agent-Farm/tree/master/doc/benchmark)
+
+[IT Admin](https://github.com/BouarfaMahi/AI-Agent-Farm/tree/master/doc/it-admin)
+
+
+
+
+[Is the AI Agent Farm infrastructure capable of handling real-time AI tasks?](https://github.com/BouarfaMahi/AI-Agent-Farm/tree/master/doc/faq#is-the-ai-agent-farm-infrastructure-capable-of-handling-real-time-ai-tasks)
+
 ## References
 
 - HP ProLiant MicroServer Gen8 Review. [StorageReview.com](https://www.storagereview.com/review/hp-proliant-microserver-gen8-review)
