@@ -22,7 +22,7 @@ To use the AI Agent Host, follow these steps:
 
 2. Clone the AI Agent Host repository and navigate to the docker directory.
 ```
-git clone https://github.com/BouarfaMahi/AI-Agent-Host.git
+git clone https://github.com/quantiota/AI-Agent-Host.git
 cd AI-Agent-Host
 
 ```
@@ -49,9 +49,9 @@ Start working with your notebooks and data, using the pre-installed tools and li
 
 ### AI Agent Host Architecture Diagram
 
- ![AI Agent Host diagram](https://raw.githubusercontent.com/BouarfaMahi/AI-Agent-Host/master/ai-agent-host-diagram.png)
+ ![AI Agent Host diagram](https://raw.githubusercontent.com/quantiota/AI-Agent-Host/master/ai-agent-host-diagram.png)
  
-:pencil: High resolution diagram [Application architecture diagram](https://raw.githubusercontent.com/BouarfaMahi/AI-Agent-Host/master/ai-agent-host-diagram.png)
+:pencil: High resolution diagram [Application architecture diagram](https://raw.githubusercontent.com/quantiota/AI-Agent-Host/master/ai-agent-host-diagram.png)
 
 
 
