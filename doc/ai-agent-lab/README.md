@@ -19,5 +19,5 @@ Start working with GPT-3.5 models and data streams, using the pre-installed tool
 
  ![AI Agent Lab diagram](./ai-agent-lab-diagram.png)
  
-:pencil: High resolution diagram [Application architecture diagram](https://github.com/BouarfaMahi/AI-Agent-Farm/tree/master/doc/ai-agent-lab/ai-agent-lab-diagram.png)
+:pencil: High resolution diagram [Application architecture diagram](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/ai-agent-lab/ai-agent-lab-diagram.png)
 
