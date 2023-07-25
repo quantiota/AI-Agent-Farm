@@ -54,7 +54,7 @@ Start working with your notebooks and data, using the pre-installed tools and li
 
 ### AI Agent Host Architecture Diagram
 
- ![AI Agent Host diagram](https://raw.githubusercontent.com/quantiota/AI-Agent-Host/master/ai-agent-host-diagram.png)
+ ![AI Agent Host diagram](./ai-agent-host-diagram.png)
  
 :pencil: High resolution diagram [Application architecture diagram](https://raw.githubusercontent.com/quantiota/AI-Agent-Host/master/ai-agent-host-diagram.png)
 
@@ -64,6 +64,8 @@ Start working with your notebooks and data, using the pre-installed tools and li
 
 
 - Connect to a JupyterHub from Visual Studio Code. [Visual Studio Code](https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-to-a-remote-jupyter-server)
+
+- Create an API Token. [JupyterHub](https://jupyterhub.readthedocs.io/en/stable/howto/rest.html#create-an-api-token)
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 
