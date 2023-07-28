@@ -20,7 +20,7 @@ end
 
 2. Update the jupyter extension to the pre-release version and then click on the reload button.
 
-3. To establish a remote JupyterHub connection from code-server, refer to this [Tutorial](https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-to-a-remote-jupyter-server) for guidance. Use the provided URL:
+3. To establish a remote JupyterHub connection from code-server, refer to this [Tutorial](https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-to-a-remote-jupyter-server) for guidance. Create an [API token](https://jupyterhub.readthedocs.io/en/stable/howto/rest.html#create-an-api-token) and use the provided URL:
 
 ```
 https://<your-hub-url>/user/<your-hub-user-name>/?token=<your-token>
@@ -43,6 +43,10 @@ telnet docker_host_ip_address 9009
 
 Remember to replace **<docker_host_ip_address>** with the actual IP address of the Docker host where your server is running.
 
+
+3. Run the Data Stream Processing Notebook
+
+Click on the '**Run All**' button in the toolbar and then check the Grafana dashboard for real-time visualization of market data.
 
 
 
