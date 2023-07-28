@@ -64,7 +64,7 @@ docker compose -f init.yaml run certbot certonly -d questdb.yourdomain.tld
 docker compose -f init.yaml run certbot certonly -d grafana.yourdomain.tld
 ```
 
-**Important:** Replace **'yourdomain.tld'** with your actual domain in the commands above and in the **'docker-compose.yml'** file.
+**Important:** Replace **'yourdomain.tld'** with your actual domain in the commands above.
 
 Please note that the **certonly** command will obtain the certificate but not install it. You will have to configure your Nginx service to use the certificate. Additionally, make sure that your domain points to the server on which you're running this setup, as Let's Encrypt validates domain ownership by making an HTTP request.
 
@@ -82,7 +82,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 ### 2 Setup Environment Variables
 
-Firstly, you will want to create an .env file in the docker folder with the following variables:
+Firstly, you will want to create an '**.env**' file in the docker folder with the following variables:
 
 ```
 
@@ -97,11 +97,12 @@ QDB_PG_USER=admin
 QDB_PG_PASSWORD=quest
 
 ```
-and to define your domain name in the docker compose file:
+and to define your domain name in the '**nginx.env**' file:
 
 ```
-    environment:
-      - DOMAIN=yourdomain
+     # nginx/nginx.env
+    
+      DOMAIN=yourdomain
 ```
 
 Remember to replace the placeholders with your actual domain, passwords, and usernames. 
