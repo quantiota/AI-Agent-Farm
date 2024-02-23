@@ -1,50 +1,33 @@
 
 # Frequently Asked Questions
 
-1. [What is the purpose of the AI Agent Farm project and what does it aim to achieve?](#what-is-the-purpose-of-the-ai-agent-farm-project-and-what-does-it-aim-to-achieve)
-
-2. [What are the advantages of running multiple AI tasks from microservers connected to a JupyterHub installed on a GPU server?](#what-are-the-advantages-of-running-multiple-ai-tasks-from-microservers-connected-to-a-jupyterhub-installed-on-a-gpu-server)
-
-3. [How does the AI Agent Farm infrastructure promote collaboration and knowledge sharing among users or AI Agents?](#how-does-the-ai-agent-farm-infrastructure-promote-collaboration-and-knowledge-sharing-among-users-or-ai-agents)
-
-4. [What are the benefits of setting up an AI Agent Farm with dedicated microservers compared to running processes on a single GPU server?](#what-are-the-benefits-of-setting-up-an-ai-agent-farm-with-dedicated-microservers-compared-to-running-processes-on-a-single-gpu-server)
-
-5. [How does the AI Agent Farm ensure fault tolerance and minimize downtime in case of hardware failure or maintenance needs?](#how-does-the-ai-agent-farm-ensure-fault-tolerance-and-minimize-downtime-in-case-of-hardware-failure-or-maintenance-needs)
-
-6. [Can you explain the application architecture diagram and the components involved in the AI Agent Farm infrastructure?](#can-you-explain-the-application-architecture-diagram-and-the-components-involved-in-the-ai-agent-farm-infrastructure)
-
-7. [How does the scalability of the AI Agent Farm infrastructure accommodate future growth and increased demands for AI agents?](#how-does-the-scalability-of-the-ai-agent-farm-infrastructure-accommodate-future-growth-and-increased-demands-for-ai-agents)
-
-8. [What are the benefits of Dockerization in the AI Agent Farm project and how does it simplify deployment and management?](#what-are-the-benefits-of-dockerization-in-the-ai-agent-farm-project-and-how-does-it-simplify-deployment-and-management)
-
-9. [How is data integrity ensured in the AI Agent Farm through regular backups of the QuestDB database and the AI Agent workspace?](#how-is-data-integrity-ensured-in-the-ai-agent-farm-through-regular-backups-of-the-questdb-database-and-the-ai-agent-workspace)
-
-10. [How does the AI application in the AI Agent Farm distribute tasks to the microservers and maximize efficiency?](#how-does-the-ai-application-in-the-ai-agent-farm-distribute-tasks-to-the-microservers-and-maximize-efficiency)
-
-11. [What are the modules included in the AI application and what are their respective functionalities?](#what-are-the-modules-included-in-the-ai-application-and-what-are-their-respective-functionalities)
-
-12. [How do the Data Stream Processing and Machine Learning Notebooks contribute to the AI Agent Farm infrastructure?](#how-do-the-data-stream-processing-and-machine-learning-notebooks-contribute-to-the-ai-agent-farm-infrastructure)
-
-13. [In which fields can the AI Agent Farm infrastructure be used, apart from quantitative finance?](#in-which-fields-can-the-ai-agent-farm-infrastructure-be-used-apart-from-quantitative-finance)
-
-14. [Is the AI Agent Farm infrastructure capable of handling real-time AI tasks?](#is-the-ai-agent-farm-infrastructure-capable-of-handling-real-time-ai-tasks)
-
-15. [Is the ability to process real-time data the most important feature of the AI Agent Farm?](#is-the-ability-to-process-real-time-data-the-most-important-feature-of-the-ai-agent-farm)
-
-16. [How does the AI Agent Farm handle security and protect sensitive data?](#how-does-the-ai-agent-farm-handle-security-and-protect-sensitive-data)
-
-17. [Can users customize and extend the functionality of the AI Agent Farm infrastructure?](#can-users-customize-and-extend-the-functionality-of-the-ai-agent-farm-infrastructure)
-
-18. [How does the AI Agent Farm handle failures or crashes of microservers?](#how-does-the-ai-agent-farm-handle-failures-or-crashes-of-microservers)
-
-19. [Can the AI Agent Farm infrastructure be utilized as a learning platform for educational purposes in the field of Artificial Intelligence?](#can-the-ai-agent-farm-infrastructure-be-utilized-as-a-learning-platform-for-educational-purposes-in-the-field-of-artificial-intelligence)
+- [Frequently Asked Questions](#frequently-asked-questions)
+    - [What is the purpose of the AI Agent Farm project and what does it aim to achieve?](#what-is-the-purpose-of-the-ai-agent-farm-project-and-what-does-it-aim-to-achieve)
+    - [What are the advantages of running multiple AI tasks from microservers connected to a JupyterHub installed on a GPU server?](#what-are-the-advantages-of-running-multiple-ai-tasks-from-microservers-connected-to-a-jupyterhub-installed-on-a-gpu-server)
+    - [How does the AI Agent Farm infrastructure promote collaboration and knowledge sharing among users or AI Agents?](#how-does-the-ai-agent-farm-infrastructure-promote-collaboration-and-knowledge-sharing-among-users-or-ai-agents)
+    - [What are the benefits of setting up an AI Agent Farm with dedicated microservers compared to running processes on a single GPU server?](#what-are-the-benefits-of-setting-up-an-ai-agent-farm-with-dedicated-microservers-compared-to-running-processes-on-a-single-gpu-server)
+    - [How does the AI Agent Farm ensure fault tolerance and minimize downtime in case of hardware failure or maintenance needs?](#how-does-the-ai-agent-farm-ensure-fault-tolerance-and-minimize-downtime-in-case-of-hardware-failure-or-maintenance-needs)
+    - [Can you explain the application architecture diagram and the components involved in the AI Agent Farm infrastructure?](#can-you-explain-the-application-architecture-diagram-and-the-components-involved-in-the-ai-agent-farm-infrastructure)
+    - [How does the scalability of the AI Agent Farm infrastructure accommodate future growth and increased demands for AI agents?](#how-does-the-scalability-of-the-ai-agent-farm-infrastructure-accommodate-future-growth-and-increased-demands-for-ai-agents)
+    - [What are the benefits of Dockerization in the AI Agent Farm project and how does it simplify deployment and management?](#what-are-the-benefits-of-dockerization-in-the-ai-agent-farm-project-and-how-does-it-simplify-deployment-and-management)
+    - [How is data integrity ensured in the AI Agent Farm through regular backups of the QuestDB database and the AI Agent workspace?](#how-is-data-integrity-ensured-in-the-ai-agent-farm-through-regular-backups-of-the-questdb-database-and-the-ai-agent-workspace)
+    - [How does the AI application in the AI Agent Farm distribute tasks to the microservers and maximize efficiency?](#how-does-the-ai-application-in-the-ai-agent-farm-distribute-tasks-to-the-microservers-and-maximize-efficiency)
+    - [What are the modules included in the AI application and what are their respective functionalities?](#what-are-the-modules-included-in-the-ai-application-and-what-are-their-respective-functionalities)
+    - [How do the Data Stream Processing and Machine Learning Notebooks contribute to the AI Agent Farm infrastructure?](#how-do-the-data-stream-processing-and-machine-learning-notebooks-contribute-to-the-ai-agent-farm-infrastructure)
+    - [In which fields can the AI Agent Farm infrastructure be used, apart from quantitative finance?](#in-which-fields-can-the-ai-agent-farm-infrastructure-be-used-apart-from-quantitative-finance)
+    - [Is the AI Agent Farm infrastructure capable of handling real-time AI tasks?](#is-the-ai-agent-farm-infrastructure-capable-of-handling-real-time-ai-tasks)
+    - [Is the ability to process real time data the most important feature of the AI Agent Farm](#is-the-ability-to-process-real-time-data-the-most-important-feature-of-the-ai-agent-farm)
+    - [How does the AI Agent Farm handle security and protect sensitive data?](#how-does-the-ai-agent-farm-handle-security-and-protect-sensitive-data)
+    - [Can users customize and extend the functionality of the AI Agent Farm infrastructure?](#can-users-customize-and-extend-the-functionality-of-the-ai-agent-farm-infrastructure)
+    - [How does the AI Agent Farm handle failures or crashes of microservers?](#how-does-the-ai-agent-farm-handle-failures-or-crashes-of-microservers)
+    - [Can the AI Agent Farm infrastructure be utilized as a learning platform for educational purposes in the field of Artificial Intelligence?](#can-the-ai-agent-farm-infrastructure-be-utilized-as-a-learning-platform-for-educational-purposes-in-the-field-of-artificial-intelligence)
 
 
 
 
 ### What is the purpose of the AI Agent Farm project and what does it aim to achieve?
 
-The purpose of the AI Agent Farm project is to create a scalable infrastructure that can run multiple AI tasks simultaneously by leveraging the use of refurbished microservers. The project aims to maximize efficiency and minimize downtime by distributing processes across the AI Agent workers. It provides a collaborative and scalable environment for AI tasks, with tools such as JupyterHub, Visual Studio Code, QuestDB, Grafana, and AI Agents like ChatGPT and Auto-GPT. The project also includes a specific environment for testing in the field of financial markets.
+The purpose of the AI Agent Farm project is to create a scalable infrastructure that can run multiple AI tasks simultaneously by leveraging the use of refurbished microservers. The project aims to maximize efficiency and minimize downtime by distributing processes across the AI Agent workers. It provides a collaborative and scalable environment for AI tasks, with tools such as JupyterHub, Visual Studio Code, QuestDB, Grafana, and AI Agents like ChatGPT. The project also includes a specific environment for testing in the field of financial markets.
 
 ### What are the advantages of running multiple AI tasks from microservers connected to a JupyterHub installed on a GPU server?
 
