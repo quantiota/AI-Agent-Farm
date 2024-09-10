@@ -21,6 +21,7 @@
     - [Can users customize and extend the functionality of the AI Agent Farm infrastructure?](#can-users-customize-and-extend-the-functionality-of-the-ai-agent-farm-infrastructure)
     - [How does the AI Agent Farm handle failures or crashes of microservers?](#how-does-the-ai-agent-farm-handle-failures-or-crashes-of-microservers)
     - [Can the AI Agent Farm infrastructure be utilized as a learning platform for educational purposes in the field of Artificial Intelligence?](#can-the-ai-agent-farm-infrastructure-be-utilized-as-a-learning-platform-for-educational-purposes-in-the-field-of-artificial-intelligence)
+    - [Why did the AI Agent Farm opt for refurbished hardware instead of using cloud infrastructure like AWS, Google Cloud, or Azure?](#why-did-the-ai-agent-farm-opt-for-refurbished-hardware-instead-of-using-cloud-infrastructure-like-aws-google-cloud-or-azure)
 
 
 
@@ -151,3 +152,8 @@ Here are some ways in which the AI Agent Farm can be used for educational purpos
 - Understanding Infrastructure Management: The Dockerization of applications in the AI Agent Farm can provide insights into infrastructure management, an important aspect for any AI project.
 
 In conclusion, the AI Agent Farm can serve as an excellent infrastructure for AI education, providing students with a platform to practice, experiment, and collaborate on AI tasks. It can certainly help foster a deeper understanding of AI, machine learning, and associated technologies.
+
+
+### Why did the AI Agent Farm opt for refurbished hardware instead of using cloud infrastructure like AWS, Google Cloud, or Azure?
+
+The AI Agent Farm chose to utilize refurbished hardware to significantly lower both upfront and long-term costs while maintaining complete control over its infrastructure. Cloud services, while flexible, come with variable pricing and often high costs for large-scale, always-on AI workloads—particularly when it comes to GPU usage. By using refurbished microservers and GPU servers, the AI Agent Farm can scale affordably and predictably without incurring ongoing cloud fees. This decision also allows for greater customization, better performance optimization, and the ability to experiment with cutting-edge technologies without the constraints imposed by cloud providers. Overall, it enables the AI Agent Farm to achieve enterprise-level computing power and research capabilities at a fraction of the cost.
