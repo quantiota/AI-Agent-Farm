@@ -45,7 +45,7 @@
 
  ![Refurbished Microservers](images/microservers.png)
 
-:pencil: High resolution diagram [Application architecture diagram](https://raw.githubusercontent.com/quantiota/AI-Agent-Farm/master/doc/it-admin/hardware/images/microservers.png)
+:pencil: High resolution diagram [Refurbished Microservers](https://raw.githubusercontent.com/quantiota/AI-Agent-Farm/master/doc/it-admin/hardware/images/microservers.png)
 
 
                                                                                                                 
