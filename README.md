@@ -151,6 +151,8 @@ Each microserver is equipped with a 250GB SSD, 16GB of RAM, and 4x1TB of RAID da
 
 19. [Can the AI Agent Farm infrastructure be utilized as a learning platform for educational purposes in the field of Artificial Intelligence?](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/faq#can-the-ai-agent-farm-infrastructure-be-utilized-as-a-learning-platform-for-educational-purposes-in-the-field-of-artificial-intelligence)
 
+20. [Why did the AI Agent Farm opt for refurbished hardware instead of using cloud infrastructure like AWS, Google Cloud, or Azure?](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/faq#why-did-the-ai-agent-farm-opt-for-refurbished-hardware-instead-of-using-cloud-infrastructure-like-aws-google-cloud-or-azure)
+
 
 ## Documentaion
 
