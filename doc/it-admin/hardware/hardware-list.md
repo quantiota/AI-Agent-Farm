@@ -51,13 +51,13 @@
 
 
                                                                                                             
-##  Cirrascale GX8 Series 
+##  GPU Server 
 
-
+1 refurbished Cirrascale GX8 Series used in the AI Agent Farm.
 
  ![Refurbished GPU Server](images/cirrascale.png)
 
-:pencil: High resolution image [Refurbished Microservers](https://raw.githubusercontent.com/quantiota/AI-Agent-Farm/master/doc/it-admin/hardware/images/cirrascale.png)
+:pencil: High resolution image [Refurbished GPU Server](https://raw.githubusercontent.com/quantiota/AI-Agent-Farm/master/doc/it-admin/hardware/images/cirrascale.png)
 
 
 
