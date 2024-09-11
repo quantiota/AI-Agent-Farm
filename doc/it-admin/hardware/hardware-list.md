@@ -41,7 +41,7 @@
 
 
 
-# Microservers 
+## Microservers 
 
 45 refurbished Gen8 microservers used in the AI Agent Farm.
 
@@ -50,9 +50,14 @@
 :pencil: High resolution image [Refurbished Microservers](https://raw.githubusercontent.com/quantiota/AI-Agent-Farm/master/doc/it-admin/hardware/images/microservers.png)
 
 
-                                                                                                                
+                                                                                                            
+##  Cirrascale GX8 Series 
 
 
+
+ ![Refurbished GPU Server](images/cirrascale.png)
+
+:pencil: High resolution image [Refurbished Microservers](https://raw.githubusercontent.com/quantiota/AI-Agent-Farm/master/doc/it-admin/hardware/images/cirrascale.png)
 
 
 
