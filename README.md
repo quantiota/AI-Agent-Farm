@@ -63,20 +63,6 @@ To ensure data integrity and prevent data loss, it is important to create regula
 ### Failover & Remote Management System
 The AI Agent Farm also includes failover and load balancing functions to ensure high availability and prevent downtime. In addition, a remote management system is provided to enable easy monitoring and control of the infrastructure from anywhere even without a public IP. 
 
-## AI Application Specifications:
-The AI application is responsible for managing the AI agents installed on the microservers and distributing tasks to them. The application is installed on a GPU server and is designed to maximize the efficiency of the AI Agent Farm.
-
-The AI application is built using Python and is designed to work with the JupyterHub instance running on the GPU server. The application is modular and allows for easy integration with new AI tools and libraries as needed.
-
-The AI application consists of several modules, including:
-
-1. Data Ingestion Module: This module is responsible for coordinating the ingestion of real-time streaming data from Binance/Coinbase across all AI agents and storing it on the RAID storage of each microserver. Each AI agent is responsible for ingesting and storing data in its own QuestDB database. The module includes features such as data validation, error handling, and data transformation to prepare the data for analysis by the AI agents.
-
-2. Task Distribution Module: This module is responsible for distributing tasks to the AI agents installed on the microservers. The module takes into account the processing power and workload of each AI agent and distributes tasks accordingly to maximize efficiency and minimize downtime. The module is designed to handle multiple tasks simultaneously and can be configured to prioritize certain tasks over others based on their importance or urgency.
-
-3. Performance Monitoring Module: This module monitors the performance of each AI agent and the overall performance of the AI Agent Farm. The module collects metrics such as CPU and memory usage, task completion rates, and system uptime, which are then displayed on the Grafana dashboard. The module can be configured to send alerts if performance falls below certain thresholds or if critical errors occur.
-
-
 ## Data Stream Processing & Machine Learning Notebooks
 
 The Data Stream Processing Notebook is responsible for ingesting, processing, and analyzing real-time data streams from various sources, such as financial data streams, sensors or social media feeds. It uses tools like QuestDB and Grafana to store and visualize the data, and can be integrated with other tools like Visual Studio Code.
@@ -131,27 +117,23 @@ Each microserver is equipped with a 250GB SSD, 16GB of RAM, and 4x1TB of RAID da
 
 9. [How is data integrity ensured in the AI Agent Farm through regular backups of the QuestDB database and the AI Agent workspace?](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/faq#how-is-data-integrity-ensured-in-the-ai-agent-farm-through-regular-backups-of-the-questdb-database-and-the-ai-agent-workspace)
 
-10. [How does the AI application in the AI Agent Farm distribute tasks to the microservers and maximize efficiency?](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/faq#how-does-the-ai-application-in-the-ai-agent-farm-distribute-tasks-to-the-microservers-and-maximize-efficiency)
+10. [How do the Data Stream Processing and Machine Learning Notebooks contribute to the AI Agent Farm infrastructure?](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/faq#how-do-the-data-stream-processing-and-machine-learning-notebooks-contribute-to-the-ai-agent-farm-infrastructure)
 
-11. [What are the modules included in the AI application and what are their respective functionalities?](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/faq#what-are-the-modules-included-in-the-ai-application-and-what-are-their-respective-functionalities)
+11. [In which fields can the AI Agent Farm infrastructure be used, apart from quantitative finance?](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/faq#in-which-fields-can-the-ai-agent-farm-infrastructure-be-used-apart-from-quantitative-finance)
 
-12. [How do the Data Stream Processing and Machine Learning Notebooks contribute to the AI Agent Farm infrastructure?](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/faq#how-do-the-data-stream-processing-and-machine-learning-notebooks-contribute-to-the-ai-agent-farm-infrastructure)
+12. [Is the AI Agent Farm infrastructure capable of handling real-time AI tasks?](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/faq#is-the-ai-agent-farm-infrastructure-capable-of-handling-real-time-ai-tasks)
 
-13. [In which fields can the AI Agent Farm infrastructure be used, apart from quantitative finance?](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/faq#in-which-fields-can-the-ai-agent-farm-infrastructure-be-used-apart-from-quantitative-finance)
+13. [Is the ability to process real-time data the most important feature of the AI Agent Farm?](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/faq#is-the-ability-to-process-real-time-data-the-most-important-feature-of-the-ai-agent-farm)
 
-14. [Is the AI Agent Farm infrastructure capable of handling real-time AI tasks?](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/faq#is-the-ai-agent-farm-infrastructure-capable-of-handling-real-time-ai-tasks)
+14. [How does the AI Agent Farm handle security and protect sensitive data?](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/faq#how-does-the-ai-agent-farm-handle-security-and-protect-sensitive-data)
 
-15. [Is the ability to process real-time data the most important feature of the AI Agent Farm?](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/faq#is-the-ability-to-process-real-time-data-the-most-important-feature-of-the-ai-agent-farm)
+15. [Can users customize and extend the functionality of the AI Agent Farm infrastructure?](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/faq#can-users-customize-and-extend-the-functionality-of-the-ai-agent-farm-infrastructure)
 
-16. [How does the AI Agent Farm handle security and protect sensitive data?](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/faq#how-does-the-ai-agent-farm-handle-security-and-protect-sensitive-data)
+16. [How does the AI Agent Farm handle failures or crashes of microservers?](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/faq#how-does-the-ai-agent-farm-handle-failures-or-crashes-of-microservers)
 
-17. [Can users customize and extend the functionality of the AI Agent Farm infrastructure?](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/faq#can-users-customize-and-extend-the-functionality-of-the-ai-agent-farm-infrastructure)
+17. [Can the AI Agent Farm infrastructure be utilized as a learning platform for educational purposes in the field of Artificial Intelligence?](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/faq#can-the-ai-agent-farm-infrastructure-be-utilized-as-a-learning-platform-for-educational-purposes-in-the-field-of-artificial-intelligence)
 
-18. [How does the AI Agent Farm handle failures or crashes of microservers?](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/faq#how-does-the-ai-agent-farm-handle-failures-or-crashes-of-microservers)
-
-19. [Can the AI Agent Farm infrastructure be utilized as a learning platform for educational purposes in the field of Artificial Intelligence?](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/faq#can-the-ai-agent-farm-infrastructure-be-utilized-as-a-learning-platform-for-educational-purposes-in-the-field-of-artificial-intelligence)
-
-20. [Why did the AI Agent Farm opt for refurbished hardware instead of using cloud infrastructure like AWS, Google Cloud, or Azure?](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/faq#why-did-the-ai-agent-farm-opt-for-refurbished-hardware-instead-of-using-cloud-infrastructure-like-aws-google-cloud-or-azure)
+18. [Why did the AI Agent Farm opt for refurbished hardware instead of using cloud infrastructure like AWS, Google Cloud, or Azure?](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/faq#why-did-the-ai-agent-farm-opt-for-refurbished-hardware-instead-of-using-cloud-infrastructure-like-aws-google-cloud-or-azure)
 
 
 ## Documentation

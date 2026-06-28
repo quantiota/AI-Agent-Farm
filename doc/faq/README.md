@@ -11,8 +11,6 @@
     - [How does the scalability of the AI Agent Farm infrastructure accommodate future growth and increased demands for AI agents?](#how-does-the-scalability-of-the-ai-agent-farm-infrastructure-accommodate-future-growth-and-increased-demands-for-ai-agents)
     - [What are the benefits of Dockerization in the AI Agent Farm project and how does it simplify deployment and management?](#what-are-the-benefits-of-dockerization-in-the-ai-agent-farm-project-and-how-does-it-simplify-deployment-and-management)
     - [How is data integrity ensured in the AI Agent Farm through regular backups of the QuestDB database and the AI Agent workspace?](#how-is-data-integrity-ensured-in-the-ai-agent-farm-through-regular-backups-of-the-questdb-database-and-the-ai-agent-workspace)
-    - [How does the AI application in the AI Agent Farm distribute tasks to the microservers and maximize efficiency?](#how-does-the-ai-application-in-the-ai-agent-farm-distribute-tasks-to-the-microservers-and-maximize-efficiency)
-    - [What are the modules included in the AI application and what are their respective functionalities?](#what-are-the-modules-included-in-the-ai-application-and-what-are-their-respective-functionalities)
     - [How do the Data Stream Processing and Machine Learning Notebooks contribute to the AI Agent Farm infrastructure?](#how-do-the-data-stream-processing-and-machine-learning-notebooks-contribute-to-the-ai-agent-farm-infrastructure)
     - [In which fields can the AI Agent Farm infrastructure be used, apart from quantitative finance?](#in-which-fields-can-the-ai-agent-farm-infrastructure-be-used-apart-from-quantitative-finance)
     - [Is the AI Agent Farm infrastructure capable of handling real-time AI tasks?](#is-the-ai-agent-farm-infrastructure-capable-of-handling-real-time-ai-tasks)
@@ -77,14 +75,6 @@ Dockerization in the AI Agent Farm project offers several benefits. It simplifie
 ### How is data integrity ensured in the AI Agent Farm through regular backups of the QuestDB database and the AI Agent workspace?
 
 Data integrity in the AI Agent Farm is ensured through regular backups of both the QuestDB database and the AI Agent workspace. QuestDB, a high-performance time-series database, allows for efficient data storage and retrieval. Regular backups of the QuestDB database ensure that the data remains safe and can be restored in case of any data loss or system failure. Additionally, the AI Agent workspace, where AI agents store their data and models, is also backed up regularly. These backups safeguard the AI Agent Farm's data and ensure that valuable information is protected and recoverable.
-
-### How does the AI application in the AI Agent Farm distribute tasks to the microservers and maximize efficiency?
-
-The AI application in the AI Agent Farm uses a task distribution system that intelligently assigns tasks to available microservers. This distribution system ensures that the workload is balanced across the microservers, maximizing the utilization of resources and optimizing efficiency. The AI application continuously monitors the workload and performance of each microserver, dynamically adjusting the task distribution to avoid overloading any specific microserver. This adaptive distribution approach helps in achieving optimal resource utilization, reducing bottlenecks, and maximizing the efficiency of the AI Agent Farm infrastructure.
-
-### What are the modules included in the AI application and what are their respective functionalities?
-
-The AI application in the AI Agent Farm consists of several modules, each serving a specific purpose. These modules include task distribution, resource monitoring, data streaming, and machine learning notebooks. The task distribution module intelligently assigns tasks to microservers based on their availability and workload. The resource monitoring module keeps track of the performance and health of each microserver, ensuring efficient resource allocation. The data streaming module facilitates real-time data ingestion and processing. The machine learning notebooks provide a collaborative environment for users or AI agents to develop and execute machine learning models and experiments.
 
 ### How do the Data Stream Processing and Machine Learning Notebooks contribute to the AI Agent Farm infrastructure?
 
