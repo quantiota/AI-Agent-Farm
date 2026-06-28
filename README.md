@@ -156,11 +156,9 @@ Each microserver is equipped with a 250GB SSD, 16GB of RAM, and 4x1TB of RAID da
 
 ## Documentation
 
-[AI Agent Host](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/ai-agent-host)
+[AI Agent Host](https://github.com/quantiota/AI-Agent-Host)
 
-[AI Agent Lab](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/ai-agent-lab)
-
-[AI Application](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/ai-application)
+[AI Agent Lab](https://github.com/quantiota/AI-Agent-Lab)
 
 [Web Applications](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/webapps)
 
