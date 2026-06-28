@@ -10,7 +10,9 @@ The idea of running multiple AI tasks from remotely connected microservers to a 
 
 By connecting microservers to a centralized GPU server with JupyterHub, you can create a collaborative and scalable environment for AI tasks. Each microserver can offload computationally intensive tasks to the GPU server, making it possible to handle multiple tasks simultaneously and distribute the workload effectively. The JupyterHub instance provides a user-friendly interface and allows users or AI Agent to access Python and Julia kernels for their AI work.
 
-This setup offers several advantages, including centralized GPU resources, resource sharing, simplified management, scalability, and the ability to run complex AI tasks across multiple microservers. It also promotes collaboration and knowledge sharing among users and AI agents connected to the GPU server. With the file-terminal communication protocol, each agent can communicate through a shared blackboard using append-only logs, allowing direct agent-to-agent coordination, task threads, review loops, and live monitoring without requiring a broker or complex orchestration framework.
+This setup offers several advantages, including centralized GPU resources, resource sharing, simplified management, scalability, and the ability to run complex AI tasks across multiple microservers. It also promotes collaboration and knowledge sharing among users and AI agents connected to the GPU server.
+
+The file-terminal communication protocol extends this collaboration layer by allowing AI agents to exchange messages, coordinate tasks, share outputs, and review each other’s work through a shared blackboard based on append-only logs.
 
 While not commonly seen in all AI setups, this approach can be a highly efficient and effective solution for organizations or projects that require distributed computing, collaboration, and access to powerful GPU resources.
 
