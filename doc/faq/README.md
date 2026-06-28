@@ -16,7 +16,7 @@
     - [How do the Data Stream Processing and Machine Learning Notebooks contribute to the AI Agent Farm infrastructure?](#how-do-the-data-stream-processing-and-machine-learning-notebooks-contribute-to-the-ai-agent-farm-infrastructure)
     - [In which fields can the AI Agent Farm infrastructure be used, apart from quantitative finance?](#in-which-fields-can-the-ai-agent-farm-infrastructure-be-used-apart-from-quantitative-finance)
     - [Is the AI Agent Farm infrastructure capable of handling real-time AI tasks?](#is-the-ai-agent-farm-infrastructure-capable-of-handling-real-time-ai-tasks)
-    - [Is the ability to process real time data the most important feature of the AI Agent Farm](#is-the-ability-to-process-real-time-data-the-most-important-feature-of-the-ai-agent-farm)
+    - [Is the ability to process real-time data the most important feature of the AI Agent Farm?](#is-the-ability-to-process-real-time-data-the-most-important-feature-of-the-ai-agent-farm)
     - [How does the AI Agent Farm handle security and protect sensitive data?](#how-does-the-ai-agent-farm-handle-security-and-protect-sensitive-data)
     - [Can users customize and extend the functionality of the AI Agent Farm infrastructure?](#can-users-customize-and-extend-the-functionality-of-the-ai-agent-farm-infrastructure)
     - [How does the AI Agent Farm handle failures or crashes of microservers?](#how-does-the-ai-agent-farm-handle-failures-or-crashes-of-microservers)
@@ -28,7 +28,7 @@
 
 ### What is the purpose of the AI Agent Farm project and what does it aim to achieve?
 
-The purpose of the AI Agent Farm project is to create a scalable infrastructure that can run multiple AI tasks simultaneously by leveraging the use of refurbished microservers. The project aims to maximize efficiency and minimize downtime by distributing processes across the AI Agent workers. It provides a collaborative and scalable environment for AI tasks, with tools such as JupyterHub, Visual Studio Code, QuestDB, Grafana, and AI Agents like ChatGPT. The project also includes a specific environment for testing in the field of financial markets.
+The purpose of the AI Agent Farm project is to create a scalable infrastructure that can run multiple AI tasks simultaneously by leveraging the use of refurbished microservers. The project aims to maximize efficiency and minimize downtime by distributing processes across the AI Agent workers. It provides a collaborative and scalable environment for AI tasks, with tools such as JupyterHub, Visual Studio Code, QuestDB, Grafana, and AI Agents like Claude. The project also includes a specific environment for testing in the field of financial markets.
 
 ### What are the advantages of running multiple AI tasks from microservers connected to a JupyterHub installed on a GPU server?
 
@@ -58,7 +58,7 @@ The application architecture diagram represents the components involved in the A
 
 - Visual Studio Code: Visual Studio Code is a code editor that is remotely connected to the JupyterHub instance running on the GPU server. It allows users or AI Agents to write and execute code, providing access to Python and Julia kernels. Each AI Agent has its own JupyterHub user account when using Visual Studio Code.
 
-- QuestDB: QuestDB is a fast and open-source time series database that is used to store real-time streaming data. The data source, such as Coinbase, is connected to each microserver, and QuestDB is responsible for ingesting and storing the data. This data can be further analyzed by the AI Agents.
+- QuestDB: QuestDB is a fast and open-source time series database that is used to store real-time streaming data. The data source, such as Binance/Coinbase, is connected to each microserver, and QuestDB is responsible for ingesting and storing the data. This data can be further analyzed by the AI Agents.
 
 - Grafana: Grafana is an open-source observability platform used for data visualization. It is connected to QuestDB and retrieves data to display real-time metrics and insights. Grafana provides visualizations and dashboards to monitor the performance and health of the AI Agent Farm infrastructure.
 
@@ -99,7 +99,7 @@ The AI Agent Farm infrastructure can be used in various fields beyond quantitati
 Yes, the AI Agent Farm infrastructure is capable of handling real-time AI tasks. The system's data streaming module enables ingestion and processing of real-time data, allowing AI agents to react and make decisions in real-time. The distributed architecture, coupled with efficient task distribution and resource allocation, ensures that real-time AI tasks are processed efficiently and within the required time constraints.
 
 
-### Is the ability to process real time data the most important feature of the AI Agent Farm
+### Is the ability to process real-time data the most important feature of the AI Agent Farm?
 
 Yes, the ability of the AI Agent Farm to process real-time data is indeed one of its key features and advantages. Real-time data processing enables timely decision-making, quick response to changing conditions, and the ability to extract valuable insights from dynamic and time-sensitive information. This feature is particularly valuable in domains such as defense, healthcare, cybersecurity, and financial markets, where the availability of up-to-date and actionable data is crucial.
 

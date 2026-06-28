@@ -1,6 +1,6 @@
 # AI Agent Farm
 
-This repository documents the creation and maintenance of an AI Agent Farm infrastructure that consists of refurbished microservers gen8. The infrastructure runs on Ubuntu 22.04 Server and includes powerful tools, such as JupyterHub, Visual Studio Code, QuestDB, Grafana, and an AI Agent such as ChatGPT, ...)
+This repository documents the creation and maintenance of an AI Agent Farm infrastructure that consists of refurbished microservers gen8. The infrastructure runs on Ubuntu 22.04 Server and includes powerful tools, such as JupyterHub, Visual Studio Code, QuestDB, Grafana, and an AI Agent such as Claude, ...)
 
 The purpose of this project is to create a scalable infrastructure that can run multiple tasks simultaneously and distribute processes across the AI Agent workers, maximizing efficiency and minimizing downtime. As a demonstration, we have created a specific environment for testing the AI Agent Farm in the field of financial markets.
 
@@ -24,9 +24,9 @@ Setting up an AI Agent Farm with dedicated microservers can offer several advant
 
 3. Isolation: Running processes on separate microservers provides isolation between the notebooks. If there is an issue or crash in one notebook, it won't affect the others, improving the stability and reliability of the overall system.
 
-3. Ease of Management: Managing multiple microservers allows for better organization and control. Each microserver can be independently monitored, maintained, and updated without impacting the operation of other microservers.
+4. Ease of Management: Managing multiple microservers allows for better organization and control. Each microserver can be independently monitored, maintained, and updated without impacting the operation of other microservers.
 
-4. Fault Tolerance: In case of hardware failure or maintenance needs, having multiple microservers ensures that other notebooks can continue running unaffected. It provides a level of fault tolerance and reduces the risk of complete system downtime.
+5. Fault Tolerance: In case of hardware failure or maintenance needs, having multiple microservers ensures that other notebooks can continue running unaffected. It provides a level of fault tolerance and reduces the risk of complete system downtime.
 
 By distributing the workload across multiple microservers, you can achieve better performance, scalability, and fault tolerance compared to running all processes on a single GPU server. However, it's important to consider the specific requirements and constraints of your project before deciding on the best approach.
 
@@ -41,11 +41,11 @@ By distributing the workload across multiple microservers, you can achieve bette
 ### Features
 - The AI Agents can run multiple tasks simultaneously, and processes are distributed across the workers for maximum efficiency.
 
-- The AI Agent Farm is designed to be scalable to accomodate future growth
+- The AI Agent Farm is designed to be scalable to accommodate future growth
 
 - Visual Studio Code is remotely connected to a JupyterHub instance installed on a GPU server, providing access to Python and Julia kernels. Each AI Agent has its own JupyterHub user account when using VS Code.
 
-- The real-time streaming data source from Coinbase is connected to each microserver. QuestDB and Grafana are used to store and display the data in real-time. The QuestDB database is ingested by running a notebook in Visual Studio Code (VS Code).
+- The real-time streaming data source from Binance/Coinbase is connected to each microserver. QuestDB and Grafana are used to store and display the data in real-time. The QuestDB database is ingested by running a notebook in Visual Studio Code (VS Code).
 
 - To ensure data integrity, both the QuestDB database backup and the workspace backup for each AI agent are stored on the GPU server.
 
@@ -58,7 +58,7 @@ The AI Agent Farm has been designed with scalability in mind, ensuring that it c
 The four applications used in this project (Visual Studio Code, QuestDB, Grafana, and an AI Agent) can be Dockerized to simplify deployment and management. The Dockerfiles for each application are included in the repository, and instructions for building and running the Docker containers are provided in the documentation. By Dockerizing the applications, it is possible to create a self-contained environment that can be easily moved between systems or replicated on multiple machines. This can simplify deployment and ensure consistency across different environments.
 
 ### Backup
-To ensure data integrity and prevent data loss, it is important to create regular backups of the QuestDB database and the AI Agent workspace on the remote GPU server.The backup process can be automated using a shell script, which can be scheduled to run regularly using a cron job. 
+To ensure data integrity and prevent data loss, it is important to create regular backups of the QuestDB database and the AI Agent workspace on the remote GPU server. The backup process can be automated using a shell script, which can be scheduled to run regularly using a cron job. 
 
 ### Failover & Remote Management System
 The AI Agent Farm also includes failover and load balancing functions to ensure high availability and prevent downtime. In addition, a remote management system is provided to enable easy monitoring and control of the infrastructure from anywhere even without a public IP. 
@@ -70,7 +70,7 @@ The AI application is built using Python and is designed to work with the Jupyte
 
 The AI application consists of several modules, including:
 
-1. Data Ingestion Module: This module is responsible for coordinating the ingestion of real-time streaming data from Coinbase across all AI agents and storing it on the RAID storage of each microserver. Each AI agent is responsible for ingesting and storing data in its own QuestDB database. The module includes features such as data validation, error handling, and data transformation to prepare the data for analysis by the AI agents.
+1. Data Ingestion Module: This module is responsible for coordinating the ingestion of real-time streaming data from Binance/Coinbase across all AI agents and storing it on the RAID storage of each microserver. Each AI agent is responsible for ingesting and storing data in its own QuestDB database. The module includes features such as data validation, error handling, and data transformation to prepare the data for analysis by the AI agents.
 
 2. Task Distribution Module: This module is responsible for distributing tasks to the AI agents installed on the microservers. The module takes into account the processing power and workload of each AI agent and distributes tasks accordingly to maximize efficiency and minimize downtime. The module is designed to handle multiple tasks simultaneously and can be configured to prioritize certain tasks over others based on their importance or urgency.
 
@@ -87,7 +87,7 @@ The Machine Learning Notebook is designed to facilitate machine learning tasks, 
 ## Usage
 
 ### Quantitative Finance
-The AI Agent Farm infrastructure can be used in quantitative finance to analyze large amounts of financial data and make predictions using machine learning models. With the real-time streaming data source from Coinbase or others providers, the QuestDB database, and Grafana, the infrastructure can provide up-to-date and accurate financial data. The AI Agent tool can be used to build and fine-tune machine learning models for financial analysis.
+The AI Agent Farm infrastructure can be used in quantitative finance to analyze large amounts of financial data and make predictions using machine learning models. With the real-time streaming data source from Binance, Coinbase or other providers, the QuestDB database, and Grafana, the infrastructure can provide up-to-date and accurate financial data. The AI Agent tool can be used to build and fine-tune machine learning models for financial analysis.
 
 Using the AI Agent Farm infrastructure, quantitative finance professionals can easily run multiple tasks simultaneously and distribute them across the workers, which maximizes efficiency and reduces downtime. The scalability of the infrastructure allows for future growth, ensuring that it can accommodate an increase in demand for AI agents. The JupyterHub instance on the GPU server provides access to Python and Julia kernels, making it an ideal tool for financial analysis.
 
@@ -154,7 +154,7 @@ Each microserver is equipped with a 250GB SSD, 16GB of RAM, and 4x1TB of RAID da
 20. [Why did the AI Agent Farm opt for refurbished hardware instead of using cloud infrastructure like AWS, Google Cloud, or Azure?](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/faq#why-did-the-ai-agent-farm-opt-for-refurbished-hardware-instead-of-using-cloud-infrastructure-like-aws-google-cloud-or-azure)
 
 
-## Documentaion
+## Documentation
 
 [AI Agent Host](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/ai-agent-host)
 
@@ -187,7 +187,7 @@ Each microserver is equipped with a 250GB SSD, 16GB of RAM, and 4x1TB of RAID da
 
 - [Grafana - The open observability platform](https://grafana.com/)
 
-- [ChatGPT](https://platform.openai.com/docs)
+- [Claude](https://docs.claude.com)
 
 - AI Agent Farm Monitoring with JupyterHub and [Prometheus](https://jupyterhub.readthedocs.io/en/stable/reference/monitoring.html)
 
@@ -206,7 +206,7 @@ Contributions to the project are welcome. Please feel free to fork the repositor
 
 3. Impactful Projects: Contribute to AI projects with real-world applications, such as quantitative finance, data science, and machine learning. Your contributions can help analyze large financial datasets, build predictive models, and advance research in various fields.
 
-3. Skill Development: Sharpen your coding skills by working on complex AI tasks, optimizing performance, and integrating new AI tools and libraries into the infrastructure. Improve your understanding of distributed systems, data streaming, and machine learning techniques.
+4. Skill Development: Sharpen your coding skills by working on complex AI tasks, optimizing performance, and integrating new AI tools and libraries into the infrastructure. Improve your understanding of distributed systems, data streaming, and machine learning techniques.
 
 
 We encourage you to explore the project, fork the repository, and submit pull requests. If you have any questions or need assistance, feel free to reach out to us. Together, let's build a powerful and scalable AI infrastructure that drives innovation and transforms various domains.
