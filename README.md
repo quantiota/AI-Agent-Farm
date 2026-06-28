@@ -68,7 +68,7 @@ agent-token is the dedicated API token for that agent.
 
 This gives each Claude Code agent its own authenticated access to a JupyterHub environment while still allowing all agents to collaborate through the shared workspace.
 
-The JupyterHub layer provides identity and workspace isolation for GPU computational offload, while the shared folder provides the communication space used by the AI Agent Farm communication protocol.
+The JupyterHub layer provides identity, workspace isolation, and GPU computational offload, while the shared folder provides the communication space used by the AI Agent Farm communication protocol.
 
 
 ### Features
