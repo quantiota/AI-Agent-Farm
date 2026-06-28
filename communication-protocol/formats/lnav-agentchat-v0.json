@@ -1,0 +1,20 @@
+{
+  "agentchat_log": {
+    "title": "Agent Farm Chat",
+    "description": "Per-agent blackboard messages: <ISO8601>\\t<sender>\\t<body>",
+    "regex": {
+      "std": {
+        "pattern": "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z)\\t(?<sender>[^\\t]+)\\t(?<body>.*)$"
+      }
+    },
+    "timestamp-format": [ "%Y-%m-%dT%H:%M:%SZ" ],
+    "opid-field": "sender",
+    "value": {
+      "sender": { "kind": "string", "identifier": true },
+      "body":   { "kind": "string" }
+    },
+    "sample": [
+      { "line": "2026-06-28T10:42:00Z\torchestrator\t@researcher #task-42 analyze BTCUSD volatility regime" }
+    ]
+  }
+}
