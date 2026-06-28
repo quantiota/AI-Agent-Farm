@@ -40,6 +40,34 @@ By distributing the workload across multiple microservers, you can achieve bette
 
 :pencil: High resolution diagram [Application architecture diagram](https://raw.githubusercontent.com/quantiota/AI-Agent-Farm/master/application-architecture-diagram.png)
 
+
+
+### Claude Code and JupyterHub Connectivity
+
+Each Claude Code agent is connected to its dedicated JupyterHub workspace through its own JupyterHub user account and API token.
+
+The connection URL follows this pattern:
+
+```text
+https://<hub-url>/user/<hub-agent-name>/?token=<agent-token>
+
+
+Example:
+
+https://hub.example.com/user/agent-01/?token=<agent-01-token>
+https://hub.example.com/user/agent-02/?token=<agent-02-token>
+
+In this setup:
+
+hub-url is the JupyterHub server address.
+hub-agent-name is the JupyterHub user assigned to the agent, such as agent-01.
+agent-token is the dedicated API token for that agent.
+
+This gives each Claude Code agent its own authenticated access to a JupyterHub environment while still allowing all agents to collaborate through the shared workspace.
+
+The JupyterHub layer provides identity and workspace isolation, while the shared folder provides the communication space used by the AI Agent Farm communication protocol.
+
+
 ### Features
 - The AI Agents can run multiple tasks simultaneously, and processes are distributed across the workers for maximum efficiency.
 
