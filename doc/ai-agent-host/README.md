@@ -73,4 +73,4 @@ Start working with your notebooks and data, using the pre-installed tools and li
 
 - [Grafana - The open observability platform](https://grafana.com/)
 
-- [Langchain](https://python.langchain.com)
+
