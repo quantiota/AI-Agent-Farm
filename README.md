@@ -50,7 +50,7 @@ The connection URL follows this pattern:
 
 ```text
 https://<hub-url>/user/<hub-agent-name>/?token=<agent-token>
-
+```
 
 Example:
 
