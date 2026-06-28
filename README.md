@@ -54,9 +54,9 @@ https://<hub-url>/user/<hub-agent-name>/?token=<agent-token>
 
 Example:
 
-https://hub.example.com/user/agent-01/?token=agent-01-token
+https://hub.example.com/user/agent-01/?token=871084eedbfb4b1234641221d6f84063
 
-https://hub.example.com/user/agent-02/?token=agent-02-token
+https://hub.example.com/user/agent-02/?token=94e3e21c81984641234b59b51d9a2469
 
 In this setup:
 
