@@ -17,7 +17,7 @@ leverage the server's GPU resources (CUDA, cuDF, PyTorch, etc.).
 The script uses only Python built-ins (`socket`, `json`, `struct`) — no
 external dependencies required.
 
----
+
 
 ## Usage
 
@@ -32,7 +32,7 @@ python3 jh_exec.py -c "import torch; print(torch.cuda.is_available())"
 python3 jh_exec.py --new-kernel
 ```
 
----
+
 
 ## Configuration
 
@@ -52,7 +52,7 @@ export JH_TOKEN=your_token_here
 python3 jh_exec.py gpu_task.py
 ```
 
----
+
 
 ## How it works
 
@@ -62,7 +62,7 @@ python3 jh_exec.py gpu_task.py
 4. Streams `stream`, `execute_result`, and `error` messages back to stdout/stderr
 5. Exits cleanly on `execute_reply`
 
----
+
 
 ## Dedicating one GPU per agent lab
 
@@ -85,7 +85,30 @@ c.Spawner.pre_spawn_hook = assign_gpu
 Each agent kernel will then only see its assigned GPU. No changes are needed
 in `jh_exec.py` — the kernel inherits `CUDA_VISIBLE_DEVICES` automatically.
 
----
+
+
+### Install PyTorch in the JupyterHub environment
+
+PyTorch must be installed in the JupyterHub Python environment, not the system Python:
+
+```bash
+sudo /opt/jupyterhub/bin/python3 -m pip install torch --index-url https://download.pytorch.org/whl/cu121
+```
+
+### Validate GPU access from the agent terminal
+
+```bash
+/opt/venv/bin/python3 jh_exec.py -c "import torch; print(torch.cuda.is_available()); print(torch.cuda.device_count())"
+```
+
+Expected output:
+```
+True
+4
+```
+
+
+
 
 ## Notes
 
