@@ -36,7 +36,7 @@ python3 jh_exec.py --new-kernel
 
 ## Configuration
 
-Set via environment variables or edit the `CONFIG` block at the top of the script:
+Set via environment variables or a local `.env` file:
 
 | Variable      | Default                                | Description                  |
 |---------------|----------------------------------------|------------------------------|
