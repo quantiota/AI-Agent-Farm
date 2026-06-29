@@ -70,6 +70,7 @@ This gives each Claude Code agent its own authenticated access to a JupyterHub e
 
 The JupyterHub layer provides identity, workspace isolation, and GPU computational offload, while the shared folder provides the communication space used by the AI Agent Farm communication protocol.
 
+The AI Agent Farm communication protocol is based on the same principle that makes operating systems powerful: processes coordinate by modifying shared state exposed through the file system.
 
 ### Features
 - The AI Agents can run multiple tasks simultaneously, and processes are distributed across the workers for maximum efficiency.
