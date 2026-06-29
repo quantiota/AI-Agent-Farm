@@ -40,17 +40,15 @@ Set via environment variables or edit the `CONFIG` block at the top of the scrip
 
 | Variable      | Default                                | Description                  |
 |---------------|----------------------------------------|------------------------------|
-| `JH_HOST`     | `192.168.1.xxx`                        | JupyterHub server IP         |
+| `JH_HOST`     | `192.168.1.216`                        | JupyterHub server IP         |
 | `JH_PORT`     | `8000`                                 | JupyterHub port              |
 | `JH_USER`     | `agent-01`                             | JupyterHub username          |
-| `JH_TOKEN`    | *(see script)*                         | API token                    |
-| `JH_KERNEL`   | *(see script)*                         | Kernel ID to connect to      |
+| `JH_TOKEN`    | *(see .env)*                           | API token                    |
 | `JH_TIMEOUT`  | `600`                                  | Max seconds to wait (s)      |
 
 ```bash
-export JH_HOST=192.168.1.xxx
-export JH_TOKEN=xxxxxxxxxxxxxxxxxxx
-export JH_KERNEL=xxxxxxxxxxxxxxxxxxxxxxxxx
+export JH_HOST=192.168.1.216
+export JH_TOKEN=your_token_here
 python3 jh_exec.py gpu_task.py
 ```
 
@@ -66,9 +64,32 @@ python3 jh_exec.py gpu_task.py
 
 ---
 
+## Dedicating one GPU per agent lab
+
+To assign a specific GPU to each JupyterHub user, add the following to
+`jupyterhub_config.py` on the server:
+
+```python
+def assign_gpu(spawner):
+    gpu_map = {
+        "agent-01": "0",
+        "agent-02": "1",
+        "agent-03": "2",
+        # add more agents as needed
+    }
+    spawner.environment["CUDA_VISIBLE_DEVICES"] = gpu_map.get(spawner.user.name, "")
+
+c.Spawner.pre_spawn_hook = assign_gpu
+```
+
+Each agent kernel will then only see its assigned GPU. No changes are needed
+in `jh_exec.py` — the kernel inherits `CUDA_VISIBLE_DEVICES` automatically.
+
+---
+
 ## Notes
 
-- The kernel must already be running (use `--new-kernel` to start one)
+- The kernel is auto-discovered at runtime (reused if running, created if not)
 - The kernel has full access to the server filesystem (`/srv/data/...`)
 - GPU libraries available on the server (PyTorch, cuDF, etc.) are accessible normally
 - The agent terminal only receives text output — for binary results, write to a file
