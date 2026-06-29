@@ -40,7 +40,7 @@ Set via environment variables or edit the `CONFIG` block at the top of the scrip
 
 | Variable      | Default                                | Description                  |
 |---------------|----------------------------------------|------------------------------|
-| `JH_HOST`     | `192.168.1.xxx`                        | JupyterHub server IP         |
+| `JH_HOST`     | `192.168.1.216`                        | JupyterHub server IP         |
 | `JH_PORT`     | `8000`                                 | JupyterHub port              |
 | `JH_USER`     | `agent-01`                             | JupyterHub username          |
 | `JH_TOKEN`    | *(see .env)*                           | API token                    |
