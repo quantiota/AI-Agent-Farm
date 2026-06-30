@@ -1,10 +1,8 @@
-
-
 # AI Agent Farm — GPU Validation Setup
 
-This document describes a **testing configuration** used to validate the AI Agent Farm with NVIDIA GPUs.
+This document describes a **GPU validation configuration** for testing the AI Agent Farm.
 
-The goal is not to provide a production GPU setup. The goal is to confirm that the farm can detect GPUs, run CUDA workloads, expose GPUs inside the JupyterHub environment, and support multiple AI agents.
+The goal is to confirm that the farm can detect NVIDIA GPUs, run CUDA workloads, expose GPUs inside the JupyterHub environment, and assign GPU devices to AI agents.
 
 ## Tested Configuration
 
@@ -21,27 +19,11 @@ CUDA used by PyTorch: 11.6
 GPU architecture: sm_37
 ```
 
-The Tesla K80 is an old Kepler GPU. It is useful for validating the infrastructure, but it is **not recommended for production AI workloads**.
+## GPU Recommendation
 
-## Important Note About GPU Choice
+The Tesla K80 is used here as a **validation GPU**. It is useful for testing the AI Agent Farm infrastructure, but users should upgrade to a recent NVIDIA GPU for production AI workloads.
 
-The Tesla K80 is good enough for testing the AI Agent Farm architecture:
-
-```text
-GPU detection
-CUDA visibility
-PyTorch GPU access
-JupyterHub integration
-multi-agent GPU assignment
-Grafana monitoring
-QuestDB logging
-farm scheduling
-backup and recovery testing
-```
-
-However, users should upgrade to a more recent NVIDIA GPU for serious workloads.
-
-Recommended production GPUs include newer NVIDIA architectures such as:
+Recommended production GPUs include:
 
 ```text
 Tesla V100
@@ -50,34 +32,8 @@ RTX 4090
 A100
 L40S
 H100
-or any modern CUDA-supported datacenter GPU
+or any modern CUDA-supported NVIDIA GPU
 ```
-
-The K80 should be considered a **validation GPU**, not a production GPU.
-
-## Why K80 Is Still Useful for Testing
-
-A Tesla K80 card contains two GPU devices.
-
-For example:
-
-```text
-1 Tesla K80 card = 2 visible NVIDIA GPUs
-8 Tesla K80 cards = 16 visible NVIDIA GPUs
-```
-
-This is useful for testing an AI Agent Farm because each visible GPU can be assigned to a separate agent.
-
-Example:
-
-```bash
-CUDA_VISIBLE_DEVICES=0 agent_1
-CUDA_VISIBLE_DEVICES=1 agent_2
-CUDA_VISIBLE_DEVICES=2 agent_3
-CUDA_VISIBLE_DEVICES=3 agent_4
-```
-
-With 8 K80 cards, the farm can expose up to 16 GPU devices for infrastructure validation.
 
 ## Install NVIDIA Driver for Tesla K80
 
@@ -153,10 +109,10 @@ sudo /opt/jupyterhub/bin/python3 -m pip install \
 
 ## Validate PyTorch GPU Access
 
-Run:
+Run the validation as the normal JupyterHub user when possible. Use `sudo` only for installation.
 
 ```bash
-sudo /opt/jupyterhub/bin/python3 - <<'PY'
+/opt/jupyterhub/bin/python3 - <<'PY'
 import torch
 
 print("torch:", torch.__version__)
@@ -177,7 +133,7 @@ arch list: ['sm_37', ...]
 gpu: Tesla K80
 ```
 
-The important part is:
+The important checks are:
 
 ```text
 cuda available: True
@@ -192,8 +148,7 @@ sm_37
 Run:
 
 ```bash
-
- /opt/jupyterhub/bin/python3 - <<'PY'
+/opt/jupyterhub/bin/python3 - <<'PY'
 import torch
 
 print("torch:", torch.__version__)
@@ -210,6 +165,7 @@ print("GPU computation OK")
 print("Result shape:", z.shape)
 print("Allocated memory MB:", torch.cuda.memory_allocated() / 1024**2)
 PY
+```
 
 Expected result:
 
@@ -218,6 +174,8 @@ GPU computation OK
 Result shape: torch.Size([5000, 5000])
 GPU: Tesla K80
 ```
+
+For a faster test, use `2000 x 2000` instead of `5000 x 5000`.
 
 ## Check All Visible GPUs
 
@@ -237,9 +195,16 @@ GPU 3: Tesla K80
 ...
 ```
 
-Each visible GPU can be used as a separate worker device in the AI Agent Farm.
+A Tesla K80 card exposes two GPU devices:
+
+```text
+1 Tesla K80 card = 2 visible NVIDIA GPUs
+8 Tesla K80 cards = 16 visible NVIDIA GPUs
+```
 
 ## Assign One Agent per GPU
+
+Each visible GPU can be assigned to a separate agent with `CUDA_VISIBLE_DEVICES`.
 
 Example:
 
@@ -249,26 +214,6 @@ CUDA_VISIBLE_DEVICES=1 /opt/jupyterhub/bin/python3 agent.py
 CUDA_VISIBLE_DEVICES=2 /opt/jupyterhub/bin/python3 agent.py
 CUDA_VISIBLE_DEVICES=3 /opt/jupyterhub/bin/python3 agent.py
 ```
-
-For a larger K80 system:
-
-```text
-8 Tesla K80 cards = 16 GPU devices = up to 16 isolated test agents
-```
-
-
-## Production Recommendation
-
-The Tesla K80 validates that the AI Agent Farm architecture works, but production users should upgrade to modern NVIDIA GPUs.
-
-The recommended production direction is:
-
-```text
-K80 = infrastructure validation
-V100 / A100 / H100 / RTX 4090 / L40S = real AI workload
-```
-
-The AI Agent Farm should be tested first with available GPUs, then deployed with more recent GPUs for serious AI workloads.
 
 ## Validation Checklist
 
@@ -287,5 +232,3 @@ A node is considered valid when all checks pass:
 ```
 
 Once these checks pass, the node is ready for AI Agent Farm testing.
-
-This README makes the K80 position clear: excellent for validating the farm, but users should upgrade for real production AI workloads.
