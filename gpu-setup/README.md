@@ -202,18 +202,24 @@ A Tesla K80 card exposes two GPU devices:
 8 Tesla K80 cards = 16 visible NVIDIA GPUs
 ```
 
-## Assign One Agent per GPU
+## Validate GPU Pinning
 
-Each visible GPU can be assigned to a separate agent with `CUDA_VISIBLE_DEVICES`.
-
-Example:
+To confirm a process can be pinned to a **specific** visible GPU, run a script
+directly on the host with `CUDA_VISIBLE_DEVICES`:
 
 ```bash
-CUDA_VISIBLE_DEVICES=0 /opt/jupyterhub/bin/python3 agent.py
-CUDA_VISIBLE_DEVICES=1 /opt/jupyterhub/bin/python3 agent.py
-CUDA_VISIBLE_DEVICES=2 /opt/jupyterhub/bin/python3 agent.py
-CUDA_VISIBLE_DEVICES=3 /opt/jupyterhub/bin/python3 agent.py
+CUDA_VISIBLE_DEVICES=0 /opt/jupyterhub/bin/python3 -c "import torch; print(torch.cuda.get_device_name(0))"
+CUDA_VISIBLE_DEVICES=1 /opt/jupyterhub/bin/python3 -c "import torch; print(torch.cuda.get_device_name(0))"
 ```
+
+Each command should report only the single GPU it was pinned to. This is a
+host-level sanity check, **not** how agents are assigned GPUs in the running farm.
+
+In production, agents run as JupyterHub users and their kernels are spawned by the
+Hub — so GPU assignment happens at spawn time via a `pre_spawn_hook` that maps
+each username to a device. See
+[GPU Offload → Dedicating one GPU per agent](../gpu-offload/README.md#dedicating-one-gpu-per-agent)
+for the canonical mechanism.
 
 ## Validation Checklist
 
