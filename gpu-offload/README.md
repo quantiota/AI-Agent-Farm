@@ -1,10 +1,12 @@
-# JupyterHub GPU Offload Interface
+# GPU Offload
 
 ## Overview
 
-`jh_exec.py` is a lightweight Python script that lets an AI agent terminal
-offload heavy computation to a remote JupyterHub kernel — in particular to
-leverage the server's GPU resources (CUDA, cuDF, PyTorch, etc.).
+Each agent runs on a modest CPU microserver, while the GPUs live on the central
+JupyterHub server. **[`jupyterhub-exec`](https://github.com/quantiota/jupyterhub-exec)**
+bridges the two: an agent terminal offloads heavy computation to a remote
+JupyterHub kernel and streams the output back — leveraging the server's GPU
+resources (CUDA, PyTorch, cuDF, …) without any local GPU.
 
 ```
 ┌─────────────────────────┐        WebSocket         ┌──────────────────────────┐
@@ -14,59 +16,65 @@ leverage the server's GPU resources (CUDA, cuDF, PyTorch, etc.).
 └─────────────────────────┘                           └──────────────────────────┘
 ```
 
-The script uses only Python built-ins (`socket`, `json`, `struct`) — no
-external dependencies required.
+`jupyterhub-exec` is a standalone package (born from this farm) that speaks the
+Jupyter kernel protocol over a raw WebSocket — no browser, no notebook UI, and
+zero dependencies beyond the Python standard library.
 
+## Install
 
+```bash
+pip install jupyterhub-exec
+```
 
 ## Usage
 
 ```bash
-# Execute a script file on the remote kernel
-python3 jh_exec.py my_script.py
+# Run a script file on the remote GPU kernel
+jh-exec run gpu_task.py
 
 # Execute inline code
-python3 jh_exec.py -c "import torch; print(torch.cuda.is_available())"
+jh-exec exec "import torch; print(torch.cuda.is_available())"
 
-# Start a new kernel and get its ID
-python3 jh_exec.py --new-kernel
+# List running kernels
+jh-exec kernels
+
+# Start a new kernel
+jh-exec new-kernel
 ```
-
-
 
 ## Configuration
 
-Set via environment variables or a local `.env` file:
+Set via environment variables or a `.env` file in the working or home directory.
 
-| Variable      | Default                                | Description                  |
-|---------------|----------------------------------------|------------------------------|
-| `JH_HOST`     | `192.168.1.xxx`                        | JupyterHub server IP         |
-| `JH_PORT`     | `8000`                                 | JupyterHub port              |
-| `JH_USER`     | `agent-01`                             | JupyterHub username          |
-| `JH_TOKEN`    | *(see .env)*                           | API token                    |
-| `JH_TIMEOUT`  | `600`                                  | Max seconds to wait (s)      |
+**Public JupyterHub (HTTPS — the farm's hub):**
 
 ```bash
-export JH_HOST=192.168.1.216
-export JH_TOKEN=your_token_here
-python3 jh_exec.py gpu_task.py
+JH_HOST=hub.example.com
+JH_PORT=443
+JH_USER=agent-01
+JH_TOKEN=your_token_here
+JH_TIMEOUT=600
 ```
 
+**Local JupyterHub (HTTP):**
 
+```bash
+JH_HOST=192.168.1.216
+JH_PORT=8000
+JH_USER=agent-01
+JH_TOKEN=your_token_here
+JH_SSL=false
+JH_TIMEOUT=600
+```
 
-## How it works
+Each agent gets its own JupyterHub user and API token, so its offloaded work is
+isolated to its own workspace and GPU. In the AI Agent Lab, these credentials can
+be entered through the **JupyterHub API Key** box in the AI Agent UI, which
+delivers the `.env` into the agent terminal automatically.
 
-1. Opens a raw TCP socket to the JupyterHub server
-2. Performs the WebSocket HTTP upgrade handshake manually
-3. Sends a Jupyter `execute_request` message to the kernel channel
-4. Streams `stream`, `execute_result`, and `error` messages back to stdout/stderr
-5. Exits cleanly on `execute_reply`
+## Dedicating one GPU per agent
 
-
-
-## Dedicating one GPU per agent lab
-
-To assign a specific GPU to each JupyterHub user, add the following to
+To pin a specific GPU to each JupyterHub user, add a spawn hook to
 `jupyterhub_config.py` on the server:
 
 ```python
@@ -82,38 +90,38 @@ def assign_gpu(spawner):
 c.Spawner.pre_spawn_hook = assign_gpu
 ```
 
-Each agent kernel will then only see its assigned GPU. No changes are needed
-in `jh_exec.py` — the kernel inherits `CUDA_VISIBLE_DEVICES` automatically.
+Each agent kernel then only sees its assigned GPU — no client-side change is
+needed, the kernel inherits `CUDA_VISIBLE_DEVICES` automatically.
 
+## Server-side prerequisites
 
-
-### Install PyTorch in the JupyterHub environment
-
-PyTorch must be installed in the JupyterHub Python environment, not the system Python:
+PyTorch (and any other GPU libraries) must be installed in the **JupyterHub**
+Python environment, not the system Python:
 
 ```bash
 sudo /opt/jupyterhub/bin/python3 -m pip install torch --index-url https://download.pytorch.org/whl/cu121
 ```
 
-### Validate GPU access from the agent terminal
+Validate GPU access from the agent terminal:
 
 ```bash
-/opt/venv/bin/python3 jh_exec.py -c "import torch; print(torch.cuda.is_available()); print(torch.cuda.device_count())"
+jh-exec exec "import torch; print(torch.cuda.is_available()); print(torch.cuda.device_count())"
 ```
 
 Expected output:
+
 ```
 True
 4
 ```
 
-
-
-
 ## Notes
 
 - The kernel is auto-discovered at runtime (reused if running, created if not)
-- The kernel has full access to the server filesystem (`/srv/data/...`)
-- GPU libraries available on the server (PyTorch, cuDF, etc.) are accessible normally
-- The agent terminal only receives text output — for binary results, write to a file
-  on the server and fetch via the JupyterHub Contents API
+  and persists across calls.
+- The kernel has full access to the server filesystem (`/srv/data/...`).
+- The agent terminal only receives text output — for binary results, write to a
+  file on the server and fetch it via the JupyterHub Contents API.
+- See the [`jupyterhub-exec`](https://github.com/quantiota/jupyterhub-exec)
+  repository for the Python API (`execute`, `list_kernels`, `new_kernel`) and
+  benchmarks.
