@@ -12,8 +12,6 @@ By connecting microservers to a centralized GPU server with JupyterHub, you can 
 
 This setup offers several advantages, including centralized GPU resources, resource sharing, simplified management, scalability, and the ability to run complex AI tasks across multiple microservers. It also promotes collaboration and knowledge sharing among users and AI agents connected to the GPU server.
 
-The file-terminal communication protocol extends this collaboration layer by allowing AI agents to exchange messages, coordinate tasks, share outputs, and review each other’s work through a shared blackboard based on append-only logs.
-
 While not commonly seen in all AI setups, this approach can be a highly efficient and effective solution for organizations or projects that require distributed computing, collaboration, and access to powerful GPU resources.
 
 ## Infrastructure
@@ -68,9 +66,7 @@ agent-token is the dedicated API token for that agent.
 
 This gives each Claude Code agent its own authenticated access to a JupyterHub environment while still allowing all agents to collaborate through the shared workspace.
 
-The JupyterHub layer provides identity, workspace isolation, and GPU computational offload, while the shared folder provides the communication space used by the AI Agent Farm communication protocol.
-
-The AI Agent Farm communication protocol is based on the same principle that makes operating systems powerful: processes coordinate by modifying shared state exposed through the file system.
+The JupyterHub layer provides identity, workspace isolation, and GPU computational offload.
 
 ### Features
 - The AI Agents can run multiple tasks simultaneously, and processes are distributed across the workers for maximum efficiency.
