@@ -172,6 +172,8 @@ Each microserver is equipped with a 250GB SSD, 16GB of RAM, and 4x1TB of RAID da
 
 [AI Agent Lab](https://github.com/quantiota/AI-Agent-Lab)
 
+[Structured Knowledge Accumulation](https://github.com/quantiota/AI-Agent-Farm/tree/master/structured-knowledge-accumulation)
+
 [Web Applications](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/webapps)
 
 [Benchmark](https://github.com/quantiota/AI-Agent-Farm/tree/master/doc/benchmark)
