@@ -44,33 +44,10 @@ jh-exec new-kernel
 
 ## Configuration
 
-Set via environment variables or a `.env` file in the working or home directory.
-
-**Public JupyterHub (HTTPS — the farm's hub):**
-
-```bash
-JH_HOST=hub.example.com
-JH_PORT=443
-JH_USER=agent-01
-JH_TOKEN=your_token_here
-JH_TIMEOUT=600
-```
-
-**Local JupyterHub (HTTP):**
-
-```bash
-JH_HOST=192.168.1.216
-JH_PORT=8000
-JH_USER=agent-01
-JH_TOKEN=your_token_here
-JH_SSL=false
-JH_TIMEOUT=600
-```
-
 Each agent gets its own JupyterHub user and API token, so its offloaded work is
 isolated to its own workspace and GPU. In the AI Agent Lab, these credentials can
 be entered through the **JupyterHub API Key** box in the AI Agent UI, which
-delivers the `.env` into the agent terminal automatically.
+delivers the credentials into the agent terminal automatically.
 
 ## Dedicating one GPU per agent
 
