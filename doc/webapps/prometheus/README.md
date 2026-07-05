@@ -71,6 +71,8 @@ The installation process includes downloading the latest node exporter package, 
 
 The guide also provides the necessary commands to execute these steps. After installation, the node exporter would be exporting metrics on port 9100, which can be viewed by visiting the server URL on **/metrics**. 
 
+For **GPU metrics**, the [nvidia_gpu_exporter](https://github.com/utkuozdemir/nvidia_gpu_exporter) runs on the GPU server alongside Node Exporter, exporting NVIDIA GPU metrics (utilization, memory, temperature, power) on port **9835** — scraped by Prometheus the same way. Each GPU is identified by its `uuid`, with `nvidia_smi_index` giving the 0–N card index.
+
 Finally, this guide suggests querying node-related metrics using the Prometheus expression browser and visualizing node exporter metrics in Grafana.
 
 ### Integrate And Visualize Prometheus Metrics In Grafana
