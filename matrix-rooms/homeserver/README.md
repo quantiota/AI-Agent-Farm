@@ -1,26 +1,41 @@
 # homeserver — standalone Synapse for the federation Matrix rooms
 
-Self-contained Synapse + Postgres stack for the project rooms. **Farm-level, not part of
-the AI Agent Lab** — the lab only ships the `matrix-nio` client dependency. Put a TLS
-reverse proxy in front and serve `.well-known` delegation so the identity suffix
-(`@user:<server_name>`) can differ from the host that actually runs Synapse.
+Self-contained Synapse + Postgres + nginx stack for the project rooms. **Farm-level, not part
+of the AI Agent Lab** — the lab only ships the `matrix-nio` client dependency. nginx (in the
+compose, standard `envsubst '$DOMAIN'` pattern) terminates TLS; serve `.well-known` delegation
+so the identity suffix (`@user:microserver.network`) can differ from the host that runs Synapse
+(`matrix.microserver.network`).
 
 ## Files
 
+The stack lives in [`docker/`](docker/) (same layout as the AI Agent Lab's `docker/`):
+
 | file | role |
 |---|---|
-| `docker-compose.yaml` | Synapse (`matrixdotorg/synapse`) + Postgres (`postgres:16-alpine`, C-locale collation) |
-| `configure-homeserver.py` | after `generate`, points the DB at Postgres and closes registration (invite-only) |
-| `.env.example` | `SYNAPSE_SERVER_NAME` — the **irreversible** identity suffix |
+| `docker/docker-compose.yaml` | Synapse (`matrixdotorg/synapse`) + Postgres (`postgres:16-alpine`, C-locale collation) + **nginx** (TLS/reverse-proxy) + **certbot** |
+| `docker/configure-homeserver.py` | after `generate`, points the DB at Postgres and closes registration (invite-only) |
+| `docker/.env.example` | `SYNAPSE_SERVER_NAME` — the **irreversible** identity suffix |
+| `docker/nginx/nginx.conf` | base nginx config (stock; `include`s `conf.d/*.conf` in `http{}`) |
+| `docker/nginx/conf.d/default.conf.template` | matrix vhost, rendered by the nginx service (`envsubst '$DOMAIN'` → `default.conf`); proxies `/_matrix` + `/_synapse/client` to `synapse:8008`, **no SSO** |
+| `docker/nginx/nginx.env` | `DOMAIN` fed to the envsubst → `server_name matrix.${DOMAIN}` |
+| `docker/nginx/certs/dhparam.pem` | DH params for the TLS vhost (public, shipped) |
 
 ## Bring it up
 
 The current image does **not** generate config on-the-fly, so `generate` is an explicit step:
 
 ```bash
-cp .env.example .env          # then edit SYNAPSE_SERVER_NAME (irreversible)
+cd docker
+cp .env.example .env               # SYNAPSE_SERVER_NAME (irreversible)
+# edit nginx/nginx.env             # DOMAIN, so server_name = matrix.$DOMAIN
+
 docker compose run --rm synapse generate
 python3 configure-homeserver.py synapse-data/homeserver.yaml
+
+# nginx needs a cert covering matrix.microserver.network in /etc/letsencrypt/live/microserver.network/
+#   (DNS-01 wildcard is simplest; or webroot via the .well-known mount).
+#   dhparam.pem already ships in nginx/certs/.
+
 docker compose up -d
 ```
 
@@ -32,73 +47,30 @@ docker compose exec synapse register_new_matrix_user \
   -c /data/homeserver.yaml http://localhost:8008
 ```
 
-## TLS + delegation (reverse proxy)
+## TLS + delegation
 
-Synapse listens on `8008` (plaintext). Terminate TLS at nginx and, if `server_name` differs
-from the host, publish delegation so other servers/clients find it.
+Synapse listens on `8008` (internal, `expose`d not published). The **nginx service** fronts it
+with TLS — the vhost is [`docker/nginx/conf.d/default.conf.template`](docker/nginx/conf.d/default.conf.template),
+rendered at container start by `envsubst '$DOMAIN'` (`DOMAIN` from `nginx/nginx.env`) into
+`server_name matrix.${DOMAIN}`. It proxies `/_matrix` + `/_synapse/client` to `synapse:8008` and
+deliberately carries **no Authelia** — Matrix clients and server-to-server federation use their
+own access tokens, so SSO-gating `/_matrix` would break login and federation.
 
-`https://matrix.<domain>` vhost — proxy the Matrix paths, **no SSO** (Matrix uses its own tokens):
+Before the nginx service can start it needs a cert for `matrix.microserver.network` in
+`/etc/letsencrypt/live/microserver.network/` (the `certbot` service + the `.well-known` mount, or a
+DNS-01 wildcard). `nginx/certs/dhparam.pem` already ships.
 
-```nginx
-
-
-# HTTPS server to handle Matrix (Synapse homeserver)
-# NOTE: deliberately NO Authelia — Matrix clients (Element) and server-to-server
-# federation authenticate with their OWN access tokens; SSO-gating /_matrix would
-# break login and federation. This vhost is public, guarded by Matrix's own auth.
-server {
-    client_max_body_size 50M;
-    listen 443 ssl;
-    server_name matrix.${DOMAIN};
-
-    ssl_certificate /etc/letsencrypt/live/${DOMAIN}/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/${DOMAIN}/privkey.pem;
-
-    ssl_protocols TLSv1.2 TLSv1.3;
-    ssl_prefer_server_ciphers on;
-    ssl_dhparam /etc/ssl/certs/dhparam.pem;
-    ssl_ciphers 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384';
-    ssl_session_timeout 1d;
-    ssl_session_cache shared:SSL:50m;
-    ssl_stapling on;
-    ssl_stapling_verify on;
-    add_header Strict-Transport-Security max-age=15768000;
-
-    # Matrix client-server + federation-client API → Synapse (no SSO gate here)
-    location ~ ^(/_matrix|/_synapse/client) {
-        resolver 127.0.0.11 valid=10s;
-        set $upstream_synapse synapse;
-        proxy_pass http://$upstream_synapse:8008;
-
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header Host $host;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-
-        proxy_http_version 1.1;
-        client_max_body_size 50M;   # media uploads
-        proxy_buffering off;
-    }
-
-    # Cert validation only
-    location ~ /.well-known {
-        allow all;
-    }
-}
-
-```
-
-Delegation — served at `https://<server_name>/.well-known/matrix/server` so
-`@user:<server_name>` resolves to `matrix.<domain>` ("the MX record for Matrix"):
+Delegation — served at `https://microserver.network/.well-known/matrix/server` so
+`@user:microserver.network` resolves to `matrix.microserver.network` ("the MX record for Matrix"):
 
 ```json
-{ "m.server": "matrix.<domain>:443" }
+{ "m.server": "matrix.microserver.network:443" }
 ```
 
 And `.../.well-known/matrix/client` for clients:
 
 ```json
-{ "m.homeserver": { "base_url": "https://matrix.<domain>" } }
+{ "m.homeserver": { "base_url": "https://matrix.microserver.network" } }
 ```
 
 ## Notes
@@ -106,5 +78,5 @@ And `.../.well-known/matrix/client` for clients:
 - `synapse-data/` (bind mount) holds `homeserver.yaml`, the signing key and generated
   secrets — **do not commit it**; add it to `.gitignore`.
 - Prototype passwords are weak by design — rotate before real use.
-- Validated on `quantiota.net` (the existing lab instance) with a wildcard cert; the
-  production identity is `microserver.network`.
+- Production identity is `microserver.network`; the server runs at `matrix.microserver.network`.
+  (First validated end-to-end on a prototype instance.)

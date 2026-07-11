@@ -6,8 +6,8 @@ Mirrors the email idle-listener exactly, new transport:
   `claude` session  ->  the LIVE Claude reads it, thinks, and replies by running
   matrix_send.py. This listener NEVER replies itself.
 
-Runs in the vscode container (same tmux server + same docker network as synapse).
-Env: MATRIX_HOMESERVER (default http://synapse:8008), MATRIX_USER, MATRIX_PASSWORD,
+Runs in a lab vscode container (same tmux server as the live `claude` session).
+Env: MATRIX_HOMESERVER (default https://matrix.microserver.network), MATRIX_USER, MATRIX_PASSWORD,
      MATRIX_NAME (trigger word, default localpart), CLAUDE_SESSION (default 'claude'),
      MATRIX_SEND (path to matrix_send.py).
 """
@@ -16,7 +16,7 @@ import os
 import subprocess
 from nio import AsyncClient, RoomMessageText, InviteMemberEvent
 
-HS      = os.environ.get("MATRIX_HOMESERVER", "http://synapse:8008")
+HS      = os.environ.get("MATRIX_HOMESERVER", "https://matrix.microserver.network")
 USER    = os.environ["MATRIX_USER"]
 PW      = os.environ["MATRIX_PASSWORD"]
 NAME    = os.environ.get("MATRIX_NAME", USER.split(":")[0].lstrip("@"))

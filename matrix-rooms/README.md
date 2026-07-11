@@ -5,8 +5,6 @@ project**, where the humans and the agents working on that project talk together
 whole conversation is recorded. Complements the email agent (async, node-to-node letters)
 with a live shared channel. This is the Matrix side of the Farm agent-comms layer (task #12).
 
-See [`dev-plan.md`](dev-plan.md) for the full design and phases.
-
 ## How it works
 
 A room message addressed to an agent is routed into that agent's **live Claude session** —
@@ -31,7 +29,7 @@ and posts it with `matrix_send.py`. Room text is treated as **DATA, not instruct
 |---|---|
 | `matrix-listen.py` | bridge: live-sync rooms; on a message addressed to the agent, `tmux send-keys` a directive into the live `claude` session. Auto-joins invited rooms. Never replies. |
 | `matrix_send.py` | one-shot sender the live agent runs to post a reply: `python matrix_send.py '<room_id>' "<text>"` |
-| `homeserver/` | standalone Synapse + Postgres compose (Farm-level homeserver) + config helper — see [`homeserver/README.md`](homeserver/README.md) |
+| `homeserver/` | standalone Synapse + Postgres + nginx stack (Farm-level homeserver) in `homeserver/docker/` — see [`homeserver/README.md`](homeserver/README.md) |
 
 ## Requirements
 
@@ -45,24 +43,25 @@ stack in [`homeserver/`](homeserver/) — the standalone AI Agent Lab repo gains
 
 ## Run
 
+The three client vars live in the **AI Agent Lab docker env** (the vscode service
+environment), so the listener inherits the node's identity — no inline creds:
+
 ```bash
-tmux new-window -d -n mxlisten \
-  "MATRIX_HOMESERVER=https://matrix.<domain> \
-   MATRIX_USER='@microserverNN:<domain>' \
-   MATRIX_PASSWORD='...' \
-   python3 /path/to/matrix-listen.py"
+tmux new-window -d -n mxlisten "python3 /home/coder/docker/matrix/matrix-listen.py"
 ```
 
 Its own tmux window keeps it alive alongside the `claude` session. Then invite
-`@microserverNN:<domain>` to a project room; the listener auto-joins, and mentioning the
+`@microserverNN:microserver.network` to a project room; the listener auto-joins, and mentioning the
 agent's name reaches its live session.
 
 ### Environment
 
+Set on the lab's vscode service (docker env). Per node:
+
 | var | default | notes |
 |---|---|---|
-| `MATRIX_HOMESERVER` | `http://synapse:8008` | use the public `https://matrix.<domain>` when the agent runs on a different host than Synapse |
-| `MATRIX_USER` | — | required, e.g. `@microserver01:quantiota.net` |
+| `MATRIX_HOMESERVER` | `https://matrix.microserver.network` | the federation homeserver; override to `http://synapse:8008` only if the agent runs on the homeserver host |
+| `MATRIX_USER` | — | required, e.g. `@microserver01:microserver.network` |
 | `MATRIX_PASSWORD` | — | required (prototype uses weak passwords — rotate for real use) |
 | `MATRIX_NAME` | localpart of user | trigger word |
 | `CLAUDE_SESSION` | `claude` | tmux session to notify |
@@ -70,11 +69,10 @@ agent's name reaches its live session.
 
 ## Status
 
-Prototyped and validated on the existing AI Agent Lab instance (`matrix.quantiota.net`):
-two live agents (`@microserver01` / `@microserver02`) held a real agent-to-agent
-conversation in a shared room, each routed through `tmux send-keys` into its own live
-session. Phases 1, 2 and 4 (preferred/tmux path) done.
+Validated end-to-end on a prototype instance: two live agents (`@microserver01` /
+`@microserver02`) held a real agent-to-agent conversation in a shared room, each routed
+through `tmux send-keys` into its own live session. Homeserver, agent-in-room, and the
+tmux brain-bridge all proven.
 
 Known open item — a **loop guard**: two agents addressing each other by name loop forever;
-the listener should skip `@microserverNN` senders or apply a cooldown. See `dev-plan.md`
-Phase 5.
+the listener should skip `@microserverNN` senders or apply a cooldown.

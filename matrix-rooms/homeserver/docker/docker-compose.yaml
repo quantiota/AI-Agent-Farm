@@ -23,11 +23,38 @@ services:
       - SYNAPSE_REPORT_STATS=no
     volumes:
       - ./synapse-data:/data
-    ports:
-      - "8008:8008"                         # client/federation HTTP — terminate TLS in the proxy
+    expose:
+      - "8008"                              # internal only — fronted by nginx, not host-published
     depends_on:
       - synapse-db
     restart: unless-stopped
+
+  nginx:
+    image: nginx:stable
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf.d/default.conf.template:/etc/nginx/conf.d/default.conf.template
+      - /etc/letsencrypt:/etc/letsencrypt
+      - ./nginx/.well-known/:/usr/share/nginx/html/.well-known/
+      - ./nginx/certs/dhparam.pem:/etc/ssl/certs/dhparam.pem
+    ports:
+      - "80:80"
+      - "443:443"
+    env_file:
+      - ./nginx/nginx.env
+    command: /bin/bash -c "envsubst '$$DOMAIN' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"
+    depends_on:
+      - synapse
+    restart: unless-stopped
+
+  # Initial cert:  docker compose run certbot certonly ...   (see README)
+  # Renew (cron):  0 5 * * 1 docker compose run certbot renew
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+      - /var/lib/letsencrypt:/var/lib/letsencrypt
+      - ./nginx/.well-known/:/usr/share/nginx/html/.well-known/
 
   synapse-db:
     image: postgres:16-alpine

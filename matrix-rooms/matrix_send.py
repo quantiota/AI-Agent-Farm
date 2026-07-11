@@ -5,15 +5,16 @@ The LIVE Claude runs this to reply in a room (the Matrix analog of `email_agent 
 
     python matrix_send.py '<room_id>' '<your reply text>'
 
-Creds from env: MATRIX_HOMESERVER (default http://synapse:8008), MATRIX_USER, MATRIX_PASSWORD.
-Runs in the vscode container — reaches synapse on the internal docker network.
+Creds from env: MATRIX_HOMESERVER (default https://matrix.microserver.network), MATRIX_USER, MATRIX_PASSWORD.
+Runs in a lab vscode container; override MATRIX_HOMESERVER to http://synapse:8008 only when
+the agent runs on the homeserver host itself.
 """
 import asyncio
 import os
 import sys
 from nio import AsyncClient
 
-HS   = os.environ.get("MATRIX_HOMESERVER", "http://synapse:8008")
+HS   = os.environ.get("MATRIX_HOMESERVER", "https://matrix.microserver.network")
 USER = os.environ["MATRIX_USER"]
 PW   = os.environ["MATRIX_PASSWORD"]
 
