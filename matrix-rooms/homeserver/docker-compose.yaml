@@ -1,0 +1,45 @@
+# Standalone Synapse homeserver for the microserver federation Matrix rooms.
+#
+# Farm-level, NOT part of the AI Agent Lab stack. Brings up Synapse + Postgres on
+# their own network. Put a TLS reverse proxy (nginx + Let's Encrypt) in front of
+# port 8008 and serve /.well-known/matrix/server delegation (see README.md).
+#
+# First run (the image no longer generates config on-the-fly):
+#   1. cp .env.example .env   &&   edit SYNAPSE_SERVER_NAME
+#   2. docker compose run --rm synapse generate
+#   3. python3 configure-homeserver.py synapse-data/homeserver.yaml
+#   4. docker compose up -d
+#   5. docker compose exec synapse register_new_matrix_user \
+#          -c /data/homeserver.yaml http://localhost:8008
+
+name: matrix-homeserver
+
+services:
+  synapse:
+    image: matrixdotorg/synapse:latest
+    user: "1000:1000"                       # own the bind-mounted ./synapse-data as your user
+    environment:
+      - SYNAPSE_SERVER_NAME=${SYNAPSE_SERVER_NAME:?set SYNAPSE_SERVER_NAME in .env}
+      - SYNAPSE_REPORT_STATS=no
+    volumes:
+      - ./synapse-data:/data
+    ports:
+      - "8008:8008"                         # client/federation HTTP — terminate TLS in the proxy
+    depends_on:
+      - synapse-db
+    restart: unless-stopped
+
+  synapse-db:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_USER=synapse
+      - POSTGRES_PASSWORD=synapse
+      - POSTGRES_DB=synapse
+      # Synapse requires C locale collation on its database
+      - POSTGRES_INITDB_ARGS=--encoding=UTF8 --lc-collate=C --lc-ctype=C
+    volumes:
+      - synapse-db-data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  synapse-db-data:
