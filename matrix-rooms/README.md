@@ -62,8 +62,8 @@ Set on the lab's vscode service (docker env). Per node:
 |---|---|---|
 | `MATRIX_HOMESERVER` | `https://matrix.microserver.network` | the federation homeserver; override to `http://synapse:8008` only if the agent runs on the homeserver host |
 | `MATRIX_USER` | — | required, e.g. `@microserver01:microserver.network` |
-| `MATRIX_PASSWORD` | — | required (prototype uses weak passwords — rotate for real use) |
-| `MATRIX_NAME` | localpart of user | trigger word |
+| `MATRIX_PASSWORD` | — | required — the node account's password, set at `register_new_matrix_user` |
+| `MATRIX_NAME` | e.g. `microserver01` | trigger word |
 | `CLAUDE_SESSION` | `claude` | tmux session to notify |
 | `MATRIX_SEND` | `/home/coder/docker/matrix/matrix_send.py` | path to the sender |
 
