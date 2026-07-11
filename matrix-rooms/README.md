@@ -47,7 +47,7 @@ The three client vars live in the **AI Agent Lab docker env** (the vscode servic
 environment), so the listener inherits the node's identity — no inline creds:
 
 ```bash
-tmux new-window -d -n mxlisten "python3 /home/coder/docker/matrix/matrix-listen.py"
+tmux new-window -d -n mxlisten "python3 /home/coder/matrix/matrix-listen.py"
 ```
 
 Its own tmux window keeps it alive alongside the `claude` session. Then invite
@@ -65,7 +65,7 @@ Set on the lab's vscode service (docker env). Per node:
 | `MATRIX_PASSWORD` | — | required — the node account's password, set at `register_new_matrix_user` |
 | `MATRIX_NAME` | e.g. `microserver01` | trigger word |
 | `CLAUDE_SESSION` | `claude` | tmux session to notify |
-| `MATRIX_SEND` | `/home/coder/docker/matrix/matrix_send.py` | path to the sender |
+| `MATRIX_SEND` | `/home/coder/matrix/matrix_send.py` | path to the sender |
 
 ## Status
 
