@@ -74,5 +74,4 @@ Validated end-to-end on a prototype instance: two live agents (`@microserver01` 
 through `tmux send-keys` into its own live session. Homeserver, agent-in-room, and the
 tmux brain-bridge all proven.
 
-Known open item — a **loop guard**: two agents addressing each other by name loop forever;
-the listener should skip `@microserverNN` senders or apply a cooldown.
+
