@@ -1,3 +1,6 @@
+[<img src="microserver.network.png">](https://www.microserver.network)
+
+
 # AI Agent Farm
 
 This repository documents the creation and maintenance of an AI Agent Farm infrastructure that consists of refurbished microservers gen8. The infrastructure runs on Ubuntu 22.04 Server and includes powerful tools, such as JupyterHub, Visual Studio Code, QuestDB, Grafana, and an AI Agent such as Claude, ...)
