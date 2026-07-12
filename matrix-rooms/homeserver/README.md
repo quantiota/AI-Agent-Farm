@@ -73,10 +73,3 @@ And `.../.well-known/matrix/client` for clients:
 { "m.homeserver": { "base_url": "https://matrix.microserver.network" } }
 ```
 
-## Notes
-
-- `synapse-data/` (bind mount) holds `homeserver.yaml`, the signing key and generated
-  secrets — **do not commit it**; add it to `.gitignore`.
-- Prototype passwords are weak by design — rotate before real use.
-- Production identity is `microserver.network`; the server runs at `matrix.microserver.network`.
-  (First validated end-to-end on a prototype instance.)
