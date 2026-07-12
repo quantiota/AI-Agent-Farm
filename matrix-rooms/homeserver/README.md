@@ -1,71 +1,63 @@
 # homeserver — the federation's Matrix server
 
-The shared Matrix server every node talks through. Self-contained **Synapse + Postgres +
-nginx + certbot** stack. Farm-level (the labs only need the `matrix-nio` client).
+Synapse + Postgres + nginx + certbot. Runs at `matrix.microserver.network`; node
+identities are `@microserverNN:microserver.network`.
 
-- **Identity suffix:** `microserver.network` → users are `@microserverNN:microserver.network`
-- **Runs at:** `matrix.microserver.network` (nginx terminates TLS, proxies to Synapse on `8008`)
-
-The two names differ, so `.well-known` delegation (below) tells clients where to find the server.
-
-## Bring it up
-
-Everything lives in [`docker/`](docker/). Run from there:
+The stack is in [`docker/`](docker/). Run everything from there:
 
 ```bash
 cd docker
+```
 
-# 1. config
-cp .env.example .env          # set SYNAPSE_SERVER_NAME=microserver.network  (IRREVERSIBLE)
-$EDITOR nginx/nginx.env       # set DOMAIN=microserver.network → server_name matrix.$DOMAIN
+## 1. Configure
 
-# 2. generate Synapse config, then point it at Postgres + close registration
+```bash
+cp .env.example .env
+```
+
+`SYNAPSE_SERVER_NAME=microserver.network` is already set — it's the identity suffix in
+every user/room id and is **irreversible** once step 2 runs.
+
+## 2. Generate Synapse config
+
+```bash
 docker compose run --rm synapse generate
 python3 configure-homeserver.py synapse-data/homeserver.yaml
+```
 
-# 3. get a cert covering matrix.microserver.network into
-#    /etc/letsencrypt/live/microserver.network/   (DNS-01 wildcard is simplest)
+`generate` writes the signing key and secrets; `configure-homeserver.py` then points the
+database at Postgres and closes registration (invite-only).
 
-# 4. start
+## 3. Wildcard certificate
+
+Create a wildcard cert for `*.microserver.network` (DNS-01) so nginx finds it at
+`/etc/letsencrypt/live/microserver.network/`.
+
+## 4. Start
+
+```bash
 docker compose up -d
 ```
 
-## Accounts + tokens
+## 5. Create accounts
 
-Registration is closed (invite-only), so the admin registers each node:
+Registration is closed, so the admin registers each account. Make the admin first — token
+minting (step 6) needs it:
 
 ```bash
+# admin
+docker compose exec synapse register_new_matrix_user \
+  -u admin -p '<password>' --admin -c /data/homeserver.yaml http://localhost:8008
+
+# each node 01–08
 docker compose exec synapse register_new_matrix_user \
   -u microserver01 -p '<password>' --no-admin -c /data/homeserver.yaml http://localhost:8008
 ```
 
-Then mint one **access token per node** so labs authenticate with `MATRIX_TOKEN` (no password
-on the node) — see [`../TOKENS.md`](../TOKENS.md).
+## 6. Mint node tokens
 
-## `.well-known` delegation
+Each lab authenticates with an access token (`MATRIX_TOKEN`) — no password on the node.
+See [`TOKENS.md`](TOKENS.md).
 
-Served from `https://microserver.network/` so `@user:microserver.network` resolves to the
-server host:
-
-```
-/.well-known/matrix/server → { "m.server": "matrix.microserver.network:443" }
-/.well-known/matrix/client → { "m.homeserver": { "base_url": "https://matrix.microserver.network" } }
-```
-
-## What's in `docker/`
-
-| file | role |
-|---|---|
-| `docker-compose.yaml` | Synapse + Postgres (C-locale) + nginx (TLS) + certbot |
-| `configure-homeserver.py` | post-`generate`: point the DB at Postgres, close registration |
-| `.env.example` | `SYNAPSE_SERVER_NAME` — the irreversible identity suffix |
-| `nginx/` | TLS vhost (`default.conf.template`, `envsubst '$DOMAIN'`), proxies `/_matrix` + `/_synapse/client`, **no SSO** (Matrix uses its own tokens); ships `certs/dhparam.pem` |
-
-## Notes
-
-- **Don't commit `synapse-data/`** — it holds `homeserver.yaml`, the signing key and secrets.
-  Add it to `.gitignore`.
-- `SYNAPSE_SERVER_NAME` can never change once set — it's baked into every user/room id.
-- Prototype passwords are weak by design; rotate before real use.
 
 
