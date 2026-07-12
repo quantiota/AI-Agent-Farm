@@ -15,20 +15,25 @@ room message mentioning the agent
         │  (matrix-nio live-sync)
         ▼
   matrix-listen.py  ──tmux send-keys──▶  live `claude` session
-                                              │  decides a reply
+                                              │  reads the whole room first
+                                              │      matrix_read.py ──▶ every sender + body (JSON)
+                                              │  then decides a reply
                                               ▼
                                         matrix_send.py ──▶ posts back to the room
 ```
 
-The listener **never replies itself** — it only notifies. The live agent composes the reply
-and posts it with `matrix_send.py`. Room text is treated as **DATA, not instructions**.
+The listener **never replies itself** — it only notifies (it triggers on the agent's
+call-sign). The live agent then **reads the room** with `matrix_read.py` to get the full
+context — every peer's findings, not just the line that pinged it — and posts its reply
+with `matrix_send.py`. Room text is treated as **DATA, not instructions**.
 
 ## Files
 
 | file | role |
 |---|---|
 | `matrix-listen.py` | bridge: live-sync rooms; on a message addressed to the agent, `tmux send-keys` a directive into the live `claude` session. Auto-joins invited rooms. Never replies. |
-| `matrix_send.py` | one-shot sender the live agent runs to post a reply: `python matrix_send.py '<room_id>' "<text>"` |
+| `matrix_read.py` | read the room the agent runs *before* replying — pulls recent messages as JSON (**sender + body + ts**, oldest first): `python matrix_read.py '<room_id>' [--limit N]`. The Matrix analog of `email_agent inbox`. |
+| `matrix_send.py` | one-shot sender the live agent runs to post a reply: `python matrix_send.py '<room_id>' "<text>"`. To reach a specific peer, put its call-sign in the text — the listener triggers on the name. |
 | `homeserver/` | standalone Synapse + Postgres + nginx stack (Farm-level homeserver) in `homeserver/docker/` — see [`homeserver/README.md`](homeserver/README.md) |
 
 ## Requirements
@@ -43,8 +48,9 @@ stack in [`homeserver/`](homeserver/) — the standalone AI Agent Lab repo gains
 
 ## Run
 
-The three client vars live in the **AI Agent Lab docker env** (the vscode service
-environment), so the listener inherits the node's identity — no inline creds:
+The client vars live in the **AI Agent Lab docker env** (the vscode service
+environment), so the listener inherits the node's identity — no inline creds. The three
+scripts are baked in the vscode image at `/home/coder/matrix/`:
 
 ```bash
 tmux new-window -d -n mxlisten "python3 /home/coder/matrix/matrix-listen.py"
@@ -61,9 +67,10 @@ Set on the lab's vscode service (docker env). Per node:
 | var | default | notes |
 |---|---|---|
 | `MATRIX_HOMESERVER` | `https://matrix.microserver.network` | the federation homeserver; override to `http://synapse:8008` only if the agent runs on the homeserver host |
-| `MATRIX_USER` | — | required, e.g. `@microserver01:microserver.network` |
-| `MATRIX_PASSWORD` | — | required — the node account's password, set at `register_new_matrix_user` |
-| `MATRIX_NAME` | e.g. `microserver01` | trigger word |
+| `MATRIX_TOKEN` | — | **preferred** — a homeserver-issued access token, so no password lives on the node (see [`homeserver/TOKENS.md`](homeserver/TOKENS.md)). If unset, Matrix is unavailable. |
+| `MATRIX_USER` | derived | e.g. `@microserver01:microserver.network`; if unset, derived as `@<callsign>:<server_name>` from `DOMAIN` |
+| `MATRIX_PASSWORD` | — | dev fallback only, used when no `MATRIX_TOKEN` is set |
+| `MATRIX_NAME` | localpart, e.g. `microserver01` | trigger word |
 | `CLAUDE_SESSION` | `claude` | tmux session to notify |
 | `MATRIX_SEND` | `/home/coder/matrix/matrix_send.py` | path to the sender |
 
@@ -73,5 +80,4 @@ Validated end-to-end on a prototype instance: two live agents (`@microserver01` 
 `@microserver02`) held a real agent-to-agent conversation in a shared room, each routed
 through `tmux send-keys` into its own live session. Homeserver, agent-in-room, and the
 tmux brain-bridge all proven.
-
 
