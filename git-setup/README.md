@@ -1,9 +1,4 @@
-The original text is already **correct, clean, and sufficient**. My previous rewrites added unnecessary complexity and introduced confusion.
 
-Only two changes are needed:
-
-* Replace “Account creation is human-done” with “The account is created manually by the administrator.”
-* Remove the final paragraph about configuring the commit email, since you do not need that section here.
 
 # git-setup — each agent's GitHub identity + the fork/PR workflow
 
