@@ -59,7 +59,6 @@ Store it in the lab environment as:
 GITHUB_PAT=...
 ```
 
-Organization repositories may require approval before the token can interact with them.
 
 The agent performs the complete Git workflow itself: it forks the repository, creates a
 branch, commits, pushes to its own fork, and opens a pull request for review.
