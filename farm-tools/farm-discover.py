@@ -9,6 +9,9 @@ What it does:
   2. Reverse-DNS resolves each responder's hostname.
   3. Probes each host's Redfish endpoint (https://IP/redfish/v1/) to detect an
      HP iLO (Gen8 = iLO 4), then reads the iLO name + server serial/model.
+  4. With iLO creds, pairs each iLO to its HOST IP on the same row — asks the iLO for
+     its host NIC (Redfish Systems), then matches that MAC to the LAN ARP table (or uses
+     the AMS-reported IP if the host runs the Agentless Management Service).
 
 Usage:
   python3 farm-discover.py                       # auto-detect /24, no iLO creds
@@ -62,6 +65,19 @@ def rdns(ip):
     try: return socket.gethostbyaddr(ip)[0]
     except Exception: return "-"
 
+def arp_map():
+    """{ip: MAC} from the local ARP/neighbour table (the sweep populates it)."""
+    m = {}
+    try:
+        out = subprocess.run(["ip", "neigh"], capture_output=True, text=True).stdout
+        for ln in out.splitlines():
+            p = ln.split()
+            if "lladdr" in p:
+                m[p[0]] = p[p.index("lladdr") + 1].upper()
+    except Exception:
+        pass
+    return m
+
 def redfish_get(ip, path, auth=None, timeout=4):
     url = f"https://{ip}{path}"
     ctx = ssl.create_default_context(); ctx.check_hostname = False; ctx.verify_mode = ssl.CERT_NONE
@@ -73,16 +89,39 @@ def redfish_get(ip, path, auth=None, timeout=4):
     with urllib.request.urlopen(req, timeout=timeout, context=ctx) as r:
         return json.load(r)
 
+def ilo_xmldata(ip):
+    """HP iLO's ANONYMOUS info endpoint — serial (SBSN), model (SPN), iLO name (SN).
+       Returns dict or None. No credentials needed."""
+    import xml.etree.ElementTree as ET
+    ctx = ssl.create_default_context(); ctx.check_hostname = False; ctx.verify_mode = ssl.CERT_NONE
+    try:
+        with urllib.request.urlopen(f"https://{ip}/xmldata?item=all", timeout=4, context=ctx) as r:
+            root = ET.fromstring(r.read())
+    except Exception:
+        return None
+    def txt(tag):
+        e = root.find(f".//{tag}"); return (e.text or "").strip() if e is not None else ""
+    if root.tag != "RIMP" and root.find(".//HSI") is None:
+        return None
+    return {"serial": txt("SBSN") or "-", "model": txt("SPN") or "-",
+            "ilo_sn": txt("SN") or "-", "ilo_pn": txt("PN") or "-"}
+
 def probe(ip, auth):
-    """Return dict of iLO/server facts if this host is a Redfish BMC (iLO), else None."""
+    """Return dict of iLO/server facts if this host is an HP iLO, else None."""
+    facts = {"ilo_name": "-", "ilo_fqdn": "-", "mac": "-", "serial": "-", "model": "-", "power": "-"}
+    # 1) anonymous iLO identification (works with no creds)
+    xd = ilo_xmldata(ip)
+    if xd:
+        facts["serial"] = xd["serial"]; facts["model"] = xd["model"]
+        # default iLO name is ILO<serial> unless renamed
+        if xd["serial"] != "-": facts["ilo_name"] = "ILO" + xd["serial"]
+    # 2) Redfish for the real iLO name + power (root is anonymous; detail needs auth)
     try:
         root = redfish_get(ip, "/redfish/v1/", None, timeout=4)
     except Exception:
-        return None
-    if not isinstance(root, dict) or not (root.get("RedfishVersion") or "@odata.id" in root):
-        return None
-    facts = {"redfish": root.get("RedfishVersion", "?"), "ilo_name": "-",
-             "ilo_fqdn": "-", "serial": "-", "model": "-", "power": "-"}
+        return facts if xd else None
+    if not (isinstance(root, dict) and (root.get("RedfishVersion") or "@odata.id" in root)):
+        return facts if xd else None
     for path, keys, dst in [
         ("/redfish/v1/Managers/1/", ("HostName",), "ilo_name"),
         ("/redfish/v1/Managers/1/EthernetInterfaces/1/", ("HostName", "FQDN"), "ilo_fqdn"),
@@ -93,13 +132,38 @@ def probe(ip, auth):
                 if d.get(k): facts[dst] = d[k]; break
         except Exception:
             pass
+    # iLO NIC MAC — from Redfish (auth), else derive from an ILO<12-hex> default name
+    try:
+        eth = redfish_get(ip, "/redfish/v1/Managers/1/EthernetInterfaces/1/", auth)
+        facts["mac"] = eth.get("MACAddress") or eth.get("PermanentMACAddress") or facts["mac"]
+    except Exception:
+        pass
+    if facts["mac"] == "-":
+        import re
+        m = re.fullmatch(r"ILO([0-9A-Fa-f]{12})", facts["ilo_name"])
+        if m:
+            h = m.group(1); facts["mac"] = ":".join(h[i:i+2] for i in range(0, 12, 2)).upper()
     try:
         sysd = redfish_get(ip, "/redfish/v1/Systems/1/", auth)
-        facts["serial"] = sysd.get("SerialNumber", "-") or "-"
-        facts["model"]  = sysd.get("Model", "-") or "-"
-        facts["power"]  = sysd.get("PowerState", "-") or "-"
+        if sysd.get("SerialNumber"): facts["serial"] = sysd["SerialNumber"]
+        if sysd.get("Model"):        facts["model"]  = sysd["Model"]
+        facts["power"] = sysd.get("PowerState", "-") or "-"
         if facts["ilo_name"] == "-" and sysd.get("HostName"):
             facts["ilo_name"] = sysd["HostName"]
+    except Exception:
+        pass
+    # host NICs: MACs (+ AMS-reported IPs) from Redfish Systems (needs auth)
+    facts["host_macs"], facts["host_ip"] = [], "-"
+    try:
+        coll = redfish_get(ip, "/redfish/v1/Systems/1/EthernetInterfaces/", auth)
+        for mem in coll.get("Members", []):
+            d = redfish_get(ip, mem["@odata.id"], auth)
+            mac = (d.get("MACAddress") or d.get("PermanentMACAddress") or "").upper()
+            if mac: facts["host_macs"].append(mac)
+            for a4 in (d.get("IPv4Addresses") or []):
+                addr = a4.get("Address")
+                if addr and addr != "0.0.0.0" and facts["host_ip"] == "-":
+                    facts["host_ip"] = addr
     except Exception:
         pass
     return facts
@@ -123,19 +187,28 @@ def main():
     print(f"# {len(live)} responded; probing Redfish/iLO ...", file=sys.stderr)
 
     rows = []
+    arp = arp_map()   # ip -> MAC, populated by the sweep (same-subnet hosts)
     with ThreadPoolExecutor(max_workers=64) as ex:
         names = dict(zip(live, ex.map(rdns, live)))
         facts = dict(zip(live, ex.map(lambda ip: probe(ip, auth), live)))
     for ip in sorted(live, key=lambda x: tuple(int(o) for o in x.split("."))):
-        f = facts[ip]
+        f = facts[ip] or {}
+        # host IP: prefer AMS-reported, else match the host NIC MAC to the ARP table
+        host_ip = f.get("host_ip", "-")
+        if host_ip == "-" and f.get("host_macs"):
+            for mac in f["host_macs"]:
+                hit = next((hip for hip, hmac in arp.items() if hmac == mac), None)
+                if hit: host_ip = hit; break
         rows.append((ip, names[ip],
-                     "iLO" if f else "-",
-                     (f or {}).get("ilo_name", "-"),
-                     (f or {}).get("serial", "-"),
-                     (f or {}).get("model", "-"),
-                     (f or {}).get("power", "-")))
+                     "iLO" if facts[ip] else "-",
+                     f.get("ilo_name", "-"),
+                     host_ip,
+                     f.get("mac", "-"),
+                     f.get("serial", "-"),
+                     f.get("model", "-"),
+                     f.get("power", "-")))
 
-    hdr = ("IP", "HOSTNAME", "TYPE", "iLO NAME", "SERIAL", "MODEL", "POWER")
+    hdr = ("IP", "HOSTNAME", "TYPE", "iLO NAME", "HOST IP", "MAC", "SERIAL", "MODEL", "POWER")
     w = [max(len(str(r[i])) for r in rows + [hdr]) for i in range(len(hdr))]
     line = lambda r: "  ".join(str(r[i]).ljust(w[i]) for i in range(len(hdr)))
     print(line(hdr)); print("  ".join("-" * w[i] for i in range(len(hdr))))
