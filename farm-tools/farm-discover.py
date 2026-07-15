@@ -166,6 +166,18 @@ def probe(ip, auth):
                     facts["host_ip"] = addr
     except Exception:
         pass
+    # temperature: inlet/ambient from Redfish Thermal (needs auth)
+    facts["temp"] = "-"
+    try:
+        th = redfish_get(ip, "/redfish/v1/Chassis/1/Thermal/", auth)
+        temps = [t for t in th.get("Temperatures", []) if t.get("ReadingCelsius")]
+        amb = next((t for t in temps if "inlet" in t.get("Name", "").lower()
+                    or "ambient" in t.get("Name", "").lower()), None)
+        chosen = amb or (max(temps, key=lambda t: t["ReadingCelsius"]) if temps else None)
+        if chosen:
+            facts["temp"] = f'{int(chosen["ReadingCelsius"])}C'
+    except Exception:
+        pass
     return facts
 
 def main():
@@ -175,6 +187,7 @@ def main():
     ap.add_argument("--ilo-pass", default=os.environ.get("ILO_PASS"))
     ap.add_argument("--creds-file", default=os.environ.get("ILO_CREDS"),
                     help="per-iLO creds: one 'ip user password' per line (# comments ok)")
+    ap.add_argument("--save", help="also write the table to this file")
     a = ap.parse_args()
     cidr = a.cidr or local_cidr()
     if not cidr:
@@ -221,13 +234,20 @@ def main():
                      f.get("mac", "-"),
                      f.get("serial", "-"),
                      f.get("model", "-"),
-                     f.get("power", "-")))
+                     f.get("power", "-"),
+                     f.get("temp", "-")))
 
-    hdr = ("IP", "HOSTNAME", "TYPE", "iLO NAME", "HOST IP", "MAC", "SERIAL", "MODEL", "POWER")
+    hdr = ("IP", "HOSTNAME", "TYPE", "iLO NAME", "HOST IP", "MAC", "SERIAL", "MODEL", "POWER", "TEMP")
     w = [max(len(str(r[i])) for r in rows + [hdr]) for i in range(len(hdr))]
     line = lambda r: "  ".join(str(r[i]).ljust(w[i]) for i in range(len(hdr)))
-    print(line(hdr)); print("  ".join("-" * w[i] for i in range(len(hdr))))
-    for r in rows: print(line(r))
+    out = [line(hdr), "  ".join("-" * w[i] for i in range(len(hdr)))] + [line(r) for r in rows]
+    print("\n".join(out))
+    if a.save:
+        import datetime
+        with open(a.save, "w") as fh:
+            fh.write(f"# farm-discover {cidr}  {datetime.datetime.now():%Y-%m-%d %H:%M}\n")
+            fh.write("\n".join(out) + "\n")
+        print(f"# saved to {a.save}", file=sys.stderr)
     ilos = sum(1 for r in rows if r[2] == "iLO")
     print(f"\n# {len(rows)} live hosts, {ilos} iLO(s) found", file=sys.stderr)
 
