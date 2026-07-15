@@ -173,13 +173,28 @@ def main():
     ap.add_argument("cidr", nargs="?", help="subnet CIDR, e.g. 192.168.1.0/24 (auto if omitted)")
     ap.add_argument("--ilo-user", default=os.environ.get("ILO_USER"))
     ap.add_argument("--ilo-pass", default=os.environ.get("ILO_PASS"))
+    ap.add_argument("--creds-file", default=os.environ.get("ILO_CREDS"),
+                    help="per-iLO creds: one 'ip user password' per line (# comments ok)")
     a = ap.parse_args()
     cidr = a.cidr or local_cidr()
     if not cidr:
         sys.exit("could not auto-detect subnet — pass one, e.g. 192.168.1.0/24")
-    auth = (a.ilo_user, a.ilo_pass) if a.ilo_user and a.ilo_pass else None
+    global_auth = (a.ilo_user, a.ilo_pass) if a.ilo_user and a.ilo_pass else None
+    cred_map = {}   # ip -> (user, pass), for iLOs with their own passwords
+    if a.creds_file:
+        with open(a.creds_file) as fh:
+            for ln in fh:
+                ln = ln.strip()
+                if not ln or ln.startswith("#"):
+                    continue
+                p = ln.split()
+                if len(p) >= 3:
+                    cred_map[p[0]] = (p[1], " ".join(p[2:]))
+    def auth_for(ip):
+        return cred_map.get(ip, global_auth)
     hosts = [str(h) for h in ipaddress.ip_network(cidr, strict=False).hosts()]
-    print(f"# sweeping {cidr} ({len(hosts)} hosts){' with iLO creds' if auth else ' (no iLO creds)'} ...",
+    have_creds = bool(global_auth or cred_map)
+    print(f"# sweeping {cidr} ({len(hosts)} hosts){' with iLO creds' if have_creds else ' (no iLO creds)'} ...",
           file=sys.stderr)
 
     with ThreadPoolExecutor(max_workers=128) as ex:
@@ -190,7 +205,7 @@ def main():
     arp = arp_map()   # ip -> MAC, populated by the sweep (same-subnet hosts)
     with ThreadPoolExecutor(max_workers=64) as ex:
         names = dict(zip(live, ex.map(rdns, live)))
-        facts = dict(zip(live, ex.map(lambda ip: probe(ip, auth), live)))
+        facts = dict(zip(live, ex.map(lambda ip: probe(ip, auth_for(ip)), live)))
     for ip in sorted(live, key=lambda x: tuple(int(o) for o in x.split("."))):
         f = facts[ip] or {}
         # host IP: prefer AMS-reported, else match the host NIC MAC to the ARP table
