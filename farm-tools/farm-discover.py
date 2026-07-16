@@ -108,7 +108,8 @@ def ilo_xmldata(ip):
 
 def probe(ip, auth):
     """Return dict of iLO/server facts if this host is an HP iLO, else None."""
-    facts = {"ilo_name": "-", "ilo_fqdn": "-", "mac": "-", "serial": "-", "model": "-", "power": "-"}
+    facts = {"ilo_name": "-", "ilo_fqdn": "-", "mac": "-", "serial": "-", "model": "-", "power": "-",
+             "cpu": "-", "ram": "-", "health": "-"}
     # 1) anonymous iLO identification (works with no creds)
     xd = ilo_xmldata(ip)
     if xd:
@@ -150,6 +151,15 @@ def probe(ip, auth):
         facts["power"] = sysd.get("PowerState", "-") or "-"
         if facts["ilo_name"] == "-" and sysd.get("HostName"):
             facts["ilo_name"] = sysd["HostName"]
+        # CPU / RAM / health (from the same Systems call)
+        ps = sysd.get("ProcessorSummary") or {}
+        cpu = (ps.get("Model") or "").strip()
+        if cpu:
+            cpu = cpu.split("CPU")[-1].strip() or cpu   # trim to the model/speed part
+            facts["cpu"] = f'{ps.get("Count","?")}x {cpu}'
+        ram = (sysd.get("MemorySummary") or {}).get("TotalSystemMemoryGiB")
+        if ram: facts["ram"] = f"{int(ram)}G"
+        facts["health"] = (sysd.get("Status") or {}).get("Health", "-") or "-"
     except Exception:
         pass
     # host NICs: MACs (+ AMS-reported IPs) from Redfish Systems (needs auth)
@@ -233,11 +243,14 @@ def main():
                      host_ip,
                      f.get("mac", "-"),
                      f.get("serial", "-"),
-                     f.get("model", "-"),
+                     f.get("cpu", "-"),
+                     f.get("ram", "-"),
+                     f.get("health", "-"),
                      f.get("power", "-"),
                      f.get("temp", "-")))
 
-    hdr = ("IP", "HOSTNAME", "TYPE", "iLO NAME", "HOST IP", "MAC", "SERIAL", "MODEL", "POWER", "TEMP")
+    hdr = ("IP", "HOSTNAME", "TYPE", "iLO NAME", "HOST IP", "MAC", "SERIAL",
+           "CPU", "RAM", "HEALTH", "POWER", "TEMP")
     w = [max(len(str(r[i])) for r in rows + [hdr]) for i in range(len(hdr))]
     line = lambda r: "  ".join(str(r[i]).ljust(w[i]) for i in range(len(hdr)))
     out = [line(hdr), "  ".join("-" * w[i] for i in range(len(hdr)))] + [line(r) for r in rows]
