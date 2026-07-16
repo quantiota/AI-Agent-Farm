@@ -59,4 +59,3 @@ sudo systemctl status hp-ams          # -> active (running), "amsHelper Started"
 ```
 
 Give it a minute, then re-run `farm-discover` — the host's IP now fills on its iLO row.
-(AMS also populates the **P410 / RAID** under iLO SmartStorage.) 
