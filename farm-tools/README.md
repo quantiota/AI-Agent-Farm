@@ -47,4 +47,16 @@ IP             HOSTNAME           TYPE  iLO NAME       HOST IP        MAC       
 Each Gen8 shows up twice: the **iLO** row (with its paired `HOST IP`) and the **host OS** row.
 
 
+### HOST IP pairing needs AMS on the host
 
+On Gen8 / iLO 4 the iLO only knows its host's IP when **AMS (Agentless Management Service)**
+runs on that host — without it, `HOST IP` stays `-`. Install `hp-ams` per host:
+
+```bash
+wget https://downloads.linux.hpe.com/SDR/repo/mcp/ubuntu/pool/non-free/hp-ams_2.6.2-2551.13_amd64.deb
+sudo dpkg -i hp-ams_2.6.2-2551.13_amd64.deb
+sudo systemctl status hp-ams          # -> active (running), "amsHelper Started"
+```
+
+Give it a minute, then re-run `farm-discover` — the host's IP now fills on its iLO row.
+(AMS also populates the **P410 / RAID** under iLO SmartStorage.) 
