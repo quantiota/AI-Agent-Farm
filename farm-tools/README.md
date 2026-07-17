@@ -63,9 +63,10 @@ Give it a minute, then re-run `farm-discover` — the host's IP now fills on its
 
 ## Host-side scripts (over SSH)
 
-Run these from the box that can SSH the nodes (the devbox). Both auto-discover hosts from
-the `HOST IP` column of `farm-inventory.txt` (run `farm-discover --save` first), or take host
-IPs as arguments. Optional hands-off auth: `SSH_PASS='...'` (needs `sshpass`; never hardcoded).
+Run these from the **GPU server** (same box as `farm-discover`, which can SSH the nodes). Both
+auto-discover hosts from the `HOST IP` column of `farm-inventory.txt` (run `farm-discover --save`
+first), or take host IPs as arguments. Optional hands-off auth: `SSH_PASS='...'` (needs
+`sshpass`; never hardcoded).
 
 - **`node-install-date.sh`** — each node's Ubuntu install date (root-fs / installer timestamp).
 - **`node-raid.sh`** — each node's P410 array: controller, volumes (`lsblk`), RAID level,
