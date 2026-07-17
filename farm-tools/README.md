@@ -50,7 +50,8 @@ Each Gen8 shows up twice: the **iLO** row (with its paired `HOST IP`) and the **
 ### HOST IP pairing needs AMS on the host
 
 On Gen8 / iLO 4 the iLO only knows its host's IP when **AMS (Agentless Management Service)**
-runs on that host — without it, `HOST IP` stays `-`. Install `hp-ams` per host:
+runs on that host — without it, `HOST IP` stays `-`. Install `hp-ams` per host
+:
 
 ```bash
 wget https://downloads.linux.hpe.com/SDR/repo/mcp/ubuntu/pool/non-free/hp-ams_2.6.2-2551.13_amd64.deb
@@ -59,3 +60,34 @@ sudo systemctl status hp-ams          # -> active (running), "amsHelper Started"
 ```
 
 Give it a minute, then re-run `farm-discover` — the host's IP now fills on its iLO row.
+
+## Host-side scripts (over SSH)
+
+Run these from the box that can SSH the nodes (the devbox). Both auto-discover hosts from
+the `HOST IP` column of `farm-inventory.txt` (run `farm-discover --save` first), or take host
+IPs as arguments. Optional hands-off auth: `SSH_PASS='...'` (needs `sshpass`; never hardcoded).
+
+- **`node-install-date.sh`** — each node's Ubuntu install date (root-fs / installer timestamp).
+- **`node-raid.sh`** — each node's P410 array: controller, volumes (`lsblk`), RAID level,
+  OS SSD model, and every physical disk's capacity / model / interface.
+
+```bash
+SSH_PASS='...' ./node-raid.sh
+SSH_PASS='...' ./node-install-date.sh
+```
+
+### ssacli — read the P410 RAID from the host
+
+iLO 4 doesn't expose the P410 array; `node-raid.sh` reads it with HPE's `ssacli` on each host
+(RAID level + physical-disk detail need it). Install per host (direct `.deb`, no repo/GPG):
+
+```bash
+wget https://downloads.linux.hpe.com/SDR/repo/mcp/ubuntu/pool/non-free/ssacli-6.60-8.0_amd64.deb
+sudo dpkg -i ssacli-6.60-8.0_amd64.deb
+```
+
+Then `sudo ssacli ctrl all show config` shows the controller, logical drives (RAID level), and
+physical disks. Without `ssacli`, `node-raid.sh` still shows the controller (`lspci`) and volume
+sizes (`lsblk`).
+
+
