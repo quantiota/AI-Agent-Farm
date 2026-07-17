@@ -1,6 +1,6 @@
 
 
-![Claude AI](./claude_ai.svg)
+![Claude AI](https://raw.githubusercontent.com/quantiota/AI-Agent-Farm/0e6df2b660ce63d506747750590308dc56889d18/claude_ai.svg)
 
 This repository is sponsored by The Claude for Open Source Program (Claude Max 20x free for 6 months)
 
