@@ -17,8 +17,7 @@ channels through which that accumulation happens:
   Includes production loggers for both real-time streaming and batch-session
   ingestion under [`human-agent-knowledge/production`](human-agent-knowledge/production/).
 
-For the mathematical foundation behind this approach, see the
-[SKA Framework documentation](https://github.com/quantiota/AI-Agent-Host/tree/main/ska-framework/).
+
 
 ## Paper
 
