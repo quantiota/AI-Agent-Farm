@@ -1,6 +1,6 @@
 
 
-![Claude AI](./claude_ai.svg)
+![Claude AI](claude_ai.svg)
 
 This repository is sponsored by The Claude for Open Source Program (Claude Max 20x free for 6 months)
 
