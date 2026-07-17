@@ -18,7 +18,7 @@ Typical layout: a **small volume for the OS** (e.g. 250 GB) and a **RAID for dat
 
 The reliable remote path: mount the Ubuntu Server ISO from an HTTP URL as the virtual CD.
 
-1. **Host the ISO on a LAN box** — plain **HTTP** (iLO 4's TLS is finicky), and it **must be a
+1. **Host the ISO on the JupyterHub server** — plain **HTTP** (iLO 4's TLS is finicky), and it **must be a
    Range-capable server** — stock `python3 -m http.server` boot-loops (iLO seeks the ISO to boot it):
    ```bash
    sudo /opt/jupyterhub/bin/python3 -m pip install rangehttpserver
