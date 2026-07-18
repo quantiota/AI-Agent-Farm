@@ -1,5 +1,3 @@
-
-
 # farm-tools
 
 Operational tools for the physical farm (the HP MicroServer Gen8 fleet).
@@ -7,7 +5,8 @@ Operational tools for the physical farm (the HP MicroServer Gen8 fleet).
 ## `farm-discover.py` — find nodes on the LAN
 
 Discovers farm nodes on the local network and prints **IP, hostname, and iLO name**
-(plus MAC / serial / model / power / **paired host IP** when iLO credentials are given).
+(plus MAC / serial / CPU / RAM / health / power / temp / **paired host IP** when iLO
+credentials are given).
 
 Built to run on the **GPU server** (or any box on the same LAN). **Stdlib only** —
 needs just `python3`. 
@@ -20,13 +19,16 @@ python3 farm-discover.py
 # specify the subnet
 python3 farm-discover.py 192.168.1.0/24
 
-# with an iLO login -> also fills MAC / SERIAL / MODEL / POWER + the paired HOST IP
+# with an iLO login -> also fills MAC / SERIAL / CPU / RAM / HEALTH / POWER / TEMP + the paired HOST IP
 ILO_USER=Administrator ILO_PASS=secret python3 farm-discover.py 192.168.1.0/24
 #   or: python3 farm-discover.py 192.168.1.0/24 --ilo-user Administrator --ilo-pass secret
 
 # per-iLO passwords (refurb Gen8s each have a unique factory password) -> a creds file
 python3 farm-discover.py 192.168.1.0/24 --creds-file ~/ilo-creds.txt
 #   or:  ILO_CREDS=~/ilo-creds.txt python3 farm-discover.py 192.168.1.0/24
+
+# everyday command: auto-detect the subnet, use the creds file, and save a dated inventory
+python3 farm-discover.py --creds-file ilo-creds.txt --save farm-inventory.txt
 ```
 
 Creds-file format — one `ip user password` per line (`#` comments ok), then `chmod 600` it:
@@ -42,7 +44,7 @@ With iLO creds, each iLO row fills in CPU / RAM / HEALTH / POWER / TEMP and its 
 
 ```
 IP             HOSTNAME           TYPE  iLO NAME       HOST IP        MAC                SERIAL      CPU                       RAM  HEALTH  POWER  TEMP
-192.168.1.116  ILOCZ1550023C.lan  iLO   ILOCZ1550023C  192.168.1.113  70:xx:6F:xx:22:76  CZ1550023C  1x E3-1265L V2 @ 2.50GHz  16G  OK      On     35C
+192.168.1.116  ILOCZxxxxxxxx.lan  iLO   ILOCZxxxxxxxx  192.168.1.113  xx:xx:xx:xx:xx:xx  CZxxxxxxxx  1x E3-1265L V2 @ 2.50GHz  16G  OK      On     35C
 192.168.1.113  microserver01.lan  -     -              -              -                  -           -                         -    -       -      -
 ...
 ```
@@ -53,8 +55,7 @@ Each Gen8 shows up twice: the **iLO** row (with its paired `HOST IP`, CPU/RAM/he
 ### HOST IP pairing needs AMS on the host
 
 On Gen8 / iLO 4 the iLO only knows its host's IP when **AMS (Agentless Management Service)**
-runs on that host — without it, `HOST IP` stays `-`. Install `hp-ams` per host
-:
+runs on that host — without it, `HOST IP` stays `-`. Install `hp-ams` per host:
 
 ```bash
 wget https://downloads.linux.hpe.com/SDR/repo/mcp/ubuntu/pool/non-free/hp-ams_2.6.2-2551.13_amd64.deb
@@ -93,5 +94,6 @@ sudo dpkg -i ssacli-6.60-8.0_amd64.deb
 Then `sudo ssacli ctrl all show config` shows the controller, logical drives (RAID level), and
 physical disks. Without `ssacli`, `node-raid.sh` still shows the controller (`lspci`) and volume
 sizes (`lsblk`).
+
 
 
