@@ -42,7 +42,7 @@ With iLO creds, each iLO row fills in CPU / RAM / HEALTH / POWER / TEMP and its 
 
 ```
 IP             HOSTNAME           TYPE  iLO NAME       HOST IP        MAC                SERIAL      CPU                       RAM  HEALTH  POWER  TEMP
-192.168.1.116  ILOCZ1550023C.lan  iLO   ILOCZ1550023C  192.168.1.113  70:10:6F:3E:22:76  CZ1550023C  1x E3-1265L V2 @ 2.50GHz  16G  OK      On     35C
+192.168.1.116  ILOCZ1550023C.lan  iLO   ILOCZ1550023C  192.168.1.113  70:xx:6F:xx:22:76  CZ1550023C  1x E3-1265L V2 @ 2.50GHz  16G  OK      On     35C
 192.168.1.113  microserver01.lan  -     -              -              -                  -           -                         -    -       -      -
 ...
 ```
