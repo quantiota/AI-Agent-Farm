@@ -1,3 +1,5 @@
+
+
 # farm-tools
 
 Operational tools for the physical farm (the HP MicroServer Gen8 fleet).
@@ -9,8 +11,6 @@ Discovers farm nodes on the local network and prints **IP, hostname, and iLO nam
 
 Built to run on the **GPU server** (or any box on the same LAN). **Stdlib only** —
 needs just `python3`. 
-
-
 ### Usage
 
 ```bash
@@ -38,14 +38,17 @@ Creds-file format — one `ip user password` per line (`#` comments ok), then `c
 
 ### Output
 
+With iLO creds, each iLO row fills in CPU / RAM / HEALTH / POWER / TEMP and its paired HOST IP:
+
 ```
-IP             HOSTNAME           TYPE  iLO NAME       HOST IP        MAC                SERIAL      MODEL   POWER
-192.168.1.27   ILOCZ150901RE.lan  iLO   ILOCZ150901RE  192.168.1.15   xx:xx:xx:xx:xx:xx  CZ150901RE  Gen8    On
-192.168.1.15   microserver02.lan  -     -              -              -                  -           -       -
+IP             HOSTNAME           TYPE  iLO NAME       HOST IP        MAC                SERIAL      CPU                       RAM  HEALTH  POWER  TEMP
+192.168.1.116  ILOCZ1550023C.lan  iLO   ILOCZ1550023C  192.168.1.113  70:10:6F:3E:22:76  CZ1550023C  1x E3-1265L V2 @ 2.50GHz  16G  OK      On     35C
+192.168.1.113  microserver01.lan  -     -              -              -                  -           -                         -    -       -      -
 ...
 ```
-Each Gen8 shows up twice: the **iLO** row (with its paired `HOST IP`) and the **host OS** row.
-
+Each Gen8 shows up twice: the **iLO** row (with its paired `HOST IP`, CPU/RAM/health/temp) and the
+**host OS** row. `TEMP` = inlet/ambient °C; `HEALTH` = iLO overall status. Storage/RAID isn't shown
+(iLO 4 can't report the P410 without AMS) — use `node-raid.sh` for that.
 
 ### HOST IP pairing needs AMS on the host
 
