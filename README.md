@@ -52,9 +52,8 @@ By distributing the workload across multiple microservers, you can achieve bette
 ### Claude Code and JupyterHub Connectivity
 
 Each Claude Code agent has its own **JupyterHub identity** — a dedicated user account and API
-token — giving it authenticated, workspace-isolated access to the GPU server while all agents
-still collaborate through the shared hub. This layer provides **identity, workspace isolation,
-and GPU compute offload**.
+token — giving it authenticated, workspace-isolated access to the GPU server. This layer
+provides **identity, workspace isolation, and GPU compute offload**.
 
 Agents reach the GPU server two ways:
 
@@ -72,7 +71,7 @@ Agents reach the GPU server two ways:
   where `<hub-url>` is the JupyterHub address, `<agent-name>` is the agent's hub user
   (e.g. `agent-01`), and `<agent-token>` is its dedicated API token.
 
-  
+
 
 ### Features
 - The AI Agents can run multiple tasks simultaneously, and processes are distributed across the workers for maximum efficiency.
