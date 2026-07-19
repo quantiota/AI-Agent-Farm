@@ -51,16 +51,16 @@ By distributing the workload across multiple microservers, you can achieve bette
 
 ### Claude Code and JupyterHub Connectivity
 
-Each Claude Code agent has its own **JupyterHub identity** — a dedicated user account and API
+Each Claude Code agent has its own JupyterHub identity — a dedicated user account and API
 token — giving it authenticated, workspace-isolated access to the GPU server. This layer
-provides **identity, workspace isolation, and GPU compute offload**.
+provides identity, workspace isolation, and GPU compute offload.
 
 Agents reach the GPU server two ways:
 
 - **`jh-exec` — transparent remote execution.** The agent runs code on the GPU server from its
   own terminal as if it were local, offloading the compute. Configured per agent via
   `JH_HOST` / `JH_USER` / `JH_TOKEN` (its JupyterHub user + token). This is the primary path —
-  see **[gpu-offload](https://github.com/quantiota/AI-Agent-Farm/tree/master/gpu-offload)**.
+  see [gpu-offload](https://github.com/quantiota/AI-Agent-Farm/tree/master/gpu-offload).
 
 - **Direct notebook / VS Code.** Connect to the agent's workspace by URL, using its token:
 
