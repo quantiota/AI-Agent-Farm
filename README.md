@@ -57,7 +57,7 @@ provides identity, workspace isolation, and GPU compute offload.
 
 Agents reach the GPU server two ways:
 
-- **`jh-exec` — transparent remote execution.** The agent runs code on the GPU server from its
+- **`jh-exec`** — transparent remote execution. The agent runs code on the GPU server from its
   own terminal as if it were local, offloading the compute. Configured per agent via
   `JH_HOST` / `JH_USER` / `JH_TOKEN` (its JupyterHub user + token). This is the primary path —
   see [gpu-offload](https://github.com/quantiota/AI-Agent-Farm/tree/master/gpu-offload).
