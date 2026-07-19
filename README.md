@@ -51,31 +51,28 @@ By distributing the workload across multiple microservers, you can achieve bette
 
 ### Claude Code and JupyterHub Connectivity
 
-Each Claude Code agent is connected to its dedicated JupyterHub workspace through its own JupyterHub user account and API token.
+Each Claude Code agent has its own **JupyterHub identity** — a dedicated user account and API
+token — giving it authenticated, workspace-isolated access to the GPU server while all agents
+still collaborate through the shared hub. This layer provides **identity, workspace isolation,
+and GPU compute offload**.
 
-The connection URL follows this pattern:
+Agents reach the GPU server two ways:
 
-```text
-https://<hub-url>/user/<hub-agent-name>/?token=<agent-token>
-```
+- **`jh-exec` — transparent remote execution.** The agent runs code on the GPU server from its
+  own terminal as if it were local, offloading the compute. Configured per agent via
+  `JH_HOST` / `JH_USER` / `JH_TOKEN` (its JupyterHub user + token). This is the primary path —
+  see **[gpu-offload](https://github.com/quantiota/AI-Agent-Farm/tree/master/gpu-offload)**.
 
-Example:
+- **Direct notebook / VS Code.** Connect to the agent's workspace by URL, using its token:
 
-```text
-https://hub.example.com/user/agent-01/?token=871084eedbfb4b1234641221d6f84063
+  ```text
+  https://<hub-url>/user/<agent-name>/?token=<agent-token>
+  ```
 
-https://hub.example.com/user/agent-02/?token=94e3e21c81984641234b59b51d9a2469
-```
+  where `<hub-url>` is the JupyterHub address, `<agent-name>` is the agent's hub user
+  (e.g. `agent-01`), and `<agent-token>` is its dedicated API token.
 
-In this setup:
-
-hub-url is the JupyterHub server address.
-hub-agent-name is the JupyterHub user assigned to the agent, such as agent-01.
-agent-token is the dedicated API token for that agent.
-
-This gives each Claude Code agent its own authenticated access to a JupyterHub environment while still allowing all agents to collaborate through the shared workspace.
-
-The JupyterHub layer provides identity, workspace isolation, and GPU computational offload.
+  
 
 ### Features
 - The AI Agents can run multiple tasks simultaneously, and processes are distributed across the workers for maximum efficiency.
