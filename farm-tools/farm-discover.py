@@ -237,10 +237,18 @@ def main():
             for mac in f["host_macs"]:
                 hit = next((hip for hip, hmac in arp.items() if hmac == mac), None)
                 if hit: host_ip = hit; break
+        # host name: reverse-DNS of the paired host IP (short name), so the iLO row shows
+        # which microserver it belongs to (e.g. microserver01)
+        host_name = "-"
+        if host_ip != "-":
+            hn = names.get(host_ip) or rdns(host_ip)
+            if hn and hn != host_ip:
+                host_name = hn.split(".")[0]
         rows.append((ip, names[ip],
                      "iLO" if facts[ip] else "-",
                      f.get("ilo_name", "-"),
                      host_ip,
+                     host_name,
                      f.get("mac", "-"),
                      f.get("serial", "-"),
                      f.get("cpu", "-"),
@@ -249,7 +257,7 @@ def main():
                      f.get("power", "-"),
                      f.get("temp", "-")))
 
-    hdr = ("IP", "HOSTNAME", "TYPE", "iLO NAME", "HOST IP", "MAC", "SERIAL",
+    hdr = ("IP", "HOSTNAME", "TYPE", "iLO NAME", "HOST IP", "HOST NAME", "MAC", "SERIAL",
            "CPU", "RAM", "HEALTH", "POWER", "TEMP")
     w = [max(len(str(r[i])) for r in rows + [hdr]) for i in range(len(hdr))]
     line = lambda r: "  ".join(str(r[i]).ljust(w[i]) for i in range(len(hdr)))
