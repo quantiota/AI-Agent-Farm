@@ -30,6 +30,13 @@ The reliable remote path: mount the Ubuntu Server ISO from an HTTP URL as the vi
 4. After install, set boot order to the OS volume.
 
 
+
+## 4. Update firmware (BIOS)
+
+Upload the BIOS firmware `CPQJ0613.684` from the ILO interface
+
+
+
 ## Ports note
 
 Serve on an **unused high port** 
