@@ -109,7 +109,7 @@ def ilo_xmldata(ip):
 def probe(ip, auth):
     """Return dict of iLO/server facts if this host is an HP iLO, else None."""
     facts = {"ilo_name": "-", "ilo_fqdn": "-", "mac": "-", "serial": "-", "model": "-", "power": "-",
-             "cpu": "-", "ram": "-", "health": "-"}
+             "cpu": "-", "ram": "-", "health": "-", "bios": "-"}
     # 1) anonymous iLO identification (works with no creds)
     xd = ilo_xmldata(ip)
     if xd:
@@ -160,6 +160,7 @@ def probe(ip, auth):
         ram = (sysd.get("MemorySummary") or {}).get("TotalSystemMemoryGiB")
         if ram: facts["ram"] = f"{int(ram)}G"
         facts["health"] = (sysd.get("Status") or {}).get("Health", "-") or "-"
+        facts["bios"] = sysd.get("BiosVersion", "-") or "-"
     except Exception:
         pass
     # host NICs: MACs (+ AMS-reported IPs) from Redfish Systems (needs auth)
@@ -253,12 +254,13 @@ def main():
                      f.get("serial", "-"),
                      f.get("cpu", "-"),
                      f.get("ram", "-"),
+                     f.get("bios", "-"),
                      f.get("health", "-"),
                      f.get("power", "-"),
                      f.get("temp", "-")))
 
     hdr = ("IP", "HOSTNAME", "TYPE", "iLO NAME", "HOST IP", "HOST NAME", "MAC", "SERIAL",
-           "CPU", "RAM", "HEALTH", "POWER", "TEMP")
+           "CPU", "RAM", "BIOS", "HEALTH", "POWER", "TEMP")
     w = [max(len(str(r[i])) for r in rows + [hdr]) for i in range(len(hdr))]
     line = lambda r: "  ".join(str(r[i]).ljust(w[i]) for i in range(len(hdr)))
     out = [line(hdr), "  ".join("-" * w[i] for i in range(len(hdr)))] + [line(r) for r in rows]
