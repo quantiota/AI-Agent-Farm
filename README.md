@@ -238,3 +238,12 @@ This project is licensed under the MIT License.
 
 ### Conclusion
 The AI Agent Farm is a powerful infrastructure for running multiple AI tasks simultaneously, and distributing them across the workers for maximum efficiency. By dockerizing the applications and automating the backup process, the infrastructure is easy to deploy and manage, and data integrity is ensured. With its scalability and powerful tools, the AI Agent Farm is an essential tool for any AI project.
+
+
+### AI Agent Farm Infrastructure
+
+![AI Agent Farm Infrastructure — 48 HP MicroServer Gen8 nodes (6 pods of 8) with the network rack](/ai-agent-farm.jpg)
+
+*The AI Agent Farm: 48 sovereign nodes (6 pods of 8) on owned hardware, with the network rack at center. The federation that develops the SKA Protocol.*
+
+
