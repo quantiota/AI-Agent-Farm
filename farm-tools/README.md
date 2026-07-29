@@ -97,3 +97,21 @@ sizes (`lsblk`).
 
 
 
+## `fleet-power.sh` — power the fleet on/off via iLO
+
+Powers all nodes on/off through **iLO Redfish** (no SSH — a halted node can't be reached over SSH,
+only its iLO can turn it back on). Reads iLO credentials from a local `ilo-creds.txt`
+(same `IP  USER  PASS` format as `farm-discover`); keep that file out of git and `chmod 600`.
+
+```bash
+./fleet-power.sh status      # each node's PowerState
+./fleet-power.sh down        # graceful shutdown of all nodes (prompts; --yes to skip)
+./fleet-power.sh up          # power all nodes back on
+./fleet-power.sh off         # hard force-off (only if 'down' is ignored)
+```
+
+`down` uses `PushPowerButton` — a momentary ACPI press that Ubuntu's systemd handles as a **clean
+shutdown** (iLO 4 here has no `GracefulShutdown` ResetType). `off` is `ForceOff` (hard, not clean),
+reserved for a hung node. `PushPowerButton` is a toggle, so only run `down` when nodes are on.
+
+
