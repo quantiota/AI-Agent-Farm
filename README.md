@@ -244,6 +244,6 @@ The AI Agent Farm is a powerful infrastructure for running multiple AI tasks sim
 
 ![AI Agent Farm Infrastructure — 48 HP MicroServer Gen8 nodes (6 pods of 8) with the network rack](/ai-agent-farm.jpg)
 
-*The AI Agent Farm: 48 sovereign nodes (6 pods of 8) on owned hardware, with the network rack at center. The federation that develops the SKA Protocol.*
+*The AI Agent Farm: 48 sovereign nodes (6 pods of 8) on owned hardware, with the network rack at center. The federation that develops the [SKA Protocol](https://github.com/quantiota/SKA-Protocol).*
 
 
