@@ -36,7 +36,8 @@
 | Matrix Server | Refurbished DELL R210 II |
 | Monitor Rack Console | Refurbished DELL Rack Console 17FP |
 | Power Distribution Unit | APC AP 7822  |
-|Server Rack Enclosure| Refurbished HP/DELL 42U Rack Enclosure |
+|GPU Server Rack Enclosure| Refurbished HP/DELL 42U Rack Enclosure |
+|Microserver Rack Enclosure| Refurbished  12U Rack Enclosure |
 
 
 
