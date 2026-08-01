@@ -56,7 +56,7 @@
                                                                                                             
 ##  GPU Server 
 
-1 refurbished Cirrascale GX8 Series used in the AI Agent Farm.
+1 refurbished Cirrascale GX8 Series used in the AI Agent Farm Tesla K80/P100/V100.
 
  ![Refurbished GPU Server](images/cirrascale.png)
 
