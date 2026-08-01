@@ -39,13 +39,13 @@
 |Server Rack Enclosure| Refurbished HP/DELL 42U Rack Enclosure |
 
 
-S
+
 
 
 
 ## Microservers 
 
-45 refurbished Gen8 microservers used in the AI Agent Farm.
+48 refurbished Gen8 microservers used in the AI Agent Farm.
 
  ![Refurbished Microservers](/ai-agent-farm.jpg)
 
