@@ -39,10 +39,19 @@
 |GPU Server Rack Enclosure| Refurbished HP/DELL 42U Rack Enclosure |
 |Microserver Rack Enclosure| Refurbished  12U Rack Enclosure |
 
-
-
-
-
+| |  |
+| | |
+|||
+|||
+| Environmental Monitoring | Refurbished AKCP SensorProbe |
+| Eaton UPS: 5PX 2200| Powers → AKCP Monitoring System + Teltonika Router RUT955|
+| DELL R210 II|Nginx reverse proxy server|
+| AKCP SecurityProbe 5ESV | Environmental Monitoring & Software |
+| AKCP E-sensor8 | Extension |
+| Sensors | 2 Temperature & Humidity, 3 Motion Detectors, 2 Smoke Detectors, 2 Door Contacts, 1 Siren |
+| 3 AKCP Cameras | -- |
+| MSI MS-9899 | mini ITX Mainboard Barebone with Xubuntu |
+s
 
 ## Microservers 
 
