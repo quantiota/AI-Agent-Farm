@@ -65,6 +65,12 @@
 
 
 
+##  Environmental Monitoring System & Software
+
+
+ ![Environmental Monitoring System & Software](images/environment-monitoring.png)
+
+:pencil: High resolution image [Environmental Monitoring System & Software](https://raw.githubusercontent.com/quantiota/AI-Agent-Farm/master/doc/it-admin/hardware/images/environment-monitoring.png)
 
 
 
