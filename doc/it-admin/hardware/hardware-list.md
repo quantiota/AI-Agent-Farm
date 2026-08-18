@@ -38,7 +38,6 @@
 | Power Distribution Unit | APC AP 7822  |
 |GPU Server Rack Enclosure| Refurbished HP/DELL 42U Rack Enclosure |
 |Microserver Rack Enclosure| Refurbished  12U Rack Enclosure |
-
 | |  |
 | | |
 |||
@@ -51,7 +50,7 @@
 | Sensors | 2 Temperature & Humidity, 3 Motion Detectors, 2 Smoke Detectors, 2 Door Contacts, 1 Siren |
 | 3 AKCP Cameras | -- |
 | MSI MS-9899 | mini ITX Mainboard Barebone with Xubuntu |
-s
+
 
 ## Microservers 
 
