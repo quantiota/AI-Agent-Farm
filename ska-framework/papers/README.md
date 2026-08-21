@@ -137,7 +137,7 @@ foundation, together with the AI Agent Farm infrastructure paper:
 2. **`2504.03214v1.pdf`** - Time-invariant properties and continuous learning dynamics
 3. **`riemannian_neural_fields.pdf`** - *Geodesic Learning Paths and Architecture Discovery in Riemannian Neural Fields* (continuous/geometric extension)
 4. **`ai_infrastructure_topology.pdf`** - AI infrastructure topology
-5. **`techrxiv.176282131.11209360_v1.pdf`** - *Structured Knowledge Accumulation: A Standard AI Infrastructure for Studying Forward-Only Learning through Knowledge Accumulation in LLMs* (published, TechRxiv)
+5. **`techrxiv.176282131.11209360_v2.pdf`** - *Structured Knowledge Accumulation: A Standard AI Infrastructure for Studying Forward-Only Learning through Knowledge Accumulation in LLMs* (published, TechRxiv)
 
 These papers provide the rigorous mathematical foundation for why the AI Agent Lab's conversation-based learning approach works and why it produces superior results compared to traditional AI deployment methods.
 
