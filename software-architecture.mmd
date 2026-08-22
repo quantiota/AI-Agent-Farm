@@ -1,0 +1,158 @@
+---
+title: Software AI Agent Farm Architecture
+config:
+  look: classic
+  theme: base
+  layout: elk
+  themeCSS: ".flowchartTitleText { font-size: 28px; font-weight: bold; }"
+---
+graph TD
+subgraph node1["Docker Services — Node 1"]
+codeserver["code-server<br>(Port 8080)"]
+grafana["Grafana<br>(Port 3000)"]
+questdb["QuestDB<br>(Port 9000, 9009, 8812, 9003)"]
+nginx["Nginx<br>(Port 80, 443)"]
+aiagent["AI Agent<br>(Claude Code)"]
+mailc["IMAP client"]
+end
+
+subgraph node2["Docker Services — Node 2"]
+codeserver2["code-server<br>(Port 8080)"]
+grafana2["Grafana<br>(Port 3000)"]
+questdb2["QuestDB<br>(Port 9000, 9009, 8812, 9003)"]
+nginx2["Nginx<br>(Port 80, 443)"]
+aiagent2["AI Agent<br>(Claude Code)"]
+mailc2["IMAP client"]
+end
+
+subgraph node3["Docker Services — Node 3"]
+codeserver3["code-server<br>(Port 8080)"]
+grafana3["Grafana<br>(Port 3000)"]
+questdb3["QuestDB<br>(Port 9000, 9009, 8812, 9003)"]
+nginx3["Nginx<br>(Port 80, 443)"]
+aiagent3["AI Agent<br>(Claude Code)"]
+mailc3["IMAP client"]
+end
+
+subgraph farm["Shared Services"]
+matrix["Matrix<br>(agent messaging)"]
+prometheus["Prometheus<br>(Port 9090, 9100)"]
+jupyterhub["JupyterHub<br>(GPU, Port 8000)"]
+end
+
+subgraph localhost["localhost — Node 1"]
+raid10[("RAID10")]
+backup["Backup/Recovery<br>rsnapshot"]
+end
+
+subgraph localhost2["localhost — Node 2"]
+raid10b[("RAID10")]
+backup2["Backup/Recovery<br>rsnapshot"]
+end
+
+subgraph localhost3["localhost — Node 3"]
+raid10c[("RAID10")]
+backup3["Backup/Recovery<br>rsnapshot"]
+end
+
+User["User<br>"]
+User -->|Interacts with| nginx
+nginx -->|Routes requests| codeserver
+nginx -->|Routes requests| grafana
+nginx -->|Routes requests| questdb
+aiagent <-->|Queries/Writes data| questdb
+aiagent <-->|Creates/Updates dashboards| grafana
+aiagent <-->|Executes code| codeserver
+codeserver -->|Ingests data| questdb
+grafana -->|Queries data| questdb
+
+%% Node 2 internals
+User2["User<br>"]
+User2 -->|Interacts with| nginx2
+nginx2 -->|Routes requests| codeserver2
+nginx2 -->|Routes requests| grafana2
+nginx2 -->|Routes requests| questdb2
+aiagent2 <-->|Queries/Writes data| questdb2
+aiagent2 <-->|Creates/Updates dashboards| grafana2
+aiagent2 <-->|Executes code| codeserver2
+codeserver2 -->|Ingests data| questdb2
+grafana2 -->|Queries data| questdb2
+
+%% Node 3 internals
+User3["User<br>"]
+User3 -->|Interacts with| nginx3
+nginx3 -->|Routes requests| codeserver3
+nginx3 -->|Routes requests| grafana3
+nginx3 -->|Routes requests| questdb3
+aiagent3 <-->|Queries/Writes data| questdb3
+aiagent3 <-->|Creates/Updates dashboards| grafana3
+aiagent3 <-->|Executes code| codeserver3
+codeserver3 -->|Ingests data| questdb3
+grafana3 -->|Queries data| questdb3
+
+%% Email — one domain and provider mailbox per node
+mbox1["IMAP mailbox<br>(Node 1 domain provider)"]
+mbox2["IMAP mailbox<br>(Node 2 domain provider)"]
+mbox3["IMAP mailbox<br>(Node 3 domain provider)"]
+aiagent <-->|Sends/Reads mail| mailc
+aiagent2 <-->|Sends/Reads mail| mailc2
+aiagent3 <-->|Sends/Reads mail| mailc3
+mailc <-->|IMAP/SMTP| mbox1
+mailc2 <-->|IMAP/SMTP| mbox2
+mailc3 <-->|IMAP/SMTP| mbox3
+
+%% Farm interactions
+aiagent <-->|Agent-to-agent messaging| matrix
+aiagent <-->|jh-exec| jupyterhub
+aiagent2 <-->|Agent-to-agent messaging| matrix
+aiagent2 <-->|jh-exec| jupyterhub
+aiagent3 <-->|Agent-to-agent messaging| matrix
+aiagent3 <-->|jh-exec| jupyterhub
+aiagent -->|Queries metrics| prometheus
+aiagent2 -->|Queries metrics| prometheus
+aiagent3 -->|Queries metrics| prometheus
+
+%% Storage
+questdb -->|Data Persistence| localhost
+questdb2 -->|Data Persistence| localhost2
+questdb3 -->|Data Persistence| localhost3
+
+%% Layout nudging (still included, may help with ELK)
+aiagent ~~~ codeserver
+aiagent ~~~ grafana
+aiagent ~~~ questdb
+aiagent2 ~~~ codeserver2
+aiagent2 ~~~ grafana2
+aiagent2 ~~~ questdb2
+aiagent3 ~~~ codeserver3
+aiagent3 ~~~ grafana3
+aiagent3 ~~~ questdb3
+questdb ~~~ nginx2
+localhost ~~~ sp1
+sp1 ~~~ sp1b
+sp1b ~~~ node2
+questdb2 ~~~ nginx3
+localhost2 ~~~ sp2
+sp2 ~~~ sp2b
+sp2b ~~~ node3
+questdb3 ~~~ matrix
+localhost3 ~~~ sp3
+sp3 ~~~ sp3b
+sp3b ~~~ farm
+
+%% Invisible spacers between node blocks
+sp1[" "]
+sp1b[" "]
+sp2[" "]
+sp2b[" "]
+sp3[" "]
+sp3b[" "]
+classDef spacer fill:transparent,stroke:transparent,color:transparent;
+class sp1,sp1b,sp2,sp2b,sp3,sp3b spacer;
+
+classDef toDevelop fill:#f9f,stroke:#333,stroke-width:2px;
+class aiagent,aiagent2,aiagent3 toDevelop;
+classDef external fill:#d5e8d4,stroke:#333,stroke-dasharray: 5 5;
+class matrix,prometheus,jupyterhub external;
+classDef provider fill:#dae8fc,stroke:#333,stroke-dasharray: 5 5;
+class mbox1,mbox2,mbox3 provider;
