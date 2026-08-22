@@ -101,6 +101,14 @@ mailc <-->|IMAP/SMTP| mbox1
 mailc2 <-->|IMAP/SMTP| mbox2
 mailc3 <-->|IMAP/SMTP| mbox3
 
+%% GitHub — one account per node
+gh1["GitHub account<br>(Node 1)"]
+gh2["GitHub account<br>(Node 2)"]
+gh3["GitHub account<br>(Node 3)"]
+aiagent <-->|git push/pull, PRs| gh1
+aiagent2 <-->|git push/pull, PRs| gh2
+aiagent3 <-->|git push/pull, PRs| gh3
+
 %% Farm interactions
 aiagent <-->|Agent-to-agent messaging| matrix
 aiagent <-->|jh-exec| jupyterhub
@@ -155,4 +163,4 @@ class aiagent,aiagent2,aiagent3 toDevelop;
 classDef external fill:#d5e8d4,stroke:#333,stroke-dasharray: 5 5;
 class matrix,prometheus,jupyterhub external;
 classDef provider fill:#dae8fc,stroke:#333,stroke-dasharray: 5 5;
-class mbox1,mbox2,mbox3 provider;
+class mbox1,mbox2,mbox3,gh1,gh2,gh3 provider;
