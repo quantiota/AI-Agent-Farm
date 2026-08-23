@@ -1,0 +1,155 @@
+\pgfdeclarelayer{bg}
+\pgfsetlayers{bg,main}
+
+\definecolor{bluestroke}{HTML}{01579b}
+\definecolor{bluefill}{HTML}{e1f5fe}
+\definecolor{greenstroke}{HTML}{2e7d32}
+\definecolor{greenfill}{HTML}{e8f5e8}
+\definecolor{purplestroke}{HTML}{7b1fa2}
+\definecolor{purplefill}{HTML}{f3e5f5}
+\definecolor{orangestroke}{HTML}{f57c00}
+\definecolor{orangefill}{HTML}{fff8e1}
+\definecolor{redstroke}{HTML}{c2185b}
+\definecolor{redfill}{HTML}{fce4ec}
+
+\definecolor{storagestroke}{HTML}{ef6c00}
+\definecolor{storagefill}{HTML}{fff3e0}
+\definecolor{schemastroke}{HTML}{33691e}
+\definecolor{schemafill}{HTML}{f1f8e9}
+\definecolor{toDevelopstroke}{HTML}{333333}
+\definecolor{toDevelopfill}{HTML}{ff99ff}
+
+\tikzset{
+    default/.style={
+        rectangle,
+        draw=orangestroke, fill=orangefill,
+        thick,
+        text width=3cm,
+        minimum height=1cm,
+        align=center
+    },
+    agent/.style={
+        rectangle,
+        draw=bluestroke, fill=bluefill,
+        thick,
+        text width=2cm,
+        minimum height=1cm,
+        align=center
+    },
+    flow1/.style={
+        rectangle,
+        draw=greenstroke, fill=greenfill,
+        thick,
+        text width=5cm,
+        minimum height=1cm,
+        align=center
+    },
+    flow2/.style={
+        rectangle,
+        draw=purplestroke, fill=purplefill,
+        thick,
+        text width=5cm,
+        minimum height=1cm,
+        align=center
+    },
+    struct/.style={
+        rectangle,
+        draw=orangestroke, fill=orangefill,
+        thick,
+        text width=4cm,
+        minimum height=1cm,
+        align=center
+    },
+    notifier/.style={
+        rectangle,
+        draw=redstroke, fill=redfill,
+        thick,
+        text width=5cm,
+        minimum height=1cm,
+        align=center
+    },
+    input/.style={
+        rectangle,
+        draw=bluestroke, fill=bluefill,
+        thick,
+        text width=3cm,
+        minimum height=1cm,
+        align=center
+    },
+    realtime/.style={
+        rectangle,
+        draw=greenstroke, fill=greenfill,
+        thick,
+        text width=5cm,
+        minimum height=1cm,
+        align=center
+    },
+    batch/.style={
+        rectangle,
+        draw=purplestroke, fill=purplefill,
+        thick,
+        text width=5cm,
+        minimum height=1cm,
+        align=center
+    },
+    intelligence/.style={
+        rectangle,
+        draw=redstroke, fill=redfill,
+        thick,
+        text width=4cm,
+        minimum height=1cm,
+        align=center
+    },
+    storage/.style={
+        cylinder,
+        shape border rotate=90, aspect=0.1,
+        draw=storagestroke, fill=storagefill,
+        thick,
+        text width=4cm,
+        minimum height=1cm,
+        align=center
+    },
+    schema/.style={
+        rectangle,
+        draw=schemastroke, fill=schemafill,
+        thick,
+        text width=6cm,
+        minimum height=1.5cm,
+        align=center
+    },
+    toDevelop/.style={
+        rectangle,
+        draw=toDevelopstroke, fill=toDevelopfill,
+        thick,
+        text width=3cm,
+        minimum height=1cm,
+        align=center
+    },
+    arrow/.style={
+        -Stealth,
+        thick,
+        rounded corners=4pt
+    },
+    dashedarrow/.style={
+        -Stealth,
+        thick,
+        dashed,
+        rounded corners=4pt
+    },
+    doublearrow/.style={
+        Stealth-Stealth,
+        thick,
+        rounded corners=4pt
+    },
+    arrownode/.style={
+        rectangle,
+        font=\sffamily\footnotesize,
+        fill=purplefill,
+        align=center
+    },
+    subgraph/.style={
+        draw=cyan!25, fill=pink!3,
+        thick,
+        inner sep=0.3cm
+    }
+}
