@@ -1,0 +1,106 @@
+% Software AI Agent Farm Architecture — TikZ version of architecture-farm.mmd
+% Same visual dialect as the standalone AI Agent Lab diagram.
+% Style definitions below are reconstructions — if your own preamble defines
+% default/toDevelop/storage/subgraph/arrow/doublearrow/arrownode, use yours instead.
+\documentclass{article}
+\usepackage[paperwidth=39.5cm,paperheight=66cm,margin=8mm]{geometry}
+\pagestyle{empty}
+\usepackage{tikz}
+\usetikzlibrary{positioning,fit,arrows.meta,shapes.geometric,calc}
+
+\input{tikzstyles}
+
+% Two styles the farm diagram adds, built from the tikzstyles palette:
+% shared farm services (green, dashed) and third-party identities (blue, dashed)
+\tikzset{
+  external/.style={default, draw=greenstroke, fill=greenfill, dashed},
+  provider/.style={default, draw=bluestroke,  fill=bluefill,  dashed},
+  every node/.style={font=\small}
+}
+
+% ---------------------------------------------------------------------------
+% One complete AI Agent Lab.  #1 = node-name prefix, #2 = node number,
+% #3 = vertical shift of the whole lab.  Internal geometry is the original
+% standalone-lab layout (Certbot removed, IMAP client added).
+% ---------------------------------------------------------------------------
+\newcommand{\aglab}[3]{%
+\begin{scope}[shift={(0,#3)}]
+  % ------------- lab nodes (original geometry) -------------
+  \node[default] (#1-User) {User};
+  \node[default, below=4cm of #1-User] (#1-nginx) {Nginx\\(Port 80, 443)};
+  \node[default, below=2cm of #1-nginx, xshift=-3cm] (#1-codeserver) {code-server\\(Port 8080)};
+  \node[default, left=of #1-codeserver] (#1-grafana) {Grafana\\(Port 3000)};
+  \node[default, below=2cm of #1-codeserver] (#1-questdb) {QuestDB\\(Port 9000, 9009, 8812, 9003)};
+  \node[toDevelop, above=2cm of #1-grafana, xshift=-5cm] (#1-aiagent) {AI Agent\\(Claude Code)};
+  \node[default, left=4.5cm of #1-grafana] (#1-mailc) {IMAP client};
+  \begin{pgfonlayer}{bg}
+  \node[subgraph,
+        fit=(#1-codeserver) (#1-grafana) (#1-questdb) (#1-nginx) (#1-aiagent) (#1-mailc),
+        label={[font=\sffamily\bfseries, cyan!80!blue]above:Docker Services --- Node #2}
+       ] (#1-DockerServices) {};
+  \end{pgfonlayer}
+
+  % ------------- per-node storage (original geometry) -------------
+  \node[storage, text width=3cm, below=2cm of #1-questdb, xshift=-2cm] (#1-RAID) {RAID10};
+  \node[default, below=2cm of #1-questdb, xshift=2cm] (#1-Backup) {Backup/Recovery\\rsnapshot};
+  \begin{pgfonlayer}{bg}
+  \node[subgraph, fit=(#1-RAID) (#1-Backup),
+        label={[font=\sffamily\bfseries, cyan!80!blue]below:localhost --- Node #2}
+       ] (#1-storageLayer) {};
+  \end{pgfonlayer}
+
+  % ------------- external identities (own domain + GitHub) -------------
+  \node[provider, left=4.2cm of #1-mailc] (#1-mbox) {IMAP mailbox\\(Node #2 provider)};
+  \node[provider, left=1.0cm of #1-mbox]  (#1-gh)   {GitHub account\\(Node #2)};
+
+  % ------------- internal connections (original routing) -------------
+  \draw[arrow] ([xshift=0.1cm]#1-User.south) to node[arrownode] {Interacts with} ([xshift=0.1cm]#1-nginx.north);
+  \draw[arrow] (#1-nginx) to (#1-nginx |- 0,-6.9) to node[arrownode] {Routes requests} ([xshift=0.1cm]#1-codeserver |- 0,-6.9) to ([xshift=0.1cm]#1-codeserver.north);
+  \draw[arrow] ([xshift=-0.2cm]#1-nginx.south) |- (#1-codeserver |- 0,-6.3) to node[arrownode] {Routes requests} ([xshift=0.1cm]#1-grafana |- 0,-6.3) to ([xshift=0.1cm]#1-grafana.north);
+  \draw[arrow] ([xshift=0.2cm]#1-nginx.south) to node[arrownode] {Routes requests} ([xshift=0.2cm]#1-nginx |- 0,-9.7) -| ([xshift=0.3cm]#1-questdb.north);
+  \draw[doublearrow] (#1-aiagent) |- (#1-grafana |- 0,-6.9) to node[arrownode] {Executes code} ([xshift=-0.1cm]#1-codeserver |- 0,-6.9) to ([xshift=-0.1cm]#1-codeserver.north);
+  \draw[doublearrow] ([xshift=0.2cm]#1-aiagent.south) to ([xshift=0.2cm]#1-aiagent |- 0,-6.3) to node[arrownode] {Creates/Updates dashboards} ([xshift=-0.1cm]#1-grafana |- 0,-6.3) to ([xshift=-0.1cm]#1-grafana.north);
+  \draw[doublearrow] ([xshift=-0.2cm]#1-aiagent.south) to node[arrownode, pos=0.825] {Queries/Writes data} ([xshift=-0.2cm]#1-aiagent |- 0,-9.9) -| ([xshift=-0.3cm]#1-questdb.north);
+  \draw[arrow] ([xshift=0.1cm]#1-codeserver.south) to node[arrownode] {Ingests data} ([xshift=0.1cm]#1-codeserver |- 0,-9.7) to ([xshift=0.1cm]#1-questdb.north);
+  \draw[arrow] (#1-grafana) to node[arrownode] {Queries data} (#1-grafana |- 0,-9.7) -| ([xshift=-0.1cm]#1-questdb.north);
+  \draw[arrow] (#1-questdb) to node[arrownode] {Data Persistence} (#1-storageLayer);
+
+  % ------------- email + GitHub connections -------------
+  \node[arrownode] (#1-maillbl) at ([yshift=1.25cm]#1-mailc.north) {Sends/Reads mail};
+  \draw[doublearrow] (#1-maillbl.east) -| ([xshift=-0.7cm]#1-aiagent.south);
+  \draw[doublearrow] (#1-maillbl.south) -- (#1-mailc.north);
+  \draw[doublearrow] (#1-mailc) to node[arrownode] {IMAP/SMTP} (#1-mbox);
+  \draw[doublearrow] ([yshift=-0.15cm]#1-aiagent.west) -| node[arrownode, pos=0.22] {git push/pull, PRs} (#1-gh.north);
+\end{scope}
+}
+
+\begin{document}
+\noindent\begin{tikzpicture}[node distance=1cm]
+
+\node[font=\fontsize{38}{46}\selectfont\sffamily\bfseries, align=center] at (-14,3.2)
+     {Software AI Agent Farm Architecture -- 3 Nodes};
+
+% ---- three labs, stacked with clear space between blocks ----
+\aglab{n1}{1}{0}
+\aglab{n2}{2}{-17.5}
+\aglab{n3}{3}{-35}
+
+% ---- Shared Services (bottom) ----
+\node[external] (matrix) at (-14,-54.5) {Matrix\\(agent messaging)};
+\node[external, right=1.2cm of matrix]     (prometheus) {Prometheus\\(Port 9090, 9100)};
+\node[external, right=1.2cm of prometheus] (jupyterhub) {JupyterHub\\(GPU, Port 8000)};
+\begin{pgfonlayer}{bg}
+\node[subgraph, fit=(matrix) (prometheus) (jupyterhub),
+      label={[font=\sffamily\bfseries, cyan!80!blue]below:Shared Services}
+     ] (farmBox) {};
+\end{pgfonlayer}
+
+% ---- each agent to the shared commons (one visual trunk on the left) ----
+\foreach \p in {n1,n2,n3}{
+  \draw[doublearrow] ([yshift=0.35cm]\p-aiagent.west) -| (farmBox.west -| -28.8,0) -- (farmBox.west);
+}
+\node[fill=violet!8, rounded corners=2pt, inner sep=2.5pt, font=\scriptsize, rotate=90]
+  at (-29.2,-47.5) {Matrix $\cdot$ Queries metrics $\cdot$ jh-exec};
+
+\end{tikzpicture}
+\end{document}
