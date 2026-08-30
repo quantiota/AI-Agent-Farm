@@ -1,3 +1,4 @@
+  GNU nano 6.2                                           fleet-power.sh
 #!/usr/bin/env bash
 # fleet-power.sh — power the farm nodes on/off via iLO Redfish (no SSH needed).
 #
@@ -17,7 +18,6 @@ set -euo pipefail
 CREDS="${ILO_CREDS:-$(dirname "$0")/ilo-creds.txt}"
 CMD="${1:-}"
 SYS="/redfish/v1/Systems/1/"
-STAGGER="${STAGGER:-4}"   # seconds between power-ons ('up' only) — spreads inrush across the 16A PDU banks
 
 usage() {
   cat <<EOF
@@ -28,7 +28,6 @@ usage: $(basename "$0") {up|down|off|status} [--yes]
   status  show each node's PowerState
   --yes   skip the confirmation prompt on down/off
 Each command reads PowerState first and skips nodes already in the target state.
-env STAGGER=N   seconds between power-ons on 'up' (default 4; spreads inrush, STAGGER=0 disables).
 creds file: $CREDS   (lines: "IP  USER  PASS")
 EOF
   exit 1
@@ -73,6 +72,4 @@ while read -r ip user pass _; do
          -X POST "https://$ip${SYS}Actions/ComputerSystem.Reset/" \
          -d "{\"ResetType\":\"$act\"}")
   printf "%-15s %-16s -> HTTP %s\n" "$ip" "$act" "$code"
-  [[ "$CMD" == "up" ]] && sleep "$STAGGER"   # stagger power-on to avoid tripping a bank on inrush
 done < "$CREDS"
-
