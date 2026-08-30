@@ -72,4 +72,7 @@ while read -r ip user pass _; do
          -H 'Content-Type: application/json' \
          -X POST "https://$ip${SYS}Actions/ComputerSystem.Reset/" \
          -d "{\"ResetType\":\"$act\"}")
+  printf "%-15s %-16s -> HTTP %s\n" "$ip" "$act" "$code"
+  [[ "$CMD" == "up" ]] && sleep "$STAGGER"   # stagger power-on to avoid tripping a bank on inrush
+done < "$CREDS"
 
