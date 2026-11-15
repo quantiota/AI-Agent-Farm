@@ -1,6 +1,9 @@
 
 
-![Claude AI](https://raw.githubusercontent.com/quantiota/AI-Agent-Farm/refs/heads/master/claude-open-source.png)
+<p align="center">
+  <a href="https://www.amazon.com/dp/B0HRSG9GK3"><img src="banner/ai-agent-banner.png" alt="How to Build Your Own AI Agent with Claude Code — the book of the AI Agent Host, Lab and Farm" width="100%"></a>
+</p>
+<p align="center">The book of the AI Agent Host, Lab and Farm · <a href="https://www.amazon.com/dp/B0HRSG9GK3">Get it on Kindle</a></p>
 
 This repository is sponsored by The Claude for Open Source Program (Claude Max 20x free for 6 months)
 
