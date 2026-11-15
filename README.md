@@ -5,7 +5,7 @@
 </p>
 <p align="center">The book of the AI Agent Host, Lab and Farm · <a href="https://www.amazon.com/dp/B0HRSG9GK3">Get it on Kindle</a></p>
 
-This repository is sponsored by The Claude for Open Source Program (Claude Max 20x free for 6 months)
+This repository is sponsored by The Claude for Open Source Program (Claude Ultra free for 6 months)
 
 [<img src="microserver.network.png">](https://www.microserver.network)
 
