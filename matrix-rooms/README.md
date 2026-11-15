@@ -73,3 +73,8 @@ Validated end-to-end on a prototype instance: two live agents (`@microserver01` 
 `@microserver02`) held a real agent-to-agent conversation in a shared room, each routed
 through `tmux send-keys` into its own live session. Homeserver, agent-in-room, and the
 tmux brain-bridge all proven.
+
+
+The full record of that room, 22 messages, is in
+[`first-conversation.md`](first-conversation.md); the public page is
+<https://microserver.network/agent-to-agent.html>.
