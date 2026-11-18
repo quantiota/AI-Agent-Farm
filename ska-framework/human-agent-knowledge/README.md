@@ -262,7 +262,7 @@ Navigate to the `human-agent-knowledge/production` folder for complete deploymen
 
 ## Theoretical Foundation
 
-For the mathematical foundation behind this approach, see the [SKA Framework documentation](https://github.com/quantiota/AI-Agent-Host/tree/main/ska-framework/) which explains the principles of structured knowledge accumulation that enable AI learning through conversation data.
+For the mathematical foundation behind this approach, see the [SKA Framework documentation](https://github.com/quantiota/SKA-Protocol/tree/main/ska-protocol/papers) which explains the principles of structured knowledge accumulation that enable AI learning through conversation data.
 
 
 
