@@ -1,9 +1,9 @@
 
 
 <p align="center">
-  <a href="https://www.amazon.com/dp/B0HRSG9GK3"><img src="banner/ai-agent-banner.png" alt="How to Build Your Own AI Agent with Claude Code — the book of the AI Agent Host, Lab and Farm" width="100%"></a>
+  <a href="https://www.amazon.com/dp/B0HNQ2KCQB"><img src="banner/ai-agent-farm-banner.png" alt="How to Build the AI Agent Farm with Claude Code — from one microserver to a federation of nodes" width="100%"></a>
 </p>
-<p align="center">The book of the AI Agent Host, Lab and Farm · <a href="https://www.amazon.com/dp/B0HRSG9GK3">Get it on Kindle</a></p>
+<p align="center">The book of the AI Agent Farm · <a href="https://www.amazon.com/dp/B0HNQ2KCQB">Get it on Kindle</a></p>
 
 This repository is sponsored by The Claude for Open Source Program (Claude Ultra free for 6 months)
 
