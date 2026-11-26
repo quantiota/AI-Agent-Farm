@@ -1,59 +1,43 @@
-## Readme
+# Network
 
-The AI Agent Farm network is designed with high availability and scalability in mind. The following diagram illustrates the network design.
+The AI Agent Farm's network as it is built: one router, three switches, one subnet (`192.168.1.0/24`), and no VLANs. The networks are kept apart by their own switches, on separate ports of the router.
 
-The AI Agent Farm is connected to the internet through a fiber-optic internet box, which is the primary ISP. 
+## The router
 
-The fiber-optic internet box is in a bridge mode and is connected to the WAN port of the 4G LTE router through an Ethernet cable. 
+A Teltonika RUT955 (`192.168.1.1`), at the window, inside the IP67 enclosure of its outdoor 4G antenna:
 
-The switch is used to connect the GPU server, microservers, and monitoring server to the network.
+- **WAN:** the fibre box, in bridge mode, the primary Internet line;
+- **4G:** the secondary line;
+- **Teltonika RMS:** remote management of the Farm, even without a public IP address.
 
-The switch also connects to the LAN port of the 4G LTE router through an Ethernet cable. 
+## The switches
 
-The 4G LTE outdoor antenna is designed to have the 4G LTE router installed inside IP67 enclosure.
+| Router port | Switch | Rack | Connects |
+|---|---|---|---|
+| LAN1 | TP-Link TL-SG3452, **NODES** | 12U | NIC 1 of the 48 microservers; its 4 SFP modules: the GPU server, the Matrix server, the Prometheus server, the uplink |
+| LAN3 | TP-Link TL-SG3452, **ILO** | 12U | the iLO of the 48 microservers; its 4 SFP modules: the GPU server's ASMB, the 2 iDRACs of the 12U rack, the uplink |
+| LAN2 | TP-Link TL-SG1024 | Dell 24U | the machines of the 24U rack |
 
-### network design diagram
+## The diagrams
 
-![Network-design](./network-design.png)
+### The 12U rack and the 48 nodes
 
-### Network Configuration:
+12 columns of 4 microservers on pallets, around the 12U rack.
 
-**1. GPU Server:** Connect eth1 to VLAN 10 (Internet), eth2 to VLAN 20 (Data Transfer), and eth3 to VLAN 30 (Server Management).
+![Network design](network-design.png)
 
-**2. Microservers (10):** Each microserver should connect eth1 to VLAN 10 (Internet), eth2 to VLAN 20 (Data Transfer) and eth3 to VLAN 30 (Server Management).
+### The Dell 24U rack
 
-**3. Monitoring Server:** Connect eth1 to VLAN 10 (Internet), eth2 to VLAN 20 (Data Transfer), and eth3 to VLAN 30 (Server Management).
+The UPS, the nginx server (single entry from the Internet), the GPU server, the AKCP environmental monitoring, the TL-SG1024, the fibre box and the workstation.
 
-**3. Managed Switch:** Configure VLANs 10, 20, and 30 on the switch. Assign appropriate ports to each VLAN as per the requirements mentioned above.
+![Dell 24U rack](network-edge.png)
 
-**4. Router:** Configure VLAN routing on the router to allow inter-VLAN communication if necessary. Connect the router to the internet and assign the appropriate VLAN tag for VLAN 10.
+The `.xml` files are the draw.io sources of the two diagrams.
 
+## Datasheet
 
-### VLAN Configuration:
+`datasheet/SDN-Gigabit-Managed-Switch.pdf`: the TP-Link datasheet of the TL-SG3452 switches.
 
-**1. VLAN 10 (Internet):** Connects the GPU Server's eth1, Microserver's eth1, Monitoring Server's eth1, and the router.
+## The book
 
-**2. VLAN 20 (Data Transfer):** Connects the GPU Server's eth2, Microserver's eth2 and Monitoring Server's eth2.
-
-**3. VLAN 30 (Server Management):** Connects the GPU Server's eth3, Microserver's eth3, Monitoring Server's eth3 and the router for remote management or use the routing configuration.
-
-Ensure that appropriate IP addresses, subnet masks, and default gateway settings are configured for each VLAN and device.
-
-### Routing Configuration
-
-Here's a step-by-step overview of the process:
-
-1. Connect the VLAN 10 interface on your switch to one of the LAN ports on the router.
-
-2. Ensure that VLAN 10 is configured with the appropriate IP settings, such as an IP address, subnet mask, and default gateway. The default gateway should be set to the IP address of the router's interface connected to VLAN 10.
-
-3. Configure the router to allow traffic between VLAN 10 and VLAN 30. This involves adding a route on the router to direct traffic destined for VLAN 30's subnet to the VLAN 10 interface on the switch, but it doesn't enable direct communication between VLAN 10 and VLAN 30.
-
-Verify the routing configuration by testing connectivity between devices in VLAN 30 and the internet.
-
-By implementing this configuration, devices in VLAN 10 will have direct internet access through the router, while devices in VLAN 30 can access the internet by routing their traffic through VLAN 10.
-
-
-
-
-
+*How to Build the AI Agent Farm with Claude Code* sets up this network in Chapter 4, and maps every address in Appendix D: <https://www.amazon.com/dp/B0HNQ2KCQB>.
