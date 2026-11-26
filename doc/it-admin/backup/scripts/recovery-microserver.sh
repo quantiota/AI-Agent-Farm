@@ -1,4 +1,4 @@
-#sudo bash -x recovery-microserver.sh
+
 
 #!/bin/bash
 

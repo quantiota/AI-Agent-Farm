@@ -30,6 +30,8 @@ Replace " &lt;RAID-storage-UUID &gt;" with the UUID obtained from the previous s
 
 Replace the default configuration files with those located in the config folder.
 
+`config/redundancy-backup/` is the second level: on the GPU server, a daily copy of each node's latest snapshot (`hourly.0`) into `/backup/redundancy/`, installed as `/etc/rsnapshot-redundancy.conf` and `/etc/cron.d/rsnapshot-redundancy`.
+
 ## Usage
 
 - Recovery

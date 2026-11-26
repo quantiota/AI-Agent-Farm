@@ -1,4 +1,4 @@
-#sudo bash -x recovery-gpuserver.sh
+
 
 #!/bin/bash
 
