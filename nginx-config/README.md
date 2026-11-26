@@ -1,43 +1,38 @@
-# Farm Networking
 
-Two nginx configs, one per layer. One public IP fronts every lab.
+# nginx-config — the Farm's single entry from the Internet
+
+The Farm has one public IP address. The router forwards its port 443 to the **nginx server**, a Dell R210 II. Its `stream.conf` reads the name each connection asks for, such as `vscode.microserver01.net`, **without decrypting it**, and forwards the connection to the node that owns the name. Every node keeps its own certificates.
 
 | file | runs on | role |
-|------|---------|------|
-| `stream.conf` | **GPU server** | SNI router on `:443` — reads the TLS hostname and forwards each lab's domain to its microserver, terminating nothing. |
-| `default.conf.template` | **each lab** (in its docker stack) | the lab's own nginx — terminates its own wildcard cert for `${DOMAIN}` and serves `vscode/questdb/grafana/aiagentui/gradio/auth.${DOMAIN}`, all behind Authelia SSO. |
+|---|---|---|
+| `stream.conf` | the nginx server (R210 II) | SNI passthrough on `:443`: one line per node (`~\.microserverNN\.net$` → its IP), and one for the Matrix homeserver (`~\.microserver\.network$`) |
 
-`${DOMAIN}` is substituted per lab (e.g. `microserver01.tld`), so `vscode.${DOMAIN}` →
-`vscode.microserver01.tld`. The domain matches the microserver.
+Each node runs the AI Agent Lab unchanged, with the Lab's own nginx and its certificates, one per subdomain: see the [AI Agent Lab](https://github.com/quantiota/AI-Agent-Lab) repository.
 
-## Flow
-
-```
-internet → GPU server :443  (stream.conf, SNI passthrough)
-   ├─ *.microserver01.tld → 192.168.1.15 → lab nginx (default.conf, own cert) → docker services
-   └─ default            → :8443         → local hub.gpuserver.tld services
-```
-
-## Issue the wildcard cert (lab)
+## Install (on the nginx server)
 
 ```bash
-docker compose -f init.yaml run --rm certbot certonly --manual --preferred-challenges dns \
-    -d "*.$DOMAIN" -d "$DOMAIN"
+# 1. the file
+sudo mkdir -p /etc/nginx/streams-enabled
+sudo cp stream.conf /etc/nginx/streams-enabled/stream.conf
+
+# 2. one line at the top level of /etc/nginx/nginx.conf, outside http { }:
+#      include /etc/nginx/streams-enabled/*.conf;
+
+# 3. test and reload
+sudo nginx -t && sudo systemctl reload nginx
 ```
 
-Prompts for the two `_acme-challenge.$DOMAIN` **TXT** records (one for `*.$DOMAIN`, one for the
-apex `$DOMAIN`). Renew with `docker compose run certbot renew`.
+Then forward the router's port 443 to the nginx server's local IP address.
 
-## Install `stream.conf` (GPU server)
+## Adding a node
 
-```bash
-# 1. add the SNI router at nginx.conf top level (stream{} must be OUTSIDE http{};
-#    appending puts it after the http{} block = top level)
-cat stream.conf | sudo tee -a /etc/nginx/nginx.conf
+Add its line to the map in `stream.conf`, for example:
 
-# 2. move the existing http server blocks off :443 (the router now owns :443)
-sudo sed -i 's/listen 443 ssl/listen 8443 ssl/' /etc/nginx/sites-available/default
-
-# 3. test + reload
-sudo nginx -t && sudo nginx -s reload
+```nginx
+~\.microserver17\.net$   <its host IP>:443;
 ```
+
+then test and reload (step 3).
+
+The book *How to Build the AI Agent Farm with Claude Code* describes this entry in Chapter 11: <https://www.amazon.com/dp/B0HNQ2KCQB>.
