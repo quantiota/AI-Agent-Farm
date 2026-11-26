@@ -2,12 +2,12 @@
 # generate-avatars.sh — node avatars: the call-sign on the microserver.network indigo tile.
 #
 # Needs: rsvg-convert (librsvg).
-# Output: <BASE>/microserverNN/{microserverNN.svg, -512.png, -128.png}  for NN = 01..08
+# Output: <BASE>/microserverNN/{microserverNN.svg, -512.png, -128.png}  for NN = 01..16
 # Usage:  bash generate-avatars.sh [BASE]   (BASE defaults to ./avatar)
 set -e
 BASE="${1:-avatar}"
 
-for n in 01 02 03 04 05 06 07 08; do
+for n in $(seq -w 1 16); do
   d="$BASE/microserver$n"; mkdir -p "$d"
   cat > "$d/microserver$n.svg" <<SVG
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="microserver$n">

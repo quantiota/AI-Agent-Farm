@@ -1,0 +1,72 @@
+global:
+  scrape_interval: 10s
+
+scrape_configs:
+  - job_name: 'nodes'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['192.168.1.113:9100']
+        labels:
+          node: 'microserver01'
+      - targets: ['192.168.1.253:9100']
+        labels:
+          node: 'microserver02'
+      - targets: ['192.168.1.157:9100']
+        labels:
+          node: 'microserver03'
+      - targets: ['192.168.1.152:9100']
+        labels:
+          node: 'microserver04'
+      - targets: ['192.168.1.105:9100']
+        labels:
+          node: 'microserver05'
+      - targets: ['192.168.1.60:9100']
+        labels:
+          node: 'microserver06'
+      - targets: ['192.168.1.76:9100']
+        labels:
+          node: 'microserver07'
+      - targets: ['192.168.1.247:9100']
+        labels:
+          node: 'microserver08'
+      - targets: ['192.168.1.23:9100']
+        labels:
+          node: 'microserver09'
+      - targets: ['192.168.1.173:9100']
+        labels:
+          node: 'microserver10'
+      - targets: ['192.168.1.51:9100']
+        labels:
+          node: 'microserver11'
+      - targets: ['192.168.1.136:9100']
+        labels:
+          node: 'microserver12'
+      - targets: ['192.168.1.83:9100']
+        labels:
+          node: 'microserver13'
+      - targets: ['192.168.1.133:9100']
+        labels:
+          node: 'microserver14'
+      - targets: ['192.168.1.250:9100']
+        labels:
+          node: 'microserver15'
+      - targets: ['192.168.1.154:9100']
+        labels:
+          node: 'microserver16'
+
+  - job_name: 'gpuserver'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['192.168.1.52:9100']
+        labels:
+          node: 'gpuserver'
+      - targets: ['192.168.1.52:9835']
+        labels:
+          node: 'gpuserver'
+
+  - job_name: 'matrix'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['192.168.1.165:9100']
+        labels:
+          node: 'matrix'
