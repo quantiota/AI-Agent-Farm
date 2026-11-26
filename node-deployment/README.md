@@ -27,13 +27,12 @@ The reliable remote path: mount the Ubuntu Server ISO from an HTTP URL as the vi
    ```
 2. In iLO, set the **virtual CD/DVD to that URL**, set **one-time boot → CD**, power on.
 3. Install onto the **small (OS) volume**; leave the RAID for data.
-4. After install, set boot order to the OS volume.
 
 
 
-## 4. Update firmware (BIOS)
+## 4. Update firmware (iLO and BIOS)
 
-Upload the BIOS firmware `CPQJ0613.684` from the ILO interface
+Upload the iLO firmware `ilo4_282.bin` (iLO 4 version 2.82) and the BIOS firmware `CPQJ0613.684` (BIOS J06) from the iLO interface. Both files are in this folder.
 
 
 
