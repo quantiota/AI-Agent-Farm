@@ -17,9 +17,9 @@
 |||
 |||
 | Microserver | Refurbished HP Microserver Gen8 with quad-core Intel processor and 3 Ethernet ports|
-| CPU| quad-core: Xeon E3-1265L, Xeon E3-1260L V2, Xeon E3-1220 V2, Xeon E3-1225 V2, Xeon E3-1230 V2, Xeon E3-1240 V2,  Xeon E3-1270 V2|
+| CPU| Xeon E3-1265L V2|
 |RAM|16GB (2x8GB) Dual Rank x8 PC3-12800E (DDR3-1600) Unbuffered CAS-11  669324-B21|
-|SSD | 1 x 250GB  Samsung 860 EVO |
+|SSD | 1 x 250GB Samsung SSD 850/860/870 |
 |HDD | 4 X 1TB Western Digital Enterprise Storage |
 |RAID Controler | HP P410/512MB |
 | | |
@@ -36,7 +36,7 @@
 | Matrix Synapse Server | Refurbished DELL R210 II |
 | Monitor Rack Console | Refurbished DELL Rack Console 17FP |
 | Power Distribution Unit | APC AP 7822  |
-|GPU Server Rack Enclosure| Refurbished HP/DELL 42U Rack Enclosure |
+|GPU Server Rack Enclosure| Refurbished Dell 24U Rack Enclosure |
 |Microserver Rack Enclosure| Refurbished  12U Rack Enclosure |
 | |  |
 | | |
